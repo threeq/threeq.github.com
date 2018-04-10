@@ -82,7 +82,7 @@
 
 <meta itemprop="datePublished" content="2018-04-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1336">
+<meta itemprop="wordCount" content="1407">
 
 
 
@@ -167,7 +167,7 @@
               <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
             
           </div>
-        <span class="more-meta"> 约 1336 字 </span>
+        <span class="more-meta"> 约 1407 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -187,7 +187,7 @@
 <ul>
 <li><a href="#mac-安装">mac 安装</a></li>
 <li><a href="#linux-安装">Linux 安装</a></li>
-<li><a href="#windows-安装">windows 安装</a></li>
+<li><a href="#源码安装">源码安装</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#pt-query-digest-基本使用">pt-query-digest 基本使用</a></li>
@@ -210,9 +210,34 @@
 
 <h3 id="mac-安装">mac 安装</h3>
 
+<p>可以使用 <code>brew</code> 直接安装</p>
+
+<pre><code class="language-shell">brew install percona-toolkit
+</code></pre>
+
 <h3 id="linux-安装">Linux 安装</h3>
 
-<h3 id="windows-安装">windows 安装</h3>
+<p>详细信息参考 <a href="https://www.percona.com/doc/percona-toolkit/LATEST/installation.html">官方安装文档</a></p>
+
+<h3 id="源码安装">源码安装</h3>
+
+<pre><code># 下载源码
+wget https://www.percona.com/downloads/percona-toolkit/3.0.8/source/tarball/percona-toolkit-3.0.8.tar.gz
+
+# 解压
+tar xf percona-toolkit-3.0.8.tar.gz
+
+#进入目录安装
+cd percona-toolkit-3.0.8
+
+#开始编译安装
+perl Makefile.PL   
+make   
+make install
+
+#安装完了就有命令了
+ll /usr/local/bin/pt-*
+</code></pre>
 
 <h1 id="pt-query-digest-基本使用">pt-query-digest 基本使用</h1>
 
