@@ -1,204 +1,204 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="http://threeq.me/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://threeq.me/post/db/mysql-slow-query-analyse/</loc>
+    <loc>/post/db/mysql-slow-query-analyse/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/db/mysql-sql-index-analyse-tool/</loc>
+    <loc>/post/db/mysql-sql-index-analyse-tool/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/git-branch-flow/</loc>
+    <loc>/post/git-branch-flow/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</loc>
+    <loc>/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/ci-cd-tool/</loc>
+    <loc>/post/ci-cd-tool/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/web/css3-added-selector/</loc>
+    <loc>/post/web/css3-added-selector/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2018-04-02T22:21:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/categories/</loc>
+    <loc>/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/ci/cd/</loc>
+    <loc>/tags/ci/cd/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/css3/</loc>
+    <loc>/tags/css3/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/gerrit/</loc>
+    <loc>/tags/gerrit/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/git/</loc>
+    <loc>/tags/git/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/gitlab/</loc>
+    <loc>/tags/gitlab/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/gtd/</loc>
+    <loc>/tags/gtd/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/jenkins/</loc>
+    <loc>/tags/jenkins/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/mysql/</loc>
+    <loc>/tags/mysql/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/percona/</loc>
+    <loc>/tags/percona/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/pt-query-digest/</loc>
+    <loc>/tags/pt-query-digest/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/redmine/</loc>
+    <loc>/tags/redmine/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/</loc>
+    <loc>/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/categories/web/</loc>
+    <loc>/categories/web/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/categories/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/</loc>
+    <loc>/categories/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/</loc>
+    <loc>/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://threeq.me/tags/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</loc>
+    <loc>/tags/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
