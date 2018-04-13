@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Threeq - 出井的青蛙</title>
-    <link>/</link>
+    <link>https://blog.threeq.me/</link>
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mysql 查询优化：慢查询分析工具 pt-query-digest</title>
-      <link>/post/db/mysql-slow-query-analyse/</link>
+      <link>https://blog.threeq.me/post/db/mysql-slow-query-analyse/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/db/mysql-slow-query-analyse/</guid>
+      <guid>https://blog.threeq.me/post/db/mysql-slow-query-analyse/</guid>
       <description>&lt;p&gt;在系统刚上线的时候，经常会出现慢 SQL 的情况，并且有时候系统会在特定的时间点变慢。这个时候的慢 SQL 查询语句往往是大量出现，MySQL 的慢查询日志文件也会比较大。这个时候我们往往需要从哪些查询最多、耗时最长的 sql 开始优化，以提升我们的处理效益。这个时候就需要我们能对慢日志进行统计分析，在上 M ，甚至 几十 M 的日志文件里面使用手工的方式明显是不可能的，这个时候就需要有专门的统计分析工具来帮我们做统计、分析哪些慢查询日志。&lt;code&gt;percona-toolkit&lt;/code&gt; 就是一个提供统计和分析的工具集，这里重点介绍里面的 &lt;code&gt;pt-query-digest&lt;/code&gt; 工具。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>mysql 查询优化：索引优化</title>
-      <link>/post/db/mysql-sql-index-analyse-tool/</link>
+      <link>https://blog.threeq.me/post/db/mysql-sql-index-analyse-tool/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/db/mysql-sql-index-analyse-tool/</guid>
+      <guid>https://blog.threeq.me/post/db/mysql-sql-index-analyse-tool/</guid>
       <description>&lt;p&gt;我们在产品中使用 MySQL 数据库的时候，肯定会用到索引的，或是在前期建立一些初始索引，或是在后期 SQL 优化的时候根据系统运行状态逐渐增加索引。不论是以什么方式建立的索引，他们都会影响我们对数据库做的操作，并且是对我们所有的数据操作都有影响，包括 增加、删除、修改、查询、统计 操作。这时如果线上有部分索引在系统升级已经失效了，我们怎么知道，怎么及时的排查和删除，需要我们持续的跟踪和分析。今天我就介绍几款针对线上数据库索引的分析工具。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -41,25 +41,25 @@
     
     <item>
       <title>Git 代码库分之管理</title>
-      <link>/post/git-branch-flow/</link>
+      <link>https://blog.threeq.me/post/git-branch-flow/</link>
       <pubDate>Wed, 04 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/git-branch-flow/</guid>
+      <guid>https://blog.threeq.me/post/git-branch-flow/</guid>
       <description>&lt;p&gt;代码版本库使用git管理，以下是git版本使用规范&lt;/p&gt;
 
 &lt;h2 id=&#34;流程图说明&#34;&gt;流程图说明&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/git-branch-flow-1.jpg&#34; alt=&#34;git流程&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.threeq.me/images/git-branch-flow-1.jpg&#34; alt=&#34;git流程&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>让网络更好为我们服务</title>
-      <link>/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</link>
+      <link>https://blog.threeq.me/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</link>
       <pubDate>Wed, 04 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</guid>
+      <guid>https://blog.threeq.me/post/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/gtd-flow/</guid>
       <description>&lt;p&gt;你每天早上一醒来有没有立即想拿起手机赶紧看一下（facebook、twitter、微信），无论里面有没有信息都要打开一下才安心？并且在上班之前还要想办法挤出时间看一下各大新闻网站，查收邮件在各种邮件信息中找出今天需要处理的事情。并且在工作的时候，一出现一个消息弹框马上点击进去看，害怕自己遗漏哪怕一次消息。&lt;/p&gt;
 
 &lt;p&gt;这些在一个信息爆炸的时代是正常的，被称为信息饥渴。其实出现这个情况是由于我们没有很好获取信息方式和管理信息方法。这篇文章就介绍如何更好的利用网络工具来为我们管理信息。
@@ -68,19 +68,19 @@
     
     <item>
       <title>项目持续集成工具</title>
-      <link>/post/ci-cd-tool/</link>
+      <link>https://blog.threeq.me/post/ci-cd-tool/</link>
       <pubDate>Wed, 04 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/ci-cd-tool/</guid>
+      <guid>https://blog.threeq.me/post/ci-cd-tool/</guid>
       <description>每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实</description>
     </item>
     
     <item>
       <title>CSS3 新增选择器</title>
-      <link>/post/web/css3-added-selector/</link>
+      <link>https://blog.threeq.me/post/web/css3-added-selector/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/web/css3-added-selector/</guid>
+      <guid>https://blog.threeq.me/post/web/css3-added-selector/</guid>
       <description>&lt;p&gt;现代前端开发中css3已经是不可其他的一部分，早已成为每个web开发人员必备技能之一。
 而选择器又是css中最基础、最重要的知识点，对于我们页面结构和代码接口都有着举足轻重的作用。
 今天我们就来看看css3所支持的和新增的选择器。&lt;/p&gt;
@@ -90,10 +90,10 @@
     
     <item>
       <title>关于 Threeq - 出井的青蛙</title>
-      <link>/about/</link>
+      <link>https://blog.threeq.me/about/</link>
       <pubDate>Mon, 02 Apr 2018 22:21:58 +0800</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://blog.threeq.me/about/</guid>
       <description>Threeq - 出井的青蛙</description>
     </item>
     
