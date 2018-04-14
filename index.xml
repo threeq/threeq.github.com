@@ -6,10 +6,34 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第一天：环境搭建</title>
+      <link>https://blog.threeq.me/post/articles/%E5%B0%8F%E7%99%BD%E5%AD%A6sql/1-install-tools/</link>
+      <pubDate>Sat, 14 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/%E5%B0%8F%E7%99%BD%E5%AD%A6sql/1-install-tools/</guid>
+      <description>&lt;p&gt;《小白学 SQL》第一天&lt;/p&gt;
+
+&lt;p&gt;本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。&lt;/p&gt;
+
+&lt;p&gt;数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。&lt;/p&gt;
+
+&lt;p&gt;作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.docker.com/community-edition#/download&#34;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.fosshub.com/ConEmu.html/ConEmuSetup.180318.exe&#34;&gt;ConEmuSetup&lt;/a&gt;（windows 版本命令行工具，Linux 和 Mac 不需要）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.navicat.com.cn/download/direct-download?product=navicat_premium_cs_x64.exe&amp;amp;location=1&#34;&gt;Navicat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>mysql 查询优化：慢查询分析工具 pt-query-digest</title>

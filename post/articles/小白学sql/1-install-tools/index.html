@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>小白学 SQL 第一天：环境搭建 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" />
+  <meta name="description" content="《小白学 SQL》第一天
+本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。
+数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。
+作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：
+ MySQL Docker ConEmuSetup（windows 版本命令行工具，Linux 和 Mac 不需要） Navicat  
+" />
+
+  <meta name="keywords" content="Threeq, 博客, 程序员, 架构师, 敏捷, scrum, 看板, Java, Python, Golang, Javascript" />
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.37" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/%E5%B0%8F%E7%99%BD%E5%AD%A6sql/1-install-tools/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="小白学 SQL 第一天：环境搭建" />
+<meta property="og:description" content="《小白学 SQL》第一天
+
+本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。
+
+数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。
+
+作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：
+
+
+MySQL
+Docker
+ConEmuSetup（windows 版本命令行工具，Linux 和 Mac 不需要）
+Navicat
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/%E5%B0%8F%E7%99%BD%E5%AD%A6sql/1-install-tools/" />
+
+
+
+<meta property="article:published_time" content="2018-04-14T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-04-14T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="小白学 SQL 第一天：环境搭建">
+<meta itemprop="description" content="《小白学 SQL》第一天
+
+本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。
+
+数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。
+
+作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：
+
+
+MySQL
+Docker
+ConEmuSetup（windows 版本命令行工具，Linux 和 Mac 不需要）
+Navicat
+
+
+">
+
+
+<meta itemprop="datePublished" content="2018-04-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2006">
+
+
+
+<meta itemprop="keywords" content="数据库,SQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="小白学 SQL 第一天：环境搭建"/>
+<meta name="twitter:description" content="《小白学 SQL》第一天
+
+本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。
+
+数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。
+
+作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：
+
+
+MySQL
+Docker
+ConEmuSetup（windows 版本命令行工具，Linux 和 Mac 不需要）
+Navicat
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">小白学 SQL 第一天：环境搭建</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-14 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2006 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#工具选择和说明">工具选择和说明</a></li>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#windows-安装-conemusetup">Windows 安装 ConEmuSetup</a></li>
+<li><a href="#docker-安装">Docker 安装</a>
+<ul>
+<li><a href="#加速器配置-windows-mac">加速器配置：Windows、Mac</a></li>
+<li><a href="#加速器配置-ubuntu-14-04-debian-7-wheezy">加速器配置：Ubuntu 14.04、Debian 7 Wheezy</a></li>
+<li><a href="#加速器配置-ubuntu-16-04-debian-8-centos-7">加速器配置：Ubuntu 16.04+、Debian 8+、CentOS 7</a></li>
+<li><a href="#检查加速器是否生效">检查加速器是否生效</a></li>
+</ul></li>
+<li><a href="#mysql-服务安装">MySQL 服务安装</a></li>
+<li><a href="#navicat-安装">Navicat 安装</a></li>
+</ul></li>
+<li><a href="#验证环境安装完成">验证环境安装完成</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>《小白学 SQL》第一天</p>
+
+<p>本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。</p>
+
+<p>数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。</p>
+
+<p>作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：</p>
+
+<ul>
+<li>MySQL</li>
+<li><a href="https://www.docker.com/community-edition#/download">Docker</a></li>
+<li><a href="https://www.fosshub.com/ConEmu.html/ConEmuSetup.180318.exe">ConEmuSetup</a>（windows 版本命令行工具，Linux 和 Mac 不需要）</li>
+<li><a href="http://www.navicat.com.cn/download/direct-download?product=navicat_premium_cs_x64.exe&amp;location=1">Navicat</a></li>
+</ul>
+
+<p></p>
+
+<h1 id="工具选择和说明">工具选择和说明</h1>
+
+<p>可能大家有些奇怪，为什么这里会选用 <code>Docker</code>，这个和我们 SQL 完全没有关系。这里 <code>Docker</code> 确实和我们学习的 SQL 完全没有关系，但就我个人使用来说 ：</p>
+
+<p>一、docker 作为基础环境，在上面安装 MySQL 服务比我们在自己裸机上装 MySQL 方便得多，并且不易且不怕出错；</p>
+
+<p>二、目前整个 IT 行业容器化正在如火如荼的进行，这个是未来不可逆转的趋势，Dcoker 正式这个大军里面的主力军；</p>
+
+<p>三、MySQL 安装跨平台化，使用 Docker 过后你在任何一个系统里面（Windows、Linux、Mac OS）安装 MySQL 操作都是完全一样的</p>
+
+<p>基于以上三点原因，所以这里我选择了 Docker 作为数据库运行基础环境。</p>
+
+<p>软件作用：</p>
+
+<table>
+<thead>
+<tr>
+<th>软件</th>
+<th>作用说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Docker</td>
+<td>提供跨平台的软件运行基础环境</td>
+</tr>
+
+<tr>
+<td>MySQL</td>
+<td>最常用的 RDBMS 之一，作为我们学习 SQL 的数据库服务器</td>
+</tr>
+
+<tr>
+<td>Navicat</td>
+<td>一个被广泛使用的数据库客户端，作为我们主要的 SQL 编辑器</td>
+</tr>
+
+<tr>
+<td>ConEmuSetup</td>
+<td>一个 Window 命令行终端（Linux、Mac 使用自带的足以）</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="安装">安装</h1>
+
+<h2 id="windows-安装-conemusetup">Windows 安装 ConEmuSetup</h2>
+
+<ol>
+<li>到 <a href="https://www.fosshub.com/ConEmu.html">ConEmuSetup 下载页面</a> 现在对应软件版本</li>
+<li>然后一路 “Next” 就好</li>
+</ol>
+
+<h2 id="docker-安装">Docker 安装</h2>
+
+<p>Docker 这里我们使用 <code>Community Edition</code> 版本，请到这里下载：<a href="https://www.docker.com/community-edition#/download">下载地址</a>。</p>
+
+<ol>
+<li>对于 Windows 版和 Mac 版，下载下来后双击文件运行，剩下的几乎就是一路 &ldquo;Next&rdquo; 点下去就完了，最后双击桌面图标启动 Docker 服务，这里就不在说明了</li>
+<li>对于  Linux 版本，由于不同发行版的需求不同，安装步骤略有不同，但是基本也和常用软件安装差不多，并且官方文档也和齐全这里就直接放官方的安装连接地址了（是英文的哟，如果有好的中文教程推荐，请留言我尽快放上来）: <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>  <a href="https://docs.docker.com/engine/installation/linux/centos/">CentOS</a>  <a href="https://docs.docker.com/engine/installation/linux/fedora/">Fedora</a>  <a href="https://docs.docker.com/engine/installation/linux/debian/">Debian</a></li>
+</ol>
+
+<h3 id="加速器配置-windows-mac">加速器配置：Windows、Mac</h3>
+
+<p>对于 Docker 安装完成过后，国内用户还有一步需要操作：指定 docker 加速器（原因不多说）。Windows 和 Mac 系统具体操作如下：</p>
+
+<ol>
+<li>找到  Docker 运行系统托盘图片，右击打开菜单如下</li>
+</ol>
+
+
+<figure class="center">
+    
+        <img src="/images/articles/noob-learn-sql/01-docker-prefrences.jpeg" alt="系统菜单" width="256px" />
+    
+    
+</figure>
+
+
+<ol>
+<li>点击 <code>Preferences</code> 菜单，打开设置界面如下</li>
+</ol>
+
+<p><img src="/images/articles/noob-learn-sql/01-docker-prefrences-1.jpeg" alt="" /></p>
+
+<ol>
+<li>点击 <code>Daemon</code> 标签项，再 <code>Rgistry mirrors</code> 中输入镜像加速器网址 <a href="https://docker.mirrors.ustc.edu.cn。如下图">https://docker.mirrors.ustc.edu.cn。如下图</a></li>
+</ol>
+
+<p><img src="/images/articles/noob-learn-sql/01-docker-prefrences-2.jpeg" alt="" /></p>
+
+<p>对于  Linux 系统配置需要修改相关配置文件，不同系统版本有所不同。</p>
+
+<h3 id="加速器配置-ubuntu-14-04-debian-7-wheezy">加速器配置：Ubuntu 14.04、Debian 7 Wheezy</h3>
+
+<p>对于使用 <a href="http://upstart.ubuntu.com/">upstart</a> 的系统而言，编辑 <code>/etc/default/docker</code> 文件，在其中的 <code>DOCKER_OPTS</code>中配置加速器地址：</p>
+
+<pre><code>DOCKER_OPTS=&quot;--registry-mirror=https://docker.mirrors.ustc.edu.cn&quot;
+</code></pre>
+
+<p>重启 Docker 服务：</p>
+
+<pre><code>$ sudo service docker restart
+</code></pre>
+
+<h3 id="加速器配置-ubuntu-16-04-debian-8-centos-7">加速器配置：Ubuntu 16.04+、Debian 8+、CentOS 7</h3>
+
+<p>对于使用 <a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> 的系统，请在 <code>/etc/docker/daemon.json</code> 中写入如下内容（如果文件不存在请新建该文件）</p>
+
+<pre><code>{
+  &quot;registry-mirrors&quot;: [
+    &quot;https://docker.mirrors.ustc.edu.cn&quot;
+  ]
+}
+</code></pre>
+
+<blockquote>
+<p>注意，一定要保证该文件符合 json 规范，否则 Docker 将不能启动。</p>
+</blockquote>
+
+<p>重启 Docker 服务：</p>
+
+<pre><code>$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+</code></pre>
+
+<h3 id="检查加速器是否生效">检查加速器是否生效</h3>
+
+<p>打开终端（命令行工具）输入 <code>docker info</code>  命令，如果从结果中看到了如下内容，说明配置成功。</p>
+
+<pre><code>Registry Mirrors:
+ https://docker.mirrors.ustc.edu.cn/
+</code></pre>
+
+<p>其他可用的加速服务有很多，这里列举几个方便大家查找：</p>
+
+<ul>
+<li><a href="https://docs.docker.com/registry/recipes/mirror/#use-case-the-china-registry-mirror">Docker 官方提供的中国 registry mirror</a></li>
+<li><a href="https://www.daocloud.io/mirror#accelerator-doc">DaoCloud 加速器</a></li>
+<li><a href="https://cr.console.aliyun.com/#/accelerator">阿里云加速器</a></li>
+</ul>
+
+<h2 id="mysql-服务安装">MySQL 服务安装</h2>
+
+<p>在安装完成 Docker 过后，MySQL 服务的安装就很简单了。在你的终端命令行里面输入如下命令启动 MySQL 服务：</p>
+
+<pre><code>$ docker run --name sql-learn -e MYSQL_ROOT_PASSWORD=toor -p3306:3306 -d mysql
+</code></pre>
+
+<p><img src="/images/articles/noob-learn-sql/01-docker-mysql-install.jpeg" alt="" /></p>
+
+<p>查看 MySQL 服务运行状态</p>
+
+<pre><code>$ docker ps
+</code></pre>
+
+<p><img src="/images/articles/noob-learn-sql/01-docker-mysql-install-1.jpeg" alt="" /></p>
+
+<p>这里不要被命令吓着了，Docker 本身的命令不少，包括以后的所有操作，我们总共用到 docker 命令就4、5个。这里先列出来，大家可以操作一下</p>
+
+<pre><code>$ docker run --name sql-learn -e MYSQL_ROOT_PASSWORD=toor -p3306:3306 -d mysql  # 创建一个名为 sql-learn MySQL 容器
+$ docker ps  #  查看容器运行状态
+$ docker stop sql-learn  # 停止 sql-learn 容器
+$ docker rm sql-learn  # 删除 sql-learn 容器，必须先停止
+</code></pre>
+
+<h2 id="navicat-安装">Navicat 安装</h2>
+
+<p>安装和 ConEmuSetup 类似</p>
+
+<ol>
+<li>到 <a href="https://www.fosshub.com/ConEmu.html">Navicat 下载页面</a> 现在对应软件版本。推荐 Navicat Premium</li>
+<li>然后一路 “Next” 就好</li>
+</ol>
+
+<h1 id="验证环境安装完成">验证环境安装完成</h1>
+
+<ol>
+<li>双击桌面 “Navicat” 应用图标，打开 Navicat 软件</li>
+</ol>
+
+<p>​    <img src="/images/articles/noob-learn-sql/01-install-verify-1.jpeg" alt="" /></p>
+
+<ol>
+<li>点击 “链接” 增加到 <code>sql-learn</code> 的数据库链接。输入截图里面的内容，这里密码输入 <code>toor</code> ，点击 “Test Connection” 出现绿点没有错误表示成功，如下图</li>
+</ol>
+
+<p><img src="/images/articles/noob-learn-sql/01-install-verify-2.jpeg" alt="" /></p>
+
+<ol>
+<li>双击 “左边导航列表” 里的 <code>sql-learn</code> 得到如下结果</li>
+</ol>
+
+<p><img src="/images/articles/noob-learn-sql/01-install-verify-3.jpeg" alt="" /></p>
+
+<ol>
+<li>创建一个用于我们以后学习使用的数据库。点击 “New Query” 新建一个查询窗口</li>
+</ol>
+
+<p><img src="/images/articles/noob-learn-sql/01-install-verify-4.jpeg" alt="" /></p>
+
+<p>输入一下 SQL 语句</p>
+
+<pre><code class="language-sql">   create database `sql-learn` default charset=utf8mb4;
+</code></pre>
+
+<p>点击执行得到如下结果，表示成功</p>
+
+<p><img src="/images/articles/noob-learn-sql/01-install-verify-5.jpeg" alt="" /></p>
+
+<p>支持我们的环境安装和验证全部结束。</p>
+
+<h1 id="总结">总结</h1>
+
+<p>我们学习一下几点：</p>
+
+<ol>
+<li><p>如何安装 Docker 服务</p></li>
+
+<li><p>如何在 Docker 里面启动 MySQL 服务器</p></li>
+</ol>
+
+<pre><code>   docker run --name sql-learn -e MYSQL_ROOT_PASSWORD=toor -p3306:3306 -d mysql # 无 sql-learn 容器时
+   或
+   docker start sql-learn # 已有 sql-learn 容器时
+</code></pre>
+
+<ol>
+<li><p>我们在使用数据库系统的时候需要一个数据库服务器（这里是 MySQL），还需要一个数据库客户端（这里是 Navicat）</p></li>
+
+<li><p>在链接 MySQL 服务器之前需要先启动 MySQL 服务器</p></li>
+
+<li><p>在连接一个 MySQL 服务器是需要提供的基本信息有：<code>服务器 IP</code>、<code>服务器端口</code>、<code>用户名</code>、<code>密码</code></p></li>
+</ol>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-14</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+          <a href="/tags/sql/">SQL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/db/mysql-slow-query-analyse/">
+            <span class="next-text nav-default">mysql 查询优化：慢查询分析工具 pt-query-digest</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-04-14 00:00:00 \x2b0000 UTC',
+    title: '小白学 SQL 第一天：环境搭建',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e《小白学 SQL》第一天\x3c\/p\x3e\n\n\x3cp\x3e本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。\x3c\/p\x3e\n\n\x3cp\x3e数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。\x3c\/p\x3e\n\n\x3cp\x3e作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3eMySQL\x3c\/li\x3e\n\x3cli\x3e\x3ca href=\x22https:\/\/www.docker.com\/community-edition#\/download\x22\x3eDocker\x3c\/a\x3e\x3c\/li\x3e\n\x3cli\x3e\x3ca href=\x22https:\/\/www.fosshub.com\/ConEmu.html\/ConEmuSetup.180318.exe\x22\x3eConEmuSetup\x3c\/a\x3e（windows 版本命令行工具，Linux 和 Mac 不需要）\x3c\/li\x3e\n\x3cli\x3e\x3ca href=\x22http:\/\/www.navicat.com.cn\/download\/direct-download?product=navicat_premium_cs_x64.exe\x26amp;location=1\x22\x3eNavicat\x3c\/a\x3e\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117533134-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>
