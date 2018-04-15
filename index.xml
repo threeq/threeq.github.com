@@ -6,10 +6,21 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 14 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo 网站增加搜索功能：Lunrjs 和 Algolia</title>
+      <link>https://blog.threeq.me/post/notes/hugo-site-search/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/notes/hugo-site-search/</guid>
+      <description>&lt;p&gt;本文是总结我自己在使用 Hugo 进行建站的时候给网站增加内容检索功能的结果。做这个功能的一个原因也是由于自己使用的 Even 主题没有带检索功能，所有只有自己上手撸一把。使用的检索方案包括 Lunrjs 和 Algolia，本文的处理方式可以同时支持 2 中方式，可以根据自己的情况自由选择或切换。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第一天：环境搭建</title>
