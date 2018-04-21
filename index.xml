@@ -6,10 +6,31 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 18 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第三天：单表数据查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/</link>
+      <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/</guid>
+      <description>&lt;p&gt;《小白学 SQL》第三天&lt;/p&gt;
+
+&lt;p&gt;数据查询应该是我们平时用得最多的数据库操作，所以我们优先学习数据查询，今天我们就来看看基础的数据查询操作：单表数据查询，涉及到的知识点有：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;检索单个列&lt;/li&gt;
+&lt;li&gt;检索多个列&lt;/li&gt;
+&lt;li&gt;数据去重&lt;/li&gt;
+&lt;li&gt;返回定量数据集&lt;/li&gt;
+&lt;li&gt;排序检索数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第二天：数据表创建</title>
