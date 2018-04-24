@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.threeq.me/post/articles/noob-learn-sql/4-query-where/</loc>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -164,7 +171,7 @@
   
   <url>
     <loc>https://blog.threeq.me/post/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -192,7 +199,7 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/sql/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -206,7 +213,7 @@
   
   <url>
     <loc>https://blog.threeq.me/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -240,13 +247,6 @@
   </url>
   
   <url>
-    <loc>https://blog.threeq.me/categories/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.threeq.me/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2018-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -254,15 +254,22 @@
   </url>
   
   <url>
-    <loc>https://blog.threeq.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <loc>https://blog.threeq.me/categories/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.threeq.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2018-04-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

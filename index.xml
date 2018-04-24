@@ -6,10 +6,32 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第四天：数据过滤查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/4-query-where/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/4-query-where/</guid>
+      <description>&lt;p&gt;在第三天的时候学习了数据的基本查询结构，包括：查询指定列，返回指定大小结果集，数据排序，数据去重。今天将学习查询里面另外一个基础且重要的查询结构：过滤查询（也叫条件查询），可以说现今你能看到的所有涉及到 RDBMS 软件一定都有 &lt;em&gt;过滤查询&lt;/em&gt; 。所以今天的内容一定要掌握，也是一切用到 RDBMS 系统的所需掌握的基础知识之一。&lt;/p&gt;
+
+&lt;p&gt;今天涉及到的知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;where子句子结构&lt;/li&gt;
+&lt;li&gt;数值、时间&lt;/li&gt;
+&lt;li&gt;字符串匹配： like、百分号（%）通配符、下划线（_）通配符&lt;/li&gt;
+&lt;li&gt;范围值检查：between 、in&lt;/li&gt;
+&lt;li&gt;空值查询：is null、not&lt;/li&gt;
+&lt;li&gt;组合查询：and、or、求值顺序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第三天：单表数据查询</title>
