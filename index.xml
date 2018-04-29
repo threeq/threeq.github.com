@@ -6,10 +6,29 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第六天：统计查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/</guid>
+      <description>&lt;p&gt;今天我们来学习涉及单表查询的最后一种查询方式：统计查询，但让统计查询并不只能用于单表查询的，也可用于多表查询。其实我们前面所有的查询子句都可以用于单表和多表查询，具体多表查询中的使用将在第七天介绍。首先还是看看统计查询里面内容概要，也是今天的知识要点。&lt;/p&gt;
+
+&lt;p&gt;知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;统计函数&lt;/li&gt;
+&lt;li&gt;分组统计&lt;/li&gt;
+&lt;li&gt;过滤分组统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第五天：数据操作函数</title>
