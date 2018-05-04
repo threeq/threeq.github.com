@@ -6,10 +6,28 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 29 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第七天：多表查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/</guid>
+      <description>&lt;p&gt;之前学习的查询都只涉及到单表，但在实际应用中还有很大一部分需求，只靠单表查询是实现不了的，比如：查询一个班上的所有人；统计每个班的人数等。那这些需求或问题应该怎么分析和实现，这就是今天要讲解的多表查询。&lt;/p&gt;
+
+&lt;p&gt;知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;子查询&lt;/li&gt;
+&lt;li&gt;表连接&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第六天：统计查询</title>

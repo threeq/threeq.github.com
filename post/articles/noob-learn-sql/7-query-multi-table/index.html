@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>小白学 SQL 第七天：多表查询 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Mysql, SQL, SQL学习, 数据库, select语句" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.37" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="小白学 SQL 第七天：多表查询" />
+<meta property="og:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/" />
+
+
+
+<meta property="article:published_time" content="2018-05-02T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-05-02T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="小白学 SQL 第七天：多表查询">
+<meta itemprop="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。">
+
+
+<meta itemprop="datePublished" content="2018-05-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-05-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="4183">
+
+
+
+<meta itemprop="keywords" content="数据库,SQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="小白学 SQL 第七天：多表查询"/>
+<meta name="twitter:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">小白学 SQL 第七天：多表查询</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-05-02 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            
+          </div>
+        <span class="more-meta"> 约 4183 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#子查询">子查询</a>
+<ul>
+<li><a href="#查询参与班级-id-为-1或2-的所有学生信息">查询参与班级 id 为 1或2 的所有学生信息</a></li>
+<li><a href="#查询参与人数大于-3-的班级个数">查询参与人数大于 3 的班级个数</a></li>
+</ul></li>
+<li><a href="#表连接">表连接</a>
+<ul>
+<li><a href="#笛卡尔积">笛卡尔积</a></li>
+<li><a href="#普通链接">普通链接</a></li>
+<li><a href="#内连接">内连接</a></li>
+<li><a href="#左连接">左连接</a></li>
+<li><a href="#右连接">右连接</a></li>
+<li><a href="#查询学生的姓名-性别和参与班级名称">查询学生的姓名、性别和参与班级名称</a></li>
+<li><a href="#查询所有班级名称和参与学生数量">查询所有班级名称和参与学生数量</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>之前学习的查询都只涉及到单表，但在实际应用中还有很大一部分需求，只靠单表查询是实现不了的，比如：查询一个班上的所有人；统计每个班的人数等。那这些需求或问题应该怎么分析和实现，这就是今天要讲解的多表查询。</p>
+
+<p>知识要点：</p>
+
+<ul>
+<li>子查询</li>
+<li>表连接</li>
+</ul>
+
+<p></p>
+
+<dl>
+<dt>多表查询有两种形式：一种是子查询，一种表连接。那什么时候使用子查询？什么时候使用表连接呢？这里说一下我个人的分析和使用步骤</dt>
+<dd><p><strong>1. 如果所有需要获得信息列在一张表里可以找到，就用子查询；</strong></p></dd>
+<dd><p><strong>2. 其他情况肯定需要表连接；</strong></p></dd>
+<dd><p><strong>3. 如果数据量很大，先子查询再使用表连接</strong></p></dd>
+<dd><p><strong>4. 使用性能工具分析 SQL 进行优化（执行计划和执行 profile）</strong></p></dd>
+</dl>
+
+<h1 id="子查询">子查询</h1>
+
+<p>子查询可以使用在 select 语句的 2 个地方，一个是在 from 子句中，一个是在 where 子句中，在使用的时候需要放在哪里就看<strong>是要从这个子句结果中返回信息，还是这个子句结果只是作为过滤条件</strong>。我们通过 2 个 sql 具体分析</p>
+
+<h2 id="查询参与班级-id-为-1或2-的所有学生信息">查询参与班级 id 为 1或2 的所有学生信息</h2>
+
+<blockquote>
+<p>分析：查询参与班级 id 为 1和2 的所有学生信息</p>
+
+<ol>
+<li>操作类型：<strong>select</strong> （查询）</li>
+<li>到哪里取数据：<strong>学生</strong></li>
+<li>得到哪些信息：所有学生信息</li>
+<li>过滤条件：班级 id 为 1 或 2</li>
+<li>排序字段：无</li>
+<li>取多少数据：所有数据（无 limit）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p>select * from 学生</p>
+
+<p>where 班级 id 为 1 或 2 ;</p>
+</blockquote>
+
+<p>这里学生表里面是没有班级信息的，并且返回的信息只有学生信息，班级 id 只是作为过滤条件，所以这里能确定 <code>where 条件为一个子查询</code>。那这个子查询应该如何分析呢？我们回到最开始的 ER 图</p>
+
+<p><img src="/images/articles/noob-learn-sql/02-ER.jpeg" alt="" /></p>
+
+<p>可以发现和学生信息有直接联系的是 <strong>参加</strong> 这个关系，同时它还和班级信息 <em>最近</em> （这里是直接联系），就从 参加 这个关系入手。由于在转换成数据库物理存储的时候，参加 这个关系我们也是在一种独立的数据表中存储的，所以我们首先看这个表的实际物理存储</p>
+
+<pre><code>CREATE TABLE student_join_class (
+  c_id int(11) NOT NULL COMMENT '班级 id',
+  s_id int(11) NOT NULL COMMENT '学生 id',
+  cs_created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '加入时间',
+  PRIMARY KEY (c_id,s_id)
+)  COMMENT='学生班级关联表';
+</code></pre>
+
+<p>发现这个表里面已经了班级 id <code>c_id</code> ，同时还包含学生 id <code>s_id</code> ，这样就可以可以做到从 <code>c_id</code> -&gt; <code>s_id</code> 的转换，在我们知道了 <code>s_id</code> 的情况下，上面分析的 sql 结构可以表示成，这里用 in 是由于通过 <code>student_join_class</code> 得到的 <code>s_id</code> 有可能是多个</p>
+
+<blockquote>
+<p>select * from 学生</p>
+
+<p>where  s_id in (参加班级 1 或 2 的学生 id);</p>
+</blockquote>
+
+<p>通过上面的分析知道：可以通过 <code>student_join_class</code> 表数据，用已知的班级 id <code>c_id</code> 数据查询出参与班级的学生 id <code>s_id</code> ，这个 sql 通过之前的单表分析方式，不能得到查询语句：</p>
+
+<pre><code>select s_id from student_join_class
+where c_id in (1,2)
+</code></pre>
+
+<p>将此语句放入分析得到的 sql 语句结构，就得到最终的查询 sql 语句。</p>
+</blockquote>
+
+<p>通过上面的分析，得到如下 sql 语句</p>
+
+<pre><code class="language-sql">select * from student
+where s_id in (
+  select s_id from student_join_class
+  where c_id in (1,2)
+);
+</code></pre>
+
+<p>执行得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/07-join-sub-01.jpeg" alt="" /></p>
+
+<h2 id="查询参与人数大于-3-的班级个数">查询参与人数大于 3 的班级个数</h2>
+
+<blockquote>
+<p>分析：查询参与人数大于 3 的班级个数</p>
+
+<ol>
+<li>操作类型：<strong>select</strong> （查询）</li>
+<li>到哪里取数据：<strong>未知</strong> （由于没有任何一张物理表有班级参与人数信息）</li>
+<li>得到哪些信息：班级个数</li>
+<li>过滤条件：班级参与人数大于 3</li>
+<li>排序字段：无</li>
+<li>取多少数据：所有数据（无 limit）</li>
+</ol>
+
+<p>通过上面分析得到如下查询结构</p>
+
+<blockquote>
+<p>select count(*) from 未知</p>
+
+<p>where 班级参与人数大于 3;</p>
+</blockquote>
+
+<dl>
+<dt>这里如果我们将 <strong>未知</strong> 理解成一张表的话，问题就转换成：分析 <strong>未知表</strong> 里面应该包含哪些信息？。其实从查询结构不难分析 <strong>未知表</strong> 只需要包含<code>每个班级的参与人数</code>就够了。因为返回的信息只是统计班级的数量(这里统计之关系有这条数据，不关心数据里的具体内容），但是过滤条件需要使用班级的参与人数进行比较，所以这里 <em>未知表</em> 的 <strong><code>最小信息就是 班级参与人数</code></strong> 。现在问题转变成</dt>
+<dd><p><strong><code>查询每个班级的参与人数</code></strong> (未知表)</p></dd>
+</dl>
+
+<p>每个班级有哪些人参与的信息，全部都在关联表 <code>student_join_class</code> 里面，所以通过统计不难得出每个班级的参与人数 sql</p>
+
+<pre><code>select c_id, count(*) from student_join_class
+group by c_id
+</code></pre>
+
+<p>这里所有我们需要的条件都完成了，组合得到的查询结构和 sql 就行。</p>
+</blockquote>
+
+<p>通过上面的分析得到如下是 SQL。<strong>注意：这里在组合的时候对 <code>count(*)</code> 使用了别名 (<code>as</code> 关键字)，这是由于需要在外部查询中使用结果值时，是不能直接用<code>count（*）</code>作为其列名称。其实所有的函数操作都不行。</strong></p>
+
+<p><strong>使用建议：<code>对查询返回中使用的所有函数列操作都定义别名</code></strong></p>
+
+<pre><code>select count(*) from (
+  select c_id, count(*) as number from student_join_class
+  group by c_id
+) a
+where number &gt; 3;
+</code></pre>
+
+<p>执行的结果为：<strong>3</strong> 。</p>
+
+<blockquote>
+<p>在分析的时候将 <em>未知表</em> 理解成一张表，这里数据库实际执行的时候确实会生成一张表，称作 <strong>临时表</strong> 。数据库在执行 sql 的时候，会为每一个子查询生成一个临时表（没有执行优化的情况），看数据库是否为一个 sql 查询生成临时表可以通过查询 <strong>SQL 执行计划</strong> 来判断。</p>
+
+<p>查询 SQL 执行计划使用 <code>explain</code> 关键字，执行以下 sql 查看结果输出</p>
+
+<pre><code class="language-sql">explain
+select count(*) from (
+  select c_id, count(*) as number from student_join_class
+  group by c_id
+) a
+where number &gt; 3;
+</code></pre>
+</blockquote>
+
+<h1 id="表连接">表连接</h1>
+
+<p>为了让大家更好的理解表连接，这里先讲解一下表连接的基本知识。这里假设我们有 A、B 两张表，表中的数据数量分别是 m 和 n。我们现在分别创建 A、B 两张表，并且录入一些数据</p>
+
+<pre><code class="language-sql">-- ----------------------------
+-- Table structure for A
+-- ----------------------------
+CREATE TABLE `A` (
+  `a_id` int(11) NOT NULL
+);
+
+-- ----------------------------
+-- Records of A
+-- ----------------------------
+BEGIN;
+INSERT INTO `A` VALUES (1),(2),(3),(4),(4),(5),(5);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for B
+-- ----------------------------
+CREATE TABLE `B` (
+  `b_id` int(11) NOT NULL
+);
+
+-- ----------------------------
+-- Records of B
+-- ----------------------------
+BEGIN;
+INSERT INTO `B` VALUES (2),(3),(5),(7),(4),(4),(4);
+COMMIT;
+</code></pre>
+
+<h2 id="笛卡尔积">笛卡尔积</h2>
+
+<dl>
+<dt>我们来看第一个基本概念：笛卡尔积（也叫全连接）。在数学中笛卡尔积的定义是</dt>
+<dd><p>两个集合 <strong>X</strong> 和 <strong>Y</strong> 的<strong>笛卡儿积</strong>（Cartesian product），又称<strong>直积</strong>，表示为 <em>X</em> × *Y*，是其第一个对象是 <em>X</em> 的成员而第二个对象是 <em>Y</em> 的一个成员的所有可能的有序对 。</p></dd>
+</dl>
+
+<p>这个难以理解的定义在 SQL 里面怎么理解呢？我们链接 A、B 两个表的时候，不加入任何条件，让 A 表中的每一条数据都和 B 表中的每一条数据做关联，就是 A 和 B 的笛卡尔积，也叫全连接。具体 SQL 实现如下：</p>
+
+<pre><code>select * from A,B;
+select * from A join B;
+select * from A cross join B;
+</code></pre>
+
+<p>会发现上面的 3 个 sql 语句执行的结果是一样的。我们再看这 3 中链接形式过后的数据量</p>
+
+<pre><code>select count(*) from A,B;
+select count(*) from A join B;
+select count(*) from A cross join B;
+</code></pre>
+
+<p>我们会发现 2 点</p>
+
+<ol>
+<li>全连接后的数据量是 <code>m × n</code></li>
+<li>全连接后的绝大部分数据是没有意义的</li>
+</ol>
+
+<p>我们可以试想一下如果每个表的数据量都在 100w 这个数量级（在真实生产环境这个数据量是小的），那全连接过后的数据量将是 1亿 数量级，里面的绝大多数数据是没有意义的，并且这里才考虑了 2 个表，这个很可怕的。所以在使用表连接时<strong>尽量避免产生全连接</strong>。</p>
+
+<h2 id="普通链接">普通链接</h2>
+
+<p>既然上面说到使用 <em>全连接后的绝大部分数据是没有意义的</em> ，那我们怎么产生有意义的链接呢？其实也很简单，我们只需要在链接的时候加上<strong>有意义的链接条件</strong>就行。以下 3 个语句其实是一样的，只是表现形式不同</p>
+
+<pre><code>select * from A,B where a_id=b_id;
+select * from A join B on a_id=b_id;
+select * from A join B where a_id=b_id;
+</code></pre>
+
+<p>大家可以发现这里出现的结果其实都在上面的 <em>笛卡尔积</em> 中，只是从 <em>笛卡尔积</em> 中按照 <code>a_id=b_id</code> 的过滤条件选出了少部分数据，这里的 <code>a_id=b_id</code> 就是 <strong>有意义的条件</strong> 。在解决实际的问题的时候，什么是有 <strong>意义的条件</strong> 要根据你的问题和设计仔细分析。</p>
+
+<p>明白了上面的 <strong>笛卡尔积</strong> 和 <strong>有意义的条件</strong> ，我们来看一下最常用的 3 中连接方式：内连接、左连接、右连接。再具体说明之前，先看一下示意图。</p>
+
+<p><img src="/images/articles/noob-learn-sql/07-join-01.jpeg" alt="" /></p>
+
+<p>这个示意图和大家在网上使用集合表示的示意图有些不同，主要是我感觉使用集合的示意图不能完全诠释 <em>左连接</em> 和 <em>右连接</em> 的概念和数据量，所以这里根据我自己的理解画了这个示意图。</p>
+
+<blockquote>
+<ol>
+<li>A表数据量 m，B 表数据量 n</li>
+<li>A、B 的数据量 m x n，这个笛卡尔积后的结果集和原来的 A、B 没有任何关系</li>
+<li>在笛卡尔积中满足过滤条件的数据(a, b)，其中 a 是 A表满足过滤条件的数量，b 是 B 表满足过滤条件的数量。<strong>但是注意满足条件的数据量并不是 a x b</strong></li>
+<li>A表中还有 m-a 条数据不满足过滤条件，B 表中还有 n-b 条数据不满足过滤条件</li>
+</ol>
+</blockquote>
+
+<h2 id="内连接">内连接</h2>
+
+<p>内连接使用 <code>inner join</code> 子句，表示笛卡尔积中满足过滤条件的数据，也是我们在有过滤条件时的默认方式。</p>
+
+<pre><code>select * from A inner join B on a_id=b_id;
+</code></pre>
+
+<p>这其实和普通连接里的 3 个语句是一样的。</p>
+
+<h2 id="左连接">左连接</h2>
+
+<p>内连接使用 <code>left join</code> 子句，表示笛卡尔积中满足过滤条件的数据，在合并左表中不满足过滤条件的数据。</p>
+
+<pre><code>select * from A left join B on a_id=b_id;
+</code></pre>
+
+<p>这里就是表示返回图中<strong>满足过滤条件的 a x b</strong> 和 <strong>不满足过滤条件的 A(m-a)</strong></p>
+
+<h2 id="右连接">右连接</h2>
+
+<p>内连接使用 <code>left join</code> 子句，表示笛卡尔积中满足过滤条件的数据，在合并右表中不满足过滤条件的数据。</p>
+
+<pre><code>select * from A right join B on a_id=b_id;
+</code></pre>
+
+<p>这里就是表示返回图中<strong>满足过滤条件的 (a , b)</strong> 和 <strong>不满足过滤条件的 B(n-b)</strong></p>
+
+<blockquote>
+<p>在分析任何链接查询数据量的时候，都可以简单的把查询过程抽象成 3 个逻辑步骤：</p>
+
+<ol>
+<li>现将需要链接的表（实体表或临时表）做笛卡尔积</li>
+<li>根据过滤条件删选需要的数据</li>
+<li>根据不同查询方式合并剩余数据</li>
+</ol>
+
+<p>注意：这个抽象过程只针对数据量分析，并不是数据库的真实执行过程**</p>
+</blockquote>
+
+<p>下面我们来看一下实际怎么在问题中分析使用</p>
+
+<h2 id="查询学生的姓名-性别和参与班级名称">查询学生的姓名、性别和参与班级名称</h2>
+
+<blockquote>
+<p>分析：查询学生的姓名、性别和参与班级名称</p>
+
+<ol>
+<li>操作类型：<strong>select</strong> （查询）</li>
+<li>到哪里取数据：学生、班级、学生参与班级表</li>
+<li>得到哪些信息：学生姓名、学生性别、参与班级名称</li>
+<li>过滤条件：学生参与的班级</li>
+<li>排序字段：无</li>
+<li>取多少数据：所有数据（无 limit）</li>
+</ol>
+
+<p>通过上面分析得到如下查询结构</p>
+
+<blockquote>
+<p>select 学生姓名,学生性别,参与班级名称</p>
+
+<p>from 学生,班级,学生参与班级表</p>
+
+<p>where 学生参与的班级;</p>
+</blockquote>
+
+<p>由上面关于表连接的方式知道，这里需要一个有意义的过滤条件：<strong>学生参与的班级</strong> ，由于学生参与班级的信息存储在学生参与班级表 <code>student_join_class</code> 中，所以这里需要连接此表。并且有意的过滤条件也是通过关联表进行匹配的。</p>
+</blockquote>
+
+<pre><code>select s.s_name, s.s_sex, c.c_name
+from student s, class c, student_join_class sjc
+where s.s_id=sjc.s_id and c.c_id=sjc.c_id;
+</code></pre>
+
+<p>执行 sql 得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/07-join-join-01.jpeg" alt="" /></p>
+
+<p><em>思考：这里为什么 <code>s.s_id=sjc.s_id and c.c_id=sjc.c_id</code> 是有意义的</em> ？</p>
+
+<h2 id="查询所有班级名称和参与学生数量">查询所有班级名称和参与学生数量</h2>
+
+<blockquote>
+<p>分析：查询所有班级名称和参与学生数量</p>
+
+<ol>
+<li>操作类型：<strong>select</strong> （查询）</li>
+<li>到哪里取数据：班级、未知</li>
+<li>得到哪些信息：班级名称，参与学生数量</li>
+<li>过滤条件：无</li>
+<li>排序字段：无</li>
+<li>取多少数据：所有数据（无 limit）</li>
+</ol>
+
+<p>通过上面分析得到如下查询结构</p>
+
+<blockquote>
+<p>select 班级名称，参与学生数量</p>
+
+<p>from 班级，未知;</p>
+</blockquote>
+
+<p>根据需求可以知道，这里所有的班级名称都需要获取到，不论这个班级有没有人参与，所以这里基本可以确定使用 <strong>左连接</strong> 。由上了 SQL 实例分析已经得到查询一个班级的人数只需要 <code>student_join_class</code> 就可以了，所以可以确定 <strong>班级表左连接学生参与表</strong> 就行。表之间的关联关系是使用的数据字段是班级 id，所以这里的有意义过滤条件就是 <strong>班级 id 相等</strong>。最后为了得到每个班级的参与人数需要根据 <strong>班级信息作为分组统计条件</strong>。</p>
+
+<blockquote>
+<p>select 班级名称，参与学生数量</p>
+
+<p>from 班级</p>
+
+<p>left join 学生参与表 on 班级 id 相等</p>
+
+<p>group by 班级;</p>
+</blockquote>
+</blockquote>
+
+<p>这里班级的区分是通过班级 id 进行唯一区分的，可以有相同的班级名称，所以不能只以班级名称作为分组或分类条件。</p>
+
+<pre><code>select c.c_id, c.c_name, count(sjc.c_id) 
+from class c 
+left join student_join_class sjc on sjc.c_id=c.c_id
+group by c.c_id, c.c_name;
+</code></pre>
+
+<blockquote>
+<p>注意：这里是 <code>count(sjc.c_id)</code> ，不能是 <em>count(*)</em> 。可以使用 count(*) 替换 count(sjc.c_id) 看看结果会有什么不同。 为什么请查看前面统计里面关于 count 函数的说明。</p>
+</blockquote>
+
+<p><img src="/images/articles/noob-learn-sql/07-join-join-02.jpeg" alt="" /></p>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询每个学生报了多少班级</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询有参与2个及以上班级的学生</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询所有班级信息和参与学生数量</label></li>
+</ul>
+
+<h1 id="总结">总结</h1>
+
+<ul>
+<li>子查询：from 子查询、where 子查询</li>
+<li>表连接：笛卡尔积、内连接、左连接、右连接</li>
+<li>多表查询分析方法</li>
+</ul>
+
+<p>SQL 里面的查询语句学习到这里就截止了，后面将学习 DDL(数据定义语句) 学习和数据据的插入、修改、删除操作，最后简要介绍表索引、试图和存储过程。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-05-02</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+          <a href="/tags/sql/">SQL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/articles/noob-learn-sql/6-query-statistics/">
+            <span class="next-text nav-default">小白学 SQL 第六天：统计查询</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-05-02 00:00:00 \x2b0000 UTC',
+    title: '小白学 SQL 第七天：多表查询',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e之前学习的查询都只涉及到单表，但在实际应用中还有很大一部分需求，只靠单表查询是实现不了的，比如：查询一个班上的所有人；统计每个班的人数等。那这些需求或问题应该怎么分析和实现，这就是今天要讲解的多表查询。\x3c\/p\x3e\n\n\x3cp\x3e知识要点：\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e子查询\x3c\/li\x3e\n\x3cli\x3e表连接\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117533134-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>
