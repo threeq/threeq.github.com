@@ -6,10 +6,57 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第八天：表结构管理</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/8-create-alert-table/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/8-create-alert-table/</guid>
+      <description>&lt;p&gt;前面七天全部聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些表是如何建立？建立的时候需要注意哪些信息？如果修改或删除表结构？。这次就一起来讨论表结构的基本管理操作。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建表&lt;/li&gt;
+&lt;li&gt;修改表&lt;/li&gt;
+&lt;li&gt;删除表&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo 集成 impress.js 实现 ppt 播放效果</title>
+      <link>https://blog.threeq.me/post/ppt/integrate-impress/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/ppt/integrate-impress/</guid>
+      <description>&lt;p&gt;这是一个 Hugo Even 主题集成 impress.js 实现幻灯片效果和集成过程的演示。&lt;/p&gt;
+
+&lt;p&gt;支持功能&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持 markdown 语法&lt;/li&gt;
+&lt;li&gt;支持 html 语法&lt;/li&gt;
+&lt;li&gt;支持 css 动画&lt;/li&gt;
+&lt;li&gt;支持自定义 js 交互逻辑&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;实现依赖工具&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;impress.js&lt;/li&gt;
+&lt;li&gt;showdown.js&lt;/li&gt;
+&lt;li&gt;mermaid.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第七天：多表查询</title>

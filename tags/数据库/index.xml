@@ -2,21 +2,189 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据库 on Threeq - 出井的青蛙</title>
-    <link>http://threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <link>https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
     <description>Recent content in 数据库 on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>小白学 SQL 第八天：表结构管理</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/8-create-alert-table/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/8-create-alert-table/</guid>
+      <description>&lt;p&gt;前面七天全部聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些表是如何建立？建立的时候需要注意哪些信息？如果修改或删除表结构？。这次就一起来讨论表结构的基本管理操作。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建表&lt;/li&gt;
+&lt;li&gt;修改表&lt;/li&gt;
+&lt;li&gt;删除表&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第七天：多表查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/7-query-multi-table/</guid>
+      <description>&lt;p&gt;之前学习的查询都只涉及到单表，但在实际应用中还有很大一部分需求，只靠单表查询是实现不了的，比如：查询一个班上的所有人；统计每个班的人数等。那这些需求或问题应该怎么分析和实现，这就是今天要讲解的多表查询。&lt;/p&gt;
+
+&lt;p&gt;知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;子查询&lt;/li&gt;
+&lt;li&gt;表连接&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第六天：统计查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/</guid>
+      <description>&lt;p&gt;今天我们来学习涉及单表查询的最后一种查询方式：统计查询，但让统计查询并不只能用于单表查询的，也可用于多表查询。其实我们前面所有的查询子句都可以用于单表和多表查询，具体多表查询中的使用将在第七天介绍。首先还是看看统计查询里面内容概要，也是今天的知识要点。&lt;/p&gt;
+
+&lt;p&gt;知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;统计函数&lt;/li&gt;
+&lt;li&gt;分组统计&lt;/li&gt;
+&lt;li&gt;过滤分组统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第五天：数据操作函数</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/5-query-function/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/5-query-function/</guid>
+      <description>&lt;p&gt;我们之前已经学习很多的 SQL 查询支持，但是这些查询只能原样返回数据库里存储的数据，那如果我们需要对这些数据做一个处理怎么办呢？比如：合并2个字段、返回的学生年龄2倍等。这就是今天要一起学习的内容：数据操作函数。每个 RDBMS 提供提供的函数操作都不一样，这里还是以 MySQL 为例子讲解，其他的 RDBMS 请查阅相关文档。由于数据处理函数比较多，这里没有办法全部覆盖，只会列举我们常用的一些操作函数，我把他们分成 5 类：字符串函数、数值函数、时间函数、统计函数、流程控制函数。想知道更多函数详情请参考 &lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/func-op-summary-ref.html&#34;&gt;MySQL 官方文档&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计算字段、计算列、虚拟列&lt;/li&gt;
+&lt;li&gt;常用字符串函数&lt;/li&gt;
+&lt;li&gt;常用数值计算、数值函数&lt;/li&gt;
+&lt;li&gt;常用日期时间函数&lt;/li&gt;
+&lt;li&gt;流程控制函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里列举的使平时常用的 4 中类型函数分类，另外的统计函数将在下次单独说明。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第四天：数据过滤查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/4-query-where/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/4-query-where/</guid>
+      <description>&lt;p&gt;在第三天的时候学习了数据的基本查询结构，包括：查询指定列，返回指定大小结果集，数据排序，数据去重。今天将学习查询里面另外一个基础且重要的查询结构：过滤查询（也叫条件查询），可以说现今你能看到的所有涉及到 RDBMS 软件一定都有 &lt;em&gt;过滤查询&lt;/em&gt; 。所以今天的内容一定要掌握，也是一切用到 RDBMS 系统的所需掌握的基础知识之一。&lt;/p&gt;
+
+&lt;p&gt;今天涉及到的知识要点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;where子句子结构&lt;/li&gt;
+&lt;li&gt;数值、时间&lt;/li&gt;
+&lt;li&gt;字符串匹配： like、百分号（%）通配符、下划线（_）通配符&lt;/li&gt;
+&lt;li&gt;范围值检查：between 、in&lt;/li&gt;
+&lt;li&gt;空值查询：is null、not&lt;/li&gt;
+&lt;li&gt;组合查询：and、or、求值顺序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第三天：单表数据查询</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/</link>
+      <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/</guid>
+      <description>&lt;p&gt;《小白学 SQL》第三天&lt;/p&gt;
+
+&lt;p&gt;数据查询应该是我们平时用得最多的数据库操作，所以我们优先学习数据查询，今天我们就来看看基础的数据查询操作：单表数据查询，涉及到的知识点有：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;检索单个列&lt;/li&gt;
+&lt;li&gt;检索多个列&lt;/li&gt;
+&lt;li&gt;数据去重&lt;/li&gt;
+&lt;li&gt;返回定量数据集&lt;/li&gt;
+&lt;li&gt;排序检索数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第二天：数据表创建</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/2-create-table/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/2-create-table/</guid>
+      <description>&lt;p&gt;《小白学 SQL》第二天&lt;/p&gt;
+
+&lt;p&gt;今天我们来学习数据表（table）的建立，涉及到的内容可能大家还不能完全理解，这里主要是为后面的查询语句做些基本准备和数据准备，后面还会专门学习 DDL（数据学习语言），所以没有关系这里大家只要能执行得到正确结果就行。&lt;/p&gt;
+
+&lt;p&gt;今天涉及到的内容有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;表创建语句（create）&lt;/li&gt;
+&lt;li&gt;数据插入语句（insert ）&lt;/li&gt;
+&lt;li&gt;MySQL 基本数据类型&lt;/li&gt;
+&lt;li&gt;E-R图（实体关系图）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小白学 SQL 第一天：环境搭建</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/1-install-tools/</link>
+      <pubDate>Sat, 14 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/1-install-tools/</guid>
+      <description>&lt;p&gt;《小白学 SQL》第一天&lt;/p&gt;
+
+&lt;p&gt;本篇文章是《小白学 SQL》系列的开篇，也是学习的第一天。这个系列的文章是之前的学习笔记整理，同时再加入我自己在使用使用的一些使用经验，属于比较初级的知识整理，适合小白用户（初学者和刚入门）。&lt;/p&gt;
+
+&lt;p&gt;数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。&lt;/p&gt;
+
+&lt;p&gt;作为学习的第一天我们将从搭建环境开始，今天实践涉及到的工具有：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.docker.com/community-edition#/download&#34;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.fosshub.com/ConEmu.html/ConEmuSetup.180318.exe&#34;&gt;ConEmuSetup&lt;/a&gt;（windows 版本命令行工具，Linux 和 Mac 不需要）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.navicat.com.cn/download/direct-download?product=navicat_premium_cs_x64.exe&amp;amp;location=1&#34;&gt;Navicat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>mysql 查询优化：慢查询分析工具 pt-query-digest</title>
-      <link>http://threeq.me/post/db/mysql-slow-query-analyse/</link>
+      <link>https://blog.threeq.me/post/db/mysql-slow-query-analyse/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://threeq.me/post/db/mysql-slow-query-analyse/</guid>
+      <guid>https://blog.threeq.me/post/db/mysql-slow-query-analyse/</guid>
       <description>&lt;p&gt;在系统刚上线的时候，经常会出现慢 SQL 的情况，并且有时候系统会在特定的时间点变慢。这个时候的慢 SQL 查询语句往往是大量出现，MySQL 的慢查询日志文件也会比较大。这个时候我们往往需要从哪些查询最多、耗时最长的 sql 开始优化，以提升我们的处理效益。这个时候就需要我们能对慢日志进行统计分析，在上 M ，甚至 几十 M 的日志文件里面使用手工的方式明显是不可能的，这个时候就需要有专门的统计分析工具来帮我们做统计、分析哪些慢查询日志。&lt;code&gt;percona-toolkit&lt;/code&gt; 就是一个提供统计和分析的工具集，这里重点介绍里面的 &lt;code&gt;pt-query-digest&lt;/code&gt; 工具。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -24,10 +192,10 @@
     
     <item>
       <title>mysql 查询优化：索引优化</title>
-      <link>http://threeq.me/post/db/mysql-sql-index-analyse-tool/</link>
+      <link>https://blog.threeq.me/post/db/mysql-sql-index-analyse-tool/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://threeq.me/post/db/mysql-sql-index-analyse-tool/</guid>
+      <guid>https://blog.threeq.me/post/db/mysql-sql-index-analyse-tool/</guid>
       <description>&lt;p&gt;我们在产品中使用 MySQL 数据库的时候，肯定会用到索引的，或是在前期建立一些初始索引，或是在后期 SQL 优化的时候根据系统运行状态逐渐增加索引。不论是以什么方式建立的索引，他们都会影响我们对数据库做的操作，并且是对我们所有的数据操作都有影响，包括 增加、删除、修改、查询、统计 操作。这时如果线上有部分索引在系统升级已经失效了，我们怎么知道，怎么及时的排查和删除，需要我们持续的跟踪和分析。今天我就介绍几款针对线上数据库索引的分析工具。&lt;/p&gt;
 
 &lt;ul&gt;
