@@ -6,10 +6,29 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第九天：数据插入、修改、删除</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/9-insert-update-delete/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/9-insert-update-delete/</guid>
+      <description>&lt;p&gt;前面七天主要聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些数据是如何录入到数据库的？如果数据错误了需要修改或删除数据怎么操作？我们如何快速的生产测试数据？这些就是这次我们需要讨论的内容。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;插入数据&lt;/li&gt;
+&lt;li&gt;修改数据&lt;/li&gt;
+&lt;li&gt;删除数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第八天：表结构管理</title>
