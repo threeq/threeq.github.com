@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>小白学 SQL 第九天：数据插入、修改、删除 - Threeq - 出井的青蛙</title>
+  <title>小白学 SQL 第十天：事务和锁 - Threeq - 出井的青蛙</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -28,7 +28,7 @@
 <meta name="generator" content="Hugo 0.40.1" />
 
 
-<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-sql/9-insert-update-delete/" />
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-sql/10-db-transaction-lock/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -50,20 +50,16 @@
 <link rel="stylesheet" href="/css/self.css">
 
 
-<meta property="og:title" content="小白学 SQL 第九天：数据插入、修改、删除" />
+<meta property="og:title" content="小白学 SQL 第十天：事务和锁" />
 <meta property="og:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-sql/9-insert-update-delete/" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-sql/10-db-transaction-lock/" />
 
 
 
-<meta property="article:published_time" content="2018-05-14T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2018-05-21T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-05-14T00:00:00&#43;00:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-05-21T00:00:00&#43;00:00"/>
 
 
 
@@ -71,19 +67,23 @@
 
 
 
-<meta itemprop="name" content="小白学 SQL 第九天：数据插入、修改、删除">
+
+
+
+
+<meta itemprop="name" content="小白学 SQL 第十天：事务和锁">
 <meta itemprop="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。">
 
 
-<meta itemprop="datePublished" content="2018-05-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-14T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2018-05-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-05-21T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="0">
 
 
 
 <meta itemprop="keywords" content="数据库,SQL," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="小白学 SQL 第九天：数据插入、修改、删除"/>
+<meta name="twitter:title" content="小白学 SQL 第十天：事务和锁"/>
 <meta name="twitter:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"/>
 
 <!--[if lte IE 9]>
@@ -165,10 +165,10 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">小白学 SQL 第九天：数据插入、修改、删除</h1>
+      <h1 class="post-title">小白学 SQL 第十天：事务和锁</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-05-14 </span>
+        <span class="post-time"> 2018-05-21 </span>
         <div class="post-category">
             
               <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
@@ -187,18 +187,14 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#插入数据">插入数据</a>
+<li><a href="#事物">事物</a>
 <ul>
-<li><a href="#insert-into-select">insert into … select</a></li>
+<li><a href="#事务隔离级别">事务隔离级别</a></li>
+<li><a href="#mysql-事务控制语句">MySQL 事务控制语句</a></li>
+<li><a href="#测试">测试</a></li>
 </ul></li>
-<li><a href="#修改数据">修改数据</a>
-<ul>
-<li><a href="#计算学生的真实年龄">计算学生的真实年龄</a></li>
-</ul></li>
-<li><a href="#删除数据">删除数据</a>
-<ul>
-<li><a href="#删除已结业的班级">删除已结业的班级</a></li>
-</ul></li>
+<li><a href="#锁">锁</a></li>
+<li><a href="#总计">总计</a></li>
 </ul>
 </nav>
   </div>
@@ -207,194 +203,214 @@
     
     <div class="post-content">
       
-        <p>前面七天主要聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些数据是如何录入到数据库的？如果数据错误了需要修改或删除数据怎么操作？我们如何快速的生产测试数据？这些就是这次我们需要讨论的内容。</p>
+        <p><strong>事务</strong> 是 DBMS 中一个非常重要的基本概念，主要用于处理操作量大，复杂度高的数据，比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！当我们在启动一个事务时，这里就引出了锁概念，并且这 2 个者对于初学者容易搞混淆。虽然事务和锁的基本原理是一样的，但是不同 RDBMS 的实现是有差别的，这里还是以 MySQL 中的事务和锁来讲解和说明基本操作。</p>
 
 <p>知识要点</p>
 
 <ul>
-<li>插入数据</li>
-<li>修改数据</li>
-<li>删除数据</li>
+<li>事务基本概念</li>
+<li>MySQL 事务操作</li>
+<li>MySQL 锁</li>
 </ul>
 
 <p></p>
 
-<h1 id="插入数据">插入数据</h1>
+<h1 id="事物">事物</h1>
 
-<p>插入数据使用 <strong>insert into</strong> 语句，在前面插入数据的时候我们已经使用。</p>
+<p>像上面说的一样，在使用 MySQL 处理大量数据操作或负载数据操作时，就会启用事务！一般来说，事务是必须满足4个条件（ACID）： Atomicity（原子性）、Consistency（一致性）、Isolation（隔离性）、Durability（持久性）</p>
 
-<p><strong>语法</strong></p>
+<ol>
+<li><strong>原子性：</strong>一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
+<li><strong>一致性</strong> ： 在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。</li>
+<li><strong>隔离性：</strong>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。</li>
+<li><strong>持久性：</strong>事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
+</ol>
 
-<pre><code>insert into tbl_name 
-[(field1, field2, ...fieldN)]
-values
-(value1, value2,...valueN)[,...];
-</code></pre>
+<p>在 MySQL 中要使用事务时，需要注意以下内容：</p>
 
 <ul>
-<li>这里的字段可以省略，如果省略就表示依次插入表中的 <strong>所有列</strong></li>
-<li>可以依次插入<strong>多行值</strong>，每个 <code>()</code> 表示一行数据，每行之间用<code>,</code>分隔</li>
-<li>插入时对于<code>NOT NULL</code>(<em>不能为空</em>) 的列必须输入</li>
-<li>如果数据是字符型或日期，必须使用单引号或者双引号，如：&rdquo;value&rdquo;</li>
+<li>在MySQL中只有使用了 Innodb 数据库引擎的数据库或表才支持事务</li>
+<li>事务处理可以用来维护数据库的完整性，保证成批的SQL语句要么全部执行，要么全部不执行</li>
+<li>事务主要用来管理insert,update,delete语句</li>
 </ul>
 
-<p>看一个我们之前使用过的插入语句：</p>
+<blockquote>
+<p>在我们使用 insert,update,delete 语句时，会自动启用事务。事务其实也会影响到 select 语句的查询结果，这个主要是受 MySQL 事务隔离级别决定的。对于表结构更改语句，不受事务控制，只要执行会立即提交当前更改。</p>
 
-<pre><code>INSERT INTO student(s_id, s_name, s_sex, s_age, s_birthday, s_addr, s_created, s_status) VALUES (1, '王 1', 1, 16, '2007-04-18', '重庆', '2018-04-18 22:29:27', 1);
-</code></pre>
+<p>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET AUTOCOMMIT=0，用来禁止使用当前会话的自动提交。</p>
+</blockquote>
 
-<p>这个语句的意图是向学生表里面加入一条数据，这里是插入表的所有字段，所以也可以简化成下面这样:</p>
+<h2 id="事务隔离级别">事务隔离级别</h2>
 
-<pre><code>INSERT INTO student VALUES (1, '王 1', 1, 16, '2007-04-18', '重庆', '2018-04-18 22:29:27', 1);
-</code></pre>
-
-<h2 id="insert-into-select">insert into … select</h2>
-
-<p><strong>insert into … select</strong> 语句是<code>select</code>的查询结果加入到某张表中，这个语法是 MySQL 独有的，其他的 RDBMS 的语法略有不同。这个语句常用于数据汇总、存储过程里面的临时表数据插入等地方。也可以使用这个语句快速产生测试数据，下面我们就看如何快速产生测试数据。</p>
-
-<p><strong>语法</strong></p>
-
-<pre><code class="language-sql">insert into tbl_name[(field1, field2,...fieldN)]
-&lt;select_clause&gt;
-</code></pre>
+<p>SQL 标准中定义了 4 个隔离级别：<strong>未提交读（Read uncommitted）、已提交读（Read committed）、可重复读（Repeatable read）、可序列化（Serializable）</strong></p>
 
 <ul>
-<li><code>&lt;select_clause</code> 是一个完整的<code>select</code>语句，和前面讲解的 select 语句完全一样</li>
-<li><code>insert</code> 中的列描述必须和 <code>select</code> 中的列描述对应：数量、位置和类型。
+<li>未提交读（Read uncommitted）：一个事务修改了一行，另一个事务也可以读到该行。</li>
+<li>已提交读（Read committed（RC））：试图通过只读取提交的值的方式来解决脏读的问题，但是这又引起了不可重复读取的问题。</li>
+<li>可重复读（Repeatable read（RR））：在一个事务对数据行执行读取或写入操作时锁定了这些数据行，但是这种方式又引发了幻想读的问题。 因为只能锁定读取或写入的行，不能阻止另一个事务插入数据，后期执行同样的查询会产生更多的结果。InnoDB通过多版本并发控制机制（MVCC）解决的幻读的问题。</li>
+<li>可序列化（Serializable）：事务被强制为依次执行。这是 SQL 标准建议的默认行为。</li>
+</ul>
+
+<p>上面可以看到不同的隔离级别会导致数据的脏读、不可重复读或幻读，这个也是通常说的事务的级别，它们关系如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>隔离级别/读数据一致性及允许的并发副作用</th>
+<th>读数据一致性</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>未提交读（Read uncommitted）</td>
+<td>最低级别，只能保证不读取物理上损坏的数据</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>已提交读（Read committed）</td>
+<td>语句级</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>可重复读（Repeatable read）</td>
+<td>事务级</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>可序列化（Serializable）</td>
+<td>最高级别，事务级</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>比较常用的级别是：RC 和 RR。</p>
+
+<p>在 MySQL 中可以查看 <em>当前会话的事务级别</em> 和 <em>系统当前事务</em> 级别。</p>
+</blockquote>
+
+<h2 id="mysql-事务控制语句">MySQL 事务控制语句</h2>
 
 <ul>
-<li>列数量必须一致；</li>
-<li>列的对应关系是和位置依次对应；</li>
-<li>每个对应位置的列数据类型必须一致。</li>
+<li>BEGIN或START TRANSACTION；显式地开启一个事务；</li>
+<li>COMMIT；也可以使用COMMIT WORK，不过二者是等价的。COMMIT会提交事务，并使已对数据库进行的所有修改称为永久性的；</li>
+<li>ROLLBACK；有可以使用ROLLBACK WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
+<li>SAVEPOINT identifier；SAVEPOINT允许在事务中创建一个保存点，一个事务中可以有多个SAVEPOINT；</li>
+<li>RELEASE SAVEPOINT identifier；删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
+<li>ROLLBACK TO identifier；把事务回滚到标记点；</li>
+<li>SET TRANSACTION；用来设置事务的隔离级别。InnoDB存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ和SERIALIZABLE。</li>
+</ul>
+
+<p>MySQL 事务处理的主要两种方式：</p>
+
+<ol>
+<li>用 BEGIN, ROLLBACK, COMMIT来实现
+
+<ul>
+<li><strong>BEGIN</strong> 开始一个事务</li>
+<li><strong>ROLLBACK</strong> 事务回滚</li>
+<li><strong>COMMIT</strong> 事务确认</li>
+</ul></li>
+<li>直接用 SET 来改变 MySQL 的自动提交模式:
+
+<ul>
+<li><strong>SET AUTOCOMMIT=0</strong> 禁止自动提交</li>
+<li><strong>SET AUTOCOMMIT=1</strong> 开启自动提交</li>
+</ul></li>
+</ol>
+
+<h2 id="测试">测试</h2>
+
+<ol>
+<li><p>使用 navcat 打开 2 个查询页面，分别制定为 <em>Query1</em> 和 <em>Query2</em></p></li>
+
+<li><p>在 <em>Query2</em> 中查询班级所有信息，看现在表表中已有的数据，和后面做对比</p>
+
+<pre><code>select * from class;
+</code></pre></li>
+
+<li><p>在 <em>Query1</em> 启动一个事务，且插入一条数据，但是不要提交事务</p>
+
+<pre><code># 开启事务
+begin;
+# 插入数据
+INSERT INTO `sql-learn`.`class`
+VALUES (-1, '事务测试 1', '老师1', '2018-04-02', '2018-04-18', 1, '2018-04-18 14:16:22');
+</code></pre></li>
+
+<li><p>再在 <em>Query2</em> 中执行第 2 步中的查询语句，现在看到的数据，应该和第 2 步中的一样</p></li>
+
+<li><p>现在在 <em>Query1</em> 提交事务</p>
+
+<pre><code># 提交事务
+commit
+</code></pre></li>
+
+<li><p>最后在 <em>Query2</em> 中执行第 2 步中相同的查询语句，这时会在返回结果的第一行看到我们我们刚插入的测试数据。</p></li>
+</ol>
+
+<h1 id="锁">锁</h1>
+
+<p>事务的隔离级别就是由锁实现的，理解清楚它们之间的关系对分析和理解问题会有很大帮助。</p>
+
+<p><strong>共享锁和排他锁</strong>：在一般的应用中，为了应付大量并发，我们一般使用一次封锁法，在方法的开始阶段，已经预先知道会用到哪些数据，然后全部锁住，在方法运行之后，再全部解锁。在这种方法在数据库中却不适用，因为在事务开始阶段，数据库并不知道会用到哪些数据。数据库遵循的是两段锁协议，将事务分成两个阶段，加锁阶段和解锁阶段（所以叫两段锁）。</p>
+
+<ul>
+<li>加锁阶段：在该阶段可以进行加锁操作。在对任何数据进行读操作之前要申请并获得S锁（<strong>共享锁，其它事务可以继续加共享锁，但不能加排它锁</strong>），在进行写操作之前要申请并获得X锁（<strong>排它锁，其它事务不能再获得任何锁</strong>）。加锁不成功，则事务进入等待状态，直到加锁成功才继续执行。</li>
+<li>解锁阶段：当事务释放了一个封锁以后，事务进入解锁阶段，在该阶段只能进行解锁操作不能再进行加锁操作。</li>
+</ul>
+
+<p>大多数数据库的MVCC通过对数据版本的乐观锁实现。何谓数据版本？即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是通过为数据库表增加一个 “version” 字段来实现。读取出数据时，将此版本号一同读出，之后更新时，对此版本号加一。此时，将提交数据的版本数据与数据库表对应记录的当前版本信息进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新，否则认为是过期数据。</p>
+
+<blockquote>
+<ul>
+<li>MySQL 做种类很多，常见的有：表级锁、行级锁和页级索。不多存储引擎支持有所不同。</li>
+<li>所有表类型都支持表级锁，但是 MyISAM 只支持表级锁</li>
+<li>有两种类型的表级锁：读锁(共享锁)和写锁(排它锁)。
+
+<ul>
+<li>读锁是共享锁，支持并发读，写操作被锁。</li>
+<li>写锁是独占锁，上锁期间其他线程不能读表或写表。</li>
 </ul></li>
 </ul>
+</blockquote>
 
-<p><strong>快速生成学生测试数据</strong></p>
-
-<pre><code>insert into student(`s_name`, `s_sex`, `s_age`, `s_birthday`, `s_addr`, `s_created`, `s_status`)
-select `s_name`, `s_sex`, `s_age`, `s_birthday`, `s_addr`, `s_created`, `s_status` from student;
-</code></pre>
-
-<p>不断执行上面这个语句，你的表中数据将会以指数倍增长。这里的 select 子句中的每个返回列，都可以替换成需要的表达式，以满足不同数据需求。</p>
-
-<h1 id="修改数据">修改数据</h1>
-
-<p>需改数据使用 update 语句来操作。</p>
-
-<p><strong>语法</strong></p>
-
-<pre><code class="language-sql">update tbl_name set
-field1=value1,
-field2=value2
-[where Clause]
-</code></pre>
-
-<ul>
-<li>可以同时更新一个或多个字段</li>
-<li>where 子句中可以指定任何条件</li>
-<li>可以在一个单独表中同时跟新多条数据</li>
-<li><code>value</code> 可以是一个表达式</li>
-</ul>
-
-<h2 id="计算学生的真实年龄">计算学生的真实年龄</h2>
-
-<p>我们发现学生表中的生日数据和年龄数据是没有对应的，现在我们需要：根据学生的生日计算出实际年龄更新到年龄字段</p>
+<p>不同事务隔离级别，读和写的所操作有所不同，（在分析的时候还需要结合表存储引擎支持的锁种类进行）</p>
 
 <blockquote>
-<p>分析：根据学生的生日计算出实际年龄更新到年龄字段</p>
+<ol>
+<li>在 RC 级别下，数据的读取都是不加锁的，但是数据的写入、修改和删除是需要加锁的。</li>
+<li>RR 级别（InnoDB 默认使用此级别）
 
 <ol>
-<li>操作类型：<strong>update</strong> （ 更新）</li>
-<li>到哪里更新数据：<strong>学生</strong></li>
-<li>跟新哪些信息：
-
-<ol>
-<li>学生年龄 = 根据生日计算学生真实年龄</li>
+<li>读：读就是可重读，可重读这个概念是一事务的多个实例在并发读取数据时，会看到同样的数据行。</li>
+<li>写：针对需要修改的数据加入排它锁</li>
 </ol></li>
-<li>过滤条件：无</li>
 </ol>
-
-<blockquote>
-<p>update 学生 set</p>
-
-<p>学生年龄=真实年龄</p>
 </blockquote>
 
-<p><em>真实年龄</em> 的计算要求根据学生生日计算，只需要使用当前的年份减去生日的年份就可以了：<code>year(now() - year(s_birthday)</code></p>
-</blockquote>
-
-<p>根据以上分析可以得到 SQL</p>
-
-<pre><code>update student set
-s_age=year(now())-year(s_birthday);
-</code></pre>
-
-<ul class="task-list">
-<li><label><input type="checkbox" disabled class="task-list-item"> 将年龄小于16岁学生年龄增加 5 岁</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> 根据以上修改的年龄数据，将学生生日年份调整正确</label></li>
-</ul>
-
-<h1 id="删除数据">删除数据</h1>
-
-<p>当我们数据表中的某些数据不再使用时，可以 delete 语句进行删除。</p>
-
-<p><strong>语法</strong></p>
-
-<pre><code>delete from tbl_name
-[where clause]
-</code></pre>
+<h1 id="总计">总计</h1>
 
 <ul>
-<li>如果没有指定 where 子句，将删除表中所有数据</li>
-<li>where 子句可以包含任何条件</li>
-<li>可以一次删除多条数据</li>
-</ul>
-
-<blockquote>
-<p>在没有指定 where 子句时，相当于清空表操作。MySQL 中清楚表操作还可以使用： <code>truncate tbl_name</code></p>
-</blockquote>
-
-<h2 id="删除已结业的班级">删除已结业的班级</h2>
-
-<blockquote>
-<p>分析：删除已结业的班级</p>
-
-<ol>
-<li>操作类型：<strong>delete</strong>（删除）</li>
-<li>删除哪里数据：班级</li>
-<li>过滤条件：已结业</li>
-</ol>
-
-<blockquote>
-<p>delete from 班级</p>
-
-<p>where 班级状态=已结业</p>
-</blockquote>
-</blockquote>
-
-<p>得到以下 SQL</p>
-
-<pre><code>delete from class
-where c_status=4;
-</code></pre>
-
-<blockquote>
-<p>这里的 where 子句和查询中的 where 子句一样，可以使用子查询进行更复杂的删除操作。</p>
-</blockquote>
-
-<p>试试</p>
-
-<ul class="task-list">
-<li><label><input type="checkbox" disabled class="task-list-item"> 删除处于异常状态的班级</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> 删除没有学生参与的班级</label></li>
-</ul>
-
-<p>总计</p>
-
-<ul>
-<li>插入数据：insert 结构、insert select 结构</li>
-<li>修改数据：update 语句</li>
-<li>删除数据：delete 语句，清空表操作</li>
+<li>事务：事务基本特性、开始事务、事务提交、事务回滚</li>
+<li>事务隔离级别</li>
+<li>锁：MySQL锁类型和事务的关系</li>
 </ul>
       
     </div>
@@ -407,7 +423,7 @@ where c_status=4;
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-05-14</span>
+    <span class="item-content">2018-05-21</span>
   </p>
   
   
@@ -450,14 +466,9 @@ where c_status=4;
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/articles/noob-learn-sql/10-db-transaction-lock/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">小白学 SQL 第十天：事务和锁</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/articles/noob-learn-sql/8-create-alert-table/">
-            <span class="next-text nav-default">小白学 SQL 第八天：表结构管理</span>
+          <a class="next" href="/post/articles/noob-learn-sql/9-insert-update-delete/">
+            <span class="next-text nav-default">小白学 SQL 第九天：数据插入、修改、删除</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -471,10 +482,10 @@ where c_status=4;
     <script src="/lib/gitment/gitment.browser.js"></script>
   <script type="text/javascript">
   const gitment = new Gitment({
-    id: '2018-05-14 00:00:00 \x2b0000 UTC',
-    title: '小白学 SQL 第九天：数据插入、修改、删除',
+    id: '2018-05-21 00:00:00 \x2b0000 UTC',
+    title: '小白学 SQL 第十天：事务和锁',
     link: decodeURI(location.href),
-    desc: '\x3cp\x3e前面七天主要聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些数据是如何录入到数据库的？如果数据错误了需要修改或删除数据怎么操作？我们如何快速的生产测试数据？这些就是这次我们需要讨论的内容。\x3c\/p\x3e\n\n\x3cp\x3e知识要点\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e插入数据\x3c\/li\x3e\n\x3cli\x3e修改数据\x3c\/li\x3e\n\x3cli\x3e删除数据\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    desc: '\x3cp\x3e\x3cstrong\x3e事务\x3c\/strong\x3e 是 DBMS 中一个非常重要的基本概念，主要用于处理操作量大，复杂度高的数据，比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！当我们在启动一个事务时，这里就引出了锁概念，并且这 2 个者对于初学者容易搞混淆。虽然事务和锁的基本原理是一样的，但是不同 RDBMS 的实现是有差别的，这里还是以 MySQL 中的事务和锁来讲解和说明基本操作。\x3c\/p\x3e\n\n\x3cp\x3e知识要点\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e事务基本概念\x3c\/li\x3e\n\x3cli\x3eMySQL 事务操作\x3c\/li\x3e\n\x3cli\x3eMySQL 锁\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
     owner: 'threeq',
     repo: 'threeq.github.com',
     oauth: {

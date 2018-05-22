@@ -6,10 +6,29 @@
     <description>Recent content in 数据库 on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 14 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第十天：事务和锁</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/10-db-transaction-lock/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/10-db-transaction-lock/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;事务&lt;/strong&gt; 是 DBMS 中一个非常重要的基本概念，主要用于处理操作量大，复杂度高的数据，比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！当我们在启动一个事务时，这里就引出了锁概念，并且这 2 个者对于初学者容易搞混淆。虽然事务和锁的基本原理是一样的，但是不同 RDBMS 的实现是有差别的，这里还是以 MySQL 中的事务和锁来讲解和说明基本操作。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务基本概念&lt;/li&gt;
+&lt;li&gt;MySQL 事务操作&lt;/li&gt;
+&lt;li&gt;MySQL 锁&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第九天：数据插入、修改、删除</title>
