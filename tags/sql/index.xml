@@ -6,10 +6,32 @@
     <description>Recent content in Sql on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第十一天：索引和视图</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/11-view-index/</link>
+      <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/11-view-index/</guid>
+      <description>&lt;p&gt;已经介绍了 SQL 的查询、定义、插入、修改、删除等操作，接下来将介绍数据库另一个重要的知识点：&lt;strong&gt;索引&lt;/strong&gt;，特别是在查询优化的时候，&lt;strong&gt;索引&lt;/strong&gt; 将是优化的最重要手段之一。查询本身会随着我们的应用功能的增强，不断的增加复杂度，这时就需要管理复杂查询的手段：&lt;em&gt;视图&lt;/em&gt; 。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;索引&lt;/li&gt;
+&lt;li&gt;MySQL 索引操作语句&lt;/li&gt;
+&lt;li&gt;BTREE 和 HASH&lt;/li&gt;
+&lt;li&gt;视图&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里的内容可能有点难，有一定使用经验可能会更容易理解。不过没有关系只要知道索引的基本概念和操作语句就行，大家真的在使用到时再来看或查询相关资料就可以了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第十天：事务和锁</title>
