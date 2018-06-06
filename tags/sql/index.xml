@@ -6,10 +6,28 @@
     <description>Recent content in Sql on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 30 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小白学 SQL 第十二天：存储过程和函数</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-sql/12-procedure-function/</link>
+      <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-sql/12-procedure-function/</guid>
+      <description>&lt;p&gt;之前我们已经学习了 SQL 的很多基础知识，最后一起看一下 &lt;strong&gt;存储过程和函数&lt;/strong&gt; ，这也是此系列的最后一篇。数据库系统有了存储过程和函数，才真正具备了编程的能力。&lt;/p&gt;
+
+&lt;p&gt;知识要点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;存储过程&lt;/li&gt;
+&lt;li&gt;存储过程和函数的区别&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小白学 SQL 第十一天：索引和视图</title>
