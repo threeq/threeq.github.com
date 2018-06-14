@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python学习 01：学习环境搭建 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" />
+  <meta name="description" content="由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。 对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。
+这里使用 docker 方式搭建我们的学习环境，我们选择 jupyter/base-notebook 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 docker-compose，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：jupyter/docker-stack。这系列文章也是使用一个在线的类似 Jupyter 工具 Colaboratory 写的（后面会介绍）。
+
+" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Python, python3" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-python/01_learn_env_install/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="Python学习 01：学习环境搭建" />
+<meta property="og:description" content="由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
+对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。
+
+这里使用 docker 方式搭建我们的学习环境，我们选择 jupyter/base-notebook 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 docker-compose，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：jupyter/docker-stack。这系列文章也是使用一个在线的类似 Jupyter 工具 Colaboratory 写的（后面会介绍）。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-python/01_learn_env_install/" />
+
+
+
+<meta property="article:published_time" content="2018-06-14T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-06-14T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python学习 01：学习环境搭建">
+<meta itemprop="description" content="由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
+对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。
+
+这里使用 docker 方式搭建我们的学习环境，我们选择 jupyter/base-notebook 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 docker-compose，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：jupyter/docker-stack。这系列文章也是使用一个在线的类似 Jupyter 工具 Colaboratory 写的（后面会介绍）。
+
+">
+
+
+<meta itemprop="datePublished" content="2018-06-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python学习 01：学习环境搭建"/>
+<meta name="twitter:description" content="由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
+对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。
+
+这里使用 docker 方式搭建我们的学习环境，我们选择 jupyter/base-notebook 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 docker-compose，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：jupyter/docker-stack。这系列文章也是使用一个在线的类似 Jupyter 工具 Colaboratory 写的（后面会介绍）。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python学习 01：学习环境搭建</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-06-14 </span>
+        <div class="post-category">
+            
+              <a href="/categories/python/"> python </a>
+            
+          </div>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#docker-安装">Docker 安装</a>
+<ul>
+<li><a href="#docker-安装-1">docker 安装</a></li>
+<li><a href="#docker-compose-安装">docker-compose 安装</a></li>
+</ul></li>
+<li><a href="#本地-jupyter">本地 Jupyter</a>
+<ul>
+<li><a href="#dockerfile">Dockerfile</a></li>
+<li><a href="#docker-compose-yml">docker-compose.yml</a></li>
+<li><a href="#测试环境正确性">测试环境正确性</a></li>
+</ul></li>
+<li><a href="#在线-jupyter">在线 Jupyter</a></li>
+<li><a href="#熟悉-jupyter">熟悉 Jupyter</a>
+<ul>
+<li><a href="#jupyter-主界面">Jupyter 主界面</a></li>
+<li><a href="#jupyter-笔记界面">Jupyter 笔记界面</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+        <p>由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
+对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。</p>
+
+<p>这里使用 docker 方式搭建我们的学习环境，我们选择 <code>jupyter/base-notebook</code> 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 <code>docker-compose</code>，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：<a href="https://hub.docker.com/u/jupyter/">jupyter/docker-stack</a>。这系列文章也是使用一个在线的类似 Jupyter 工具 <a href="https://colab.research.google.com/">Colaboratory</a> 写的（后面会介绍）。</p>
+
+<p></p>
+
+<h1 id="docker-安装">Docker 安装</h1>
+
+<p><em>已经有 docker 环境的用户跳过</em></p>
+
+<h2 id="docker-安装-1">docker 安装</h2>
+
+<p>docker 安装可以查看<a href="https://blog.threeq.me/post/articles/noob-learn-sql/1-install-tools/#docker-%E5%AE%89%E8%A3%85">docker 安装</a></p>
+
+<h2 id="docker-compose-安装">docker-compose 安装</h2>
+
+<p>请参考官方文档：<a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+
+<h1 id="本地-jupyter">本地 Jupyter</h1>
+
+<h2 id="dockerfile">Dockerfile</h2>
+
+<pre><code class="language-Dockerfile">FROM jupyter/base-notebook
+MAINTAINER threeq&lt;threeq@foxmail.com&gt;
+
+</code></pre>
+
+<h2 id="docker-compose-yml">docker-compose.yml</h2>
+
+<pre><code class="language-yaml">version: '3'
+
+services:
+  notebook:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./work:/home/jovyan
+</code></pre>
+
+<p>将这两个文件放到同一个目录，使用 <code>docker-compose up -d</code> 启动 jupyter 服务器，然后使用 <code>docker-compose logs</code> 查看启动是否成功和登录使用的 <strong>token</strong>。看到日日志输入类似</p>
+
+<pre><code>Attaching to nooblearnpython_notebook_1
+notebook_1  | /usr/local/bin/start-notebook.sh: ignoring /usr/local/bin/start-notebook.d/*
+notebook_1  |
+notebook_1  | Container must be run with group &quot;root&quot; to update passwd file
+notebook_1  | Executing the command: jupyter notebook
+notebook_1  | [W 07:23:14.610 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using encryption. This is not recommended.
+notebook_1  | [I 07:23:14.686 NotebookApp] JupyterLab beta preview extension loaded from /opt/conda/lib/python3.6/site-packages/jupyterlab
+notebook_1  | [I 07:23:14.686 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+notebook_1  | [I 07:23:14.693 NotebookApp] Serving notebooks from local directory: /home/jovyan
+notebook_1  | [I 07:23:14.694 NotebookApp] 0 active kernels
+notebook_1  | [I 07:23:14.694 NotebookApp] The Jupyter Notebook is running at:
+notebook_1  | [I 07:23:14.694 NotebookApp] http://f5a65ccd5cb8:8888/?token=ed3a63c025a0f44ba00a8cb4e39f28cadebc4d8f6679c603
+notebook_1  | [I 07:23:14.695 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+notebook_1  | [C 07:23:14.703 NotebookApp]
+notebook_1  |
+notebook_1  |     Copy/paste this URL into your browser when you connect for the first time,
+notebook_1  |     to login with a token:
+notebook_1  |         http://f5a65ccd5cb8:8888/?token=ed3a63c025a0f44ba00a8cb4e39f28cadebc4d8f6679c603&amp;token=ed3a63c025a0f44ba00a8cb4e39f28cadebc4d8f6679c603
+</code></pre>
+
+<p>最后一行就是就是访问的地址和 token，打开本地浏览器输入地址：<a href="http://localhost:8888">http://localhost:8888</a>，会看到登录界面输入最后一行的 <strong>token</strong>，就能进入 jupyter 列表界面</p>
+
+<p><img src="/images/articles/noob-learn-python/01-jupyter-list.jpeg" alt="jupyter 笔记列表" /></p>
+
+<h2 id="测试环境正确性">测试环境正确性</h2>
+
+<p>开始我们第一个 python 代码，也是经典的学习入门程序：Hello，World！</p>
+
+<ul>
+<li>新建一个学习笔记（点击右上角的 <code>New</code> 按钮），在新打开的笔记本页面输入以下代码，按 <code>Shift+Enter</code> 执行</li>
+</ul>
+
+<pre><code class="language-python">print(&quot;Hello, World!&quot;)
+</code></pre>
+
+<p>输出结果如下</p>
+
+<pre><code>Hello, World!
+</code></pre>
+
+<h1 id="在线-jupyter">在线 Jupyter</h1>
+
+<p>对于可以访问 Google 服务的小伙伴，还可以使用 Google 的一个在线服务：<a href="https://colab.research.google.com/">Colaboratory</a>，Colaboratory 本身是一个数据分析工具，但是这个完全满足我们对于 Python3 学习使用。访问地址：<a href="https://colab.research.google.com">https://colab.research.google.com</a></p>
+
+<p>这个可以使我们更快速的学习实践，同时将我们的学习笔记存储 google 网盘，只是国内用户访问 google 服务需要使用科学方法。</p>
+
+<h1 id="熟悉-jupyter">熟悉 Jupyter</h1>
+
+<h2 id="jupyter-主界面">Jupyter 主界面</h2>
+
+<p><img src="/images/articles/noob-learn-python/01-jupyter-desc.jpeg" alt="jupyter 笔记列表" /></p>
+
+<ol>
+<li><strong><1></strong>: 菜单栏，<code>Files</code>: 查看笔记列表；<code>Running</code>: 正在打开的笔记；<code>Clusters</code>: jupyter 集群信息</li>
+<li><strong><2></strong>: 笔记列表，所有创建的笔记都在这里</li>
+<li><strong><3></strong>: <code>Upload</code> 上传已有的笔记文件</li>
+<li><strong><4></strong>: <code>New</code> 新建一个笔记，点开下列表可以建立不同类型的笔记本</li>
+</ol>
+
+<h2 id="jupyter-笔记界面">Jupyter 笔记界面</h2>
+
+<p><img src="/images/articles/noob-learn-python/01-jupyter-note.jpeg" alt="jupyter 笔记列表" /></p>
+
+<ol>
+<li><strong><1></strong>: 笔记名称和保存状态，点击 <code>笔记名称</code> 可以对笔记名称进行修改</li>
+<li><strong><2></strong>: 菜单栏和工具栏，可以做笔记导出、运行等操作</li>
+<li><strong><3></strong>: 笔记内容区域</li>
+<li><strong><4></strong>: 笔记块，我们的写的具体内容就在笔记块里面，笔记块有多种类型，我们常用的就是：Code 块和 Markdown 块</li>
+</ol>
+      
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-06-14</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/articles/noob-learn-sql/12-procedure-function/">
+            <span class="next-text nav-default">小白学 SQL 第十二天：存储过程和函数</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-06-14 00:00:00 \x2b0000 UTC',
+    title: 'Python学习 01：学习环境搭建',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。\n对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。\x3c\/p\x3e\n\n\x3cp\x3e这里使用 docker 方式搭建我们的学习环境，我们选择 \x3ccode\x3ejupyter\/base-notebook\x3c\/code\x3e 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 \x3ccode\x3edocker-compose\x3c\/code\x3e，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：\x3ca href=\x22https:\/\/hub.docker.com\/u\/jupyter\/\x22\x3ejupyter\/docker-stack\x3c\/a\x3e。这系列文章也是使用一个在线的类似 Jupyter 工具 \x3ca href=\x22https:\/\/colab.research.google.com\/\x22\x3eColaboratory\x3c\/a\x3e 写的（后面会介绍）。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117533134-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

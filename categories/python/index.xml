@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Threeq - 出井的青蛙</title>
+    <link>https://blog.threeq.me/categories/python/</link>
+    <description>Recent content in Python on Threeq - 出井的青蛙</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 14 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.threeq.me/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python学习 01：学习环境搭建</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-python/01_learn_env_install/</link>
+      <pubDate>Thu, 14 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-python/01_learn_env_install/</guid>
+      <description>&lt;p&gt;由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
+对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。&lt;/p&gt;
+
+&lt;p&gt;这里使用 docker 方式搭建我们的学习环境，我们选择 &lt;code&gt;jupyter/base-notebook&lt;/code&gt; 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 &lt;code&gt;docker-compose&lt;/code&gt;，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：&lt;a href=&#34;https://hub.docker.com/u/jupyter/&#34;&gt;jupyter/docker-stack&lt;/a&gt;。这系列文章也是使用一个在线的类似 Jupyter 工具 &lt;a href=&#34;https://colab.research.google.com/&#34;&gt;Colaboratory&lt;/a&gt; 写的（后面会介绍）。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
