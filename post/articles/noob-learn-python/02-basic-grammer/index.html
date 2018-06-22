@@ -28,7 +28,7 @@ python 高层概念  程序由模块组成 模块包含语句 语句包含表达
 <meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
 
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.42.1" />
 
 
 <link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-python/02-basic-grammer/" />
@@ -102,7 +102,7 @@ python 高层概念
 
 <meta itemprop="datePublished" content="2018-06-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-06-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="3921">
 
 
 
@@ -217,41 +217,6 @@ python 高层概念
 
     
     
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#python-高层概念">python 高层概念</a></li>
-<li><a href="#标识符">标识符</a></li>
-<li><a href="#保留字">保留字</a></li>
-<li><a href="#行和缩进">行和缩进</a></li>
-<li><a href="#多行语句">多行语句</a></li>
-<li><a href="#python-引号">python 引号</a></li>
-<li><a href="#python-注释">Python 注释</a></li>
-<li><a href="#python-空行">python 空行</a></li>
-<li><a href="#数据类型">数据类型</a>
-<ul>
-<li><a href="#数值">数值</a>
-<ul>
-<li><a href="#数值格式化输出">数值格式化输出</a></li>
-</ul></li>
-<li><a href="#字符串">字符串</a>
-<ul>
-<li><a href="#不可更改性">不可更改性</a></li>
-<li><a href="#格式化">格式化</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#列表">列表</a></li>
-<li><a href="#元组">元组</a></li>
-<li><a href="#字典">字典</a></li>
-<li><a href="#获取帮助">获取帮助</a></li>
-<li><a href="#试一试">试一试</a></li>
-</ul>
-</nav>
-  </div>
-</div>
 
     
     <div class="post-content">
@@ -269,13 +234,182 @@ python 高层概念
 
 <p></p>
 
-<h1 id="标识符">标识符</h1>
+<script type="text/javascript">
+  var defaultColors = [ '#000', '#D00', '#00CF12', '#C2CB00', '#3100CA',
+  '#E100C6', '#00CBCB', '#C7C7C7', '#686868', '#FF5959', '#00FF6B',
+  '#FAFF5C', '#775AFF', '#FF47FE', '#0FF', '#FFF' ];
+
+function term2html(text, options) {
+  options = options || {};
+  var colors = options.colors || defaultColors;
+
+  
+  
+  
+  
+  text = text.replace(/^.*\u001B\[[12]K/mg, '');
+
+  
+  
+  text = text.replace(/^(.*)\u001B\[(\d+)G/mg, function(_, text, n) {
+    return text.slice(0, n);
+  });
+
+  
+  
+  
+  
+  
+  var state = {
+    bg: -1,
+    fg: -1,
+    bold: false,
+    underline: false,
+    negative: false
+  };
+  text = text.replace(/\u001B\[([\d;]+)m([^\u001B]+)/g, function(_, n, text) {
+    
+    n.split(';').forEach(function(code) {
+      code = code | 0;
+      if (code === 0) {
+        state.bg = -1;
+        state.fg = -1;
+        state.bold = false;
+        state.underline = false;
+        state.negative = false;
+      } else if (code === 1) {
+        state.bold = true;
+      } else if (code === 4) {
+        state.underline = true;
+      } else if (code === 7) {
+        state.negative = true;
+      } else if (code === 21) {
+        state.bold = false;
+      } else if (code === 24) {
+        state.underline = false;
+      } else if (code === 27) {
+        state.negative = false;
+      } else if (code >= 30 && code <= 37) {
+        state.fg = code - 30;
+      } else if (code === 39) {
+        state.fg = -1;
+      } else if (code >= 40 && code <= 47) {
+        state.bg = code - 40;
+      } else if (code === 49) {
+        state.bg = -1;
+      } else if (code >= 90 && code <= 97) {
+        state.fg = code - 90 + 8;
+      } else if (code >= 100 && code <= 107) {
+        state.bg = code - 100 + 8;
+      }
+    });
+
+    
+    var bold = state.bold * 8;
+    var fg, bg;
+    if (state.negative) {
+      fg = state.bg | bold;
+      bg = state.fg;
+    } else {
+      fg = state.fg | bold;
+      bg = state.bg;
+    }
+    fg = colors[fg] || '';
+    bg = colors[bg] || '';
+
+    
+    var style = '';
+    if (bg) {
+      style += 'background-color:' + bg + ';';
+    }
+    if (fg) {
+      style += 'color:' + fg + ';';
+    }
+    if (bold) {
+      style += 'font-weight:bold;';
+    }
+    if (state.underline) {
+      style += 'text-decoration:underline';
+    }
+    var html = text.
+      replace(/&/g, '&amp;').
+      replace(/</g, '&lt;').
+      replace(/>/g, '&gt;');
+
+    
+    if (style) {
+      return '<span style="' + style + '">' + html + '</span>';
+    } else {
+      return html;
+    }
+  });
+
+  return text.replace(/\u001B\[.*?[A-Za-z]/g, '');
+}
+</script>
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="标识符">标识符</h1>
 
 <ul>
-<li>在 Python 里，标识符由字母、数字、下划线组成。</li>
-<li>在 Python 中，所有标识符可以包括英文、数字以及下划线(_)，但不能以数字开头。</li>
-<li>Python 中的标识符是区分大小写的。</li>
-<li>以下划线开头的标识符是有特殊意义的。以单下划线开头 _foo 的代表不能直接访问的类属性，需通过类提供的接口进行访问，不能用 from xxx import * 而导入；</li>
+<li><p>在 Python 里，标识符由字母、数字、下划线组成。</p></li>
+
+<li><p>在 Python 中，所有标识符可以包括英文、数字以及下划线(_)，但不能以数字开头。</p></li>
+
+<li><p>Python 中的标识符是区分大小写的。</p></li>
+
+<li><p>以下划线开头的标识符是有特殊意义的。以单下划线开头 _foo 的代表不能直接访问的类属性，需通过类提供的接口进行访问，不能用 from xxx import * 而导入；</p></li>
 
 <li><p>以双下划线开头的 <code>__foo</code> 代表类的私有成员；以双下划线开头和结尾的 <code>__foo__</code>代表 Python 里特殊方法专用的标识，如  <code>__init__()</code> 代表类的构造函数。</p></li>
 
@@ -283,22 +417,151 @@ python 高层概念
 如：</p></li>
 </ul>
 
-<pre><code class="language-python">a=&quot;a&quot;
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[53]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">a=&quot;a&quot;
 _b1=&quot;bb&quot;
 print(&quot;hello, &quot;); print(&quot;world!&quot;)
 
-a-b = &quot;ccc&quot;  # 这里错误，不能包含 字母、数字、下划线 以外的字符
+a/b = &quot;ccc&quot;  # 这里错误，不能包含 字母、数字、下划线 以外的字符
 </code></pre>
 
-<p>运行结果：</p>
+          
+        </div>
+      </div>
 
-<pre><code>  File &quot;&lt;ipython-input-52-7c067522f272&gt;&quot;, line 5
-    a/b = &quot;ccc&quot;  # 这里错误，不能包含 字母、数字、下划线 以外的字符
-                                            ^
-SyntaxError: can't assign to operator
-</code></pre>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-1" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >[0;36m  File [0;32m&#34;&lt;ipython-input-53-7c067522f272&gt;&#34;[0;36m, line [0;32m5[0m
+[0;31m    a/b = &#34;ccc&#34;  # 这里错误，不能包含 字母、数字、下划线 以外的字符[0m
+[0m                                            ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m can&#39;t assign to operator
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-1 textarea").val();
+            $("#outputs-1").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<h1 id="保留字">保留字</h1>
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="保留字">保留字</h1>
 
 <p>下面的列表显示了在Python中的保留字。这些保留字不能用作常数或变数，或任何其他标识符名称。</p>
 
@@ -307,9 +570,9 @@ SyntaxError: can't assign to operator
 <table>
 <thead>
 <tr>
-<th>a</th>
-<th>b</th>
-<th>c</th>
+<th>保留字</th>
+<th>保留字</th>
+<th>保留字</th>
 </tr>
 </thead>
 
@@ -382,16 +645,94 @@ SyntaxError: can't assign to operator
 
 <p>缩进的空白数量是可变的，但是所有代码块语句必须包含相同的缩进空白数量，这个必须严格执行。如下所示：</p>
 
-<pre><code class="language-python">if True:
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[4]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">if True:
   print(&quot;True&quot;)
 else:
   print(&quot;False&quot;)
 </code></pre>
 
-<pre><code>True
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python">if True:
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-3" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >True
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-3 textarea").val();
+            $("#outputs-3").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[6]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">if True:
     print( &quot;Answer&quot;)
     print( &quot;True&quot;)
 else:
@@ -400,13 +741,91 @@ else:
   print( &quot;False&quot;)
 </code></pre>
 
-<pre><code>  File &quot;&lt;ipython-input-6-90ba842299af&gt;&quot;, line 7
-    print( &quot;False&quot;)
-                   ^
-IndentationError: unindent does not match any outer indentation level
-</code></pre>
+          
+        </div>
+      </div>
 
-<p><strong>IndentationError: unindent does not match any outer indentation level</strong> 错误表明，你使用的缩进方式不一致，有的是 tab 键缩进，有的是空格缩进，改为一致即可。</p>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-4" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >[0;36m  File [0;32m&#34;&lt;ipython-input-6-90ba842299af&gt;&#34;[0;36m, line [0;32m7[0m
+[0;31m    print( &#34;False&#34;)[0m
+[0m                   ^[0m
+[0;31mIndentationError[0m[0;31m:[0m unindent does not match any outer indentation level
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-4 textarea").val();
+            $("#outputs-4").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p><strong>IndentationError: unindent does not match any outer indentation level</strong> 错误表明，你使用的缩进方式不一致，有的是 tab 键缩进，有的是空格缩进，改为一致即可。</p>
 
 <p>如果是 IndentationError: unexpected indent 错误, 则 python 编译器是在告诉你&rdquo;Hi，老兄，你的文件里格式不对了，可能是tab和空格没对齐的问题&rdquo;，所有 python 对格式要求非常严格。</p>
 
@@ -420,7 +839,37 @@ IndentationError: unindent does not match any outer indentation level
 
 <p>但是我们可以使用斜杠（ \）将一行的语句分为多行显示，如下所示：</p>
 
-<pre><code class="language-python">item_one='1'
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[0]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">item_one='1'
 item_two = '2'
 item_three = '3'
 
@@ -429,31 +878,194 @@ total = item_one + \
         item_three
 </code></pre>
 
-<p>语句中包含 [], {} 或 () 括号就不需要使用多行连接符。如下实例：</p>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python">days = ['Monday', 'Tuesday', 'Wednesday',
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    语句中包含 [], {} 或 () 括号就不需要使用多行连接符。如下实例：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[0]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">days = ['Monday', 'Tuesday', 'Wednesday',
         'Thursday', 'Friday']
 </code></pre>
 
-<h1 id="python-引号">python 引号</h1>
+          
+        </div>
+      </div>
 
-<p>Python 可以使用引号( &lsquo; )、双引号( &ldquo; )、三引号( &ldquo;&rsquo; 或 &ldquo;&rdquo;&rdquo; ) 来表示字符串，引号的开始与结束必须的相同类型的。</p>
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <h1 id="python-引号">python 引号</h1>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>Python 可以使用引号( &lsquo; )、双引号( &ldquo; )、三引号( &ldquo;&rsquo; 或 &ldquo;&rdquo;&rdquo; ) 来表示字符串，引号的开始与结束必须的相同类型的。</p>
 
 <p>其中三引号可以由多行组成，编写多行文本的快捷语法，常用于文档字符串，在文件的特定地点，被当做注释。</p>
 
-<pre><code class="language-python">word = 'word'
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[0]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">word = 'word'
 sentence = &quot;这是一个句子。&quot;
 paragraph = &quot;&quot;&quot;这是一个段落。
 包含了多个语句&quot;&quot;&quot;
 </code></pre>
 
-<h1 id="python-注释">Python 注释</h1>
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="python-注释">Python 注释</h1>
 
 <p>python中单行注释采用 # 开头。注释可以在语句或表达式行末。</p>
 
 <p>python 中多行注释使用三个单引号(&ldquo;&lsquo;)或三个双引号(&rdquo;&ldquo;&rdquo;)。</p>
 
-<pre><code class="language-python"># 第一个注释
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[12]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 第一个注释
 print(&quot;Hello, Python!&quot;)  # 第二个注释
 
 
@@ -471,11 +1083,70 @@ print(&quot;Hello, Python!&quot;)  # 第二个注释
 print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 </code></pre>
 
-<pre><code>Hello, Python!
-没有看到错误就正确了哟！恭喜你
-</code></pre>
+          
+        </div>
+      </div>
 
-<h1 id="python-空行">python 空行</h1>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-13" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Hello, Python!
+没有看到错误就正确了哟！恭喜你
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-13 textarea").val();
+            $("#outputs-13").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="python-空行">python 空行</h1>
 
 <p>函数之间或类的方法之间用空行分隔，表示一段新的代码的开始。类和函数入口之间也用一行空行分隔，以突出函数入口的开始。</p>
 
@@ -483,7 +1154,73 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
 <p>记住：空行也是程序代码的一部分。</p>
 
-<h1 id="数据类型">数据类型</h1>
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="数据类型">数据类型</h1>
 
 <p>对于数据类型这里只做简要介绍，随后会详细介绍每种类型。</p>
 
@@ -548,105 +1285,758 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 </tbody>
 </table>
 
-<h2 id="数值">数值</h2>
+    
 
-<pre><code class="language-python">123
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="数值">数值</h2>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[15]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">123
 </code></pre>
 
-<pre><code>123
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-17" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >123</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-17 textarea").val();
+            $("#outputs-17").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[16]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">123+222
 </code></pre>
 
-<pre><code class="language-python">123+222
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-18" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >345</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-18 textarea").val();
+            $("#outputs-18").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[17]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">1.4*4
 </code></pre>
 
-<pre><code>345
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-19" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >5.6</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-19 textarea").val();
+            $("#outputs-19").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[18]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">2**200
 </code></pre>
 
-<pre><code class="language-python">1.4*4
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code>5.6
-</code></pre>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-20" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >1606938044258990275541962092341162602522202993782792835301376</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-20 textarea").val();
+            $("#outputs-20").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python">2**200
-</code></pre>
-
-<pre><code>1606938044258990275541962092341162602522202993782792835301376
-</code></pre>
-
-<pre><code class="language-python"># 去数字长度
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[19]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 去数字长度
 len(str(2**100000))
 </code></pre>
 
-<pre><code>30103
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-21" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >30103</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-21 textarea").val();
+            $("#outputs-21").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[23]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">3.1415 * 2
 </code></pre>
 
-<pre><code class="language-python">3.1415 * 2
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code>6.283
-</code></pre>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-22" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >6.283</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-22 textarea").val();
+            $("#outputs-22").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python"># 使用 print 输出
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[22]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 使用 print 输出
 print(3.1415 * 2)
 </code></pre>
 
-<pre><code>6.283
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 使用 math 数据模块
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-23" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >6.283
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-23 textarea").val();
+            $("#outputs-23").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[26]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 使用 math 数据模块
 import math
 
 math.pi
 </code></pre>
 
-<pre><code>3.141592653589793
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-24" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >3.141592653589793</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-24 textarea").val();
+            $("#outputs-24").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[27]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">math.sqrt(85)
 </code></pre>
 
-<pre><code class="language-python">math.sqrt(85)
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code>9.219544457292887
-</code></pre>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-25" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >9.219544457292887</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-25 textarea").val();
+            $("#outputs-25").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python"># 随机数
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[9]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 随机数
 import random as rd
 
 rd.random()
 </code></pre>
 
-<pre><code>0.9251197304813635
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 随机选择一个元素
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-26" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >0.9251197304813635</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-26 textarea").val();
+            $("#outputs-26").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[33]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 随机选择一个元素
 rd.choice([1,2,3,4])
 </code></pre>
 
-<pre><code>2
-</code></pre>
+          
+        </div>
+      </div>
 
-<h3 id="数值格式化输出">数值格式化输出</h3>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-27" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >2</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-27 textarea").val();
+            $("#outputs-27").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python">print('{:,.2f}'.format(29688.2578))
+  
+    
+    
+      
+      
+    
+    <h3 id="数值格式化输出">数值格式化输出</h3>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[35]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print('{:,.2f}'.format(29688.2578))
 print('%.2f | %+05d' % (3.1415926, -42))
 </code></pre>
 
-<pre><code>29,688.26
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-29" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >29,688.26
 3.14 | -0042
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-29 textarea").val();
+            $("#outputs-29").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<h2 id="字符串">字符串</h2>
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="字符串">字符串</h2>
 
-<p>字符串是要使用引号引起来，可以使以下三种的其中一种：<code>''、&quot;&quot;、&quot;&quot;&quot;&quot;&quot;&quot;</code>。其中 <code>&quot;&quot;&quot;&quot;&quot;&quot;</code> 可以包含多行文本。并且字符串是不可以改变的。</p>
+<p>字符串是要使用引号引起来，可以使以下三种的其中一种：<code>''、&quot;&quot;、&quot;&quot;&quot;&quot;&quot;&quot;</code>。其中 <code>&quot;&quot;&quot;&quot;&quot;&quot;</code> 可以包含多行文本。并且字符串是不可以改变的。
+    
 
-<pre><code class="language-python">S = &quot;Yellow&quot;
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[12]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">S = &quot;Yellow&quot;
 len(S)  # 获取文本长度
 </code></pre>
 
-<pre><code>6
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 获取字符串特定位置的字符
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-31" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >6</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-31 textarea").val();
+            $("#outputs-31").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[14]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 获取字符串特定位置的字符
 print(S[0])
 print(S[1])
 print(S[-1])  # 可以使用负数，表示从右向左
@@ -654,14 +2044,80 @@ print(S[-2])
 print(S[len(S)-1]) # 这个和 print(S[-1]) 等效
 </code></pre>
 
-<pre><code>Y
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-32" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Y
 e
 w
 o
 w
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-32 textarea").val();
+            $("#outputs-32").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python">print(S)
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[17]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print(S)
 # 返回字符串子串
 print(S[1:3])
 print(S[1:])
@@ -673,60 +2129,286 @@ print(S[:])
 
 </code></pre>
 
-<pre><code>Yellow
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-33" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Yellow
 el
 ellow
 Yellow
 Yel
 Yello
 Yellow
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-33 textarea").val();
+            $("#outputs-33").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python"># 拼接两个字符串
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[18]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 拼接两个字符串
 print(S + &quot;abc&quot;)
 
 # 重复输出 N 遍字符串
 print(S*8)
 </code></pre>
 
-<pre><code>Yellowabc
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-34" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Yellowabc
 YellowYellowYellowYellowYellowYellowYellowYellow
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-34 textarea").val();
+            $("#outputs-34").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<h3 id="不可更改性">不可更改性</h3>
+  
+    
+    
+      
+      
+    
+    <h3 id="不可更改性">不可更改性</h3>
 
-<pre><code class="language-python">print(S)
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[20]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print(S)
 
 # 此语句将会报错
 S[0] = 'z'
 </code></pre>
 
-<pre><code>Yellow
+          
+        </div>
+      </div>
 
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-36" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Yellow
+[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-20-798812957f79&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0;31m# 此语句将会报错[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----&gt; 4[0;31m [0mS[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m=[0m [0;34m&#39;z&#39;[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: &#39;str&#39; object does not support item assignment</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-36 textarea").val();
+            $("#outputs-36").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-
----------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-20-798812957f79&gt; in &lt;module&gt;()
-      2 
-      3 # 此语句将会报错
-----&gt; 4 S[0] = 'z'
-
-
-TypeError: 'str' object does not support item assignment
-</code></pre>
-
-<pre><code class="language-python"># 但是我们可以使用 子串 和 字符串拼接，形成新的字符串
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[21]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 但是我们可以使用 子串 和 字符串拼接，形成新的字符串
 S = 'z' + S[1:]
 print(S)
 </code></pre>
 
-<pre><code>zellow
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 或者可以使用 list 进行字符串的修改，但是这个也是形成新的字符串，不会修改原始字符串
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-37" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >zellow
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-37 textarea").val();
+            $("#outputs-37").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[24]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 或者可以使用 list 进行字符串的修改，但是这个也是形成新的字符串，不会修改原始字符串
 a = &quot;abcdefg&quot;
 L = list(a)
 L
@@ -735,108 +2417,596 @@ print(''.join(L))
 print(a)
 </code></pre>
 
-<pre><code>accdefg
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-38" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >accdefg
 abcdefg
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-38 textarea").val();
+            $("#outputs-38").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<p>更多关于字符串的知识，后面会详细介绍</p>
+  
+    
+    
+      
+      
+    
+    更多关于字符串的知识，后面会详细介绍
+    
 
-<h3 id="格式化">格式化</h3>
+    
 
-<pre><code class="language-python">print('%s, eggs, and %s' % ('spam', 'SPAM!'))
+  
+
+  
+    
+    
+      
+      
+    
+    <h3 id="格式化">格式化</h3>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[36]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print('%s, eggs, and %s' % ('spam', 'SPAM!'))
 print('{0}, eggs, and {1}'.format('spam', 'SPAM!'))
 print('{}, eggs, and {}'.format('spam', 'SPAM!'))
 </code></pre>
 
-<pre><code>spam, eggs, and SPAM!
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-41" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >spam, eggs, and SPAM!
 spam, eggs, and SPAM!
 spam, eggs, and SPAM!
-</code></pre>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-41 textarea").val();
+            $("#outputs-41").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<h1 id="列表">列表</h1>
+  
+    
+    
+      
+      
+    
+    <h1 id="列表">列表</h1>
 
-<pre><code class="language-python">L = [123, 'spam', 1.33]
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[25]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">L = [123, 'spam', 1.33]
 print(L)
 print(len(L)) # 获取列表长度
 </code></pre>
 
-<pre><code>[123, 'spam', 1.33]
-3
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 获取列表值
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-43" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[123, &#39;spam&#39;, 1.33]
+3
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-43 textarea").val();
+            $("#outputs-43").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[26]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 获取列表值
 print(L[0])
 print(L[:-1]) # 返回一个子列表
 </code></pre>
 
-<pre><code>123
-[123, 'spam']
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python">print(L + [4,5,6]) # 列表拼接
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-44" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >123
+[123, &#39;spam&#39;]
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-44 textarea").val();
+            $("#outputs-44").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[29]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print(L + [4,5,6]) # 列表拼接
 print(L*2)         
 </code></pre>
 
-<pre><code>[123, 'spam', 1.33, 4, 5, 6]
-[123, 'spam', 1.33, 123, 'spam', 1.33]
-</code></pre>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python"># 检查边界
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-45" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[123, &#39;spam&#39;, 1.33, 4, 5, 6]
+[123, &#39;spam&#39;, 1.33, 123, &#39;spam&#39;, 1.33]
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-45 textarea").val();
+            $("#outputs-45").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[31]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)"># 检查边界
 print(L)
 print(L[1])
 print(L[99]) # 这里会报错误
 </code></pre>
 
-<pre><code>[123, 'spam', 1.33]
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-46" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[123, &#39;spam&#39;, 1.33]
 spam
+[0;31m---------------------------------------------------------------------------[0m[0;31mIndexError[0m                                Traceback (most recent call last)[0;32m&lt;ipython-input-31-d40083741a4a&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0mprint[0m[0;34m([0m[0mL[0m[0;34m)[0m[0;34m[0m[0m
+[1;32m      2[0m [0mprint[0m[0;34m([0m[0mL[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0m
+[0;32m----&gt; 3[0;31m [0mprint[0m[0;34m([0m[0mL[0m[0;34m[[0m[0;36m99[0m[0;34m][0m[0;34m)[0m [0;31m# 这里会报错误[0m[0;34m[0m[0m
+[0m[0;31mIndexError[0m: list index out of range</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-46 textarea").val();
+            $("#outputs-46").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-
-
----------------------------------------------------------------------------
-
-IndexError                                Traceback (most recent call last)
-
-&lt;ipython-input-31-d40083741a4a&gt; in &lt;module&gt;()
-      1 print(L)
-      2 print(L[1])
-----&gt; 3 print(L[99]) # 这里会报错误
-
-
-IndexError: list index out of range
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[32]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">L[99] = 1 # 赋值也会报错
 </code></pre>
 
-<pre><code class="language-python">L[99] = 1 # 赋值也会报错
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-47" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mIndexError[0m                                Traceback (most recent call last)[0;32m&lt;ipython-input-32-a8d940cf9021&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[0;32m----&gt; 1[0;31m [0mL[0m[0;34m[[0m[0;36m99[0m[0;34m][0m [0;34m=[0m [0;36m1[0m [0;31m# 赋值也会报错[0m[0;34m[0m[0m
+[0m[0;31mIndexError[0m: list assignment index out of range</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-47 textarea").val();
+            $("#outputs-47").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <h1 id="元组">元组</h1>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[1]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">(1,2,3)
 </code></pre>
 
-<pre><code>---------------------------------------------------------------------------
+          
+        </div>
+      </div>
 
-IndexError                                Traceback (most recent call last)
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-49" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(1, 2, 3)</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-49 textarea").val();
+            $("#outputs-49").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-&lt;ipython-input-32-a8d940cf9021&gt; in &lt;module&gt;()
-----&gt; 1 L[99] = 1 # 赋值也会报错
-
-
-IndexError: list assignment index out of range
-</code></pre>
-
-<h1 id="元组">元组</h1>
-
-<pre><code class="language-python">(1,2,3)
-</code></pre>
-
-<pre><code>(1, 2, 3)
-</code></pre>
-
-<pre><code class="language-python">a = (1,2,3)
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[44]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">a = (1,2,3)
 a[2]
 </code></pre>
 
-<pre><code>3
-</code></pre>
+          
+        </div>
+      </div>
 
-<h1 id="字典">字典</h1>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-50" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >3</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-50 textarea").val();
+            $("#outputs-50").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python">d = {&quot;a&quot;:1, &quot;b&quot;:2}
+  
+    
+    
+      
+      
+    
+    <h1 id="字典">字典</h1>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[43]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">d = {&quot;a&quot;:1, &quot;b&quot;:2}
 print(d)
 
 print(d[&quot;a&quot;])
@@ -845,123 +3015,511 @@ d[&quot;a&quot;] = &quot;aaa&quot;
 print(d)
 </code></pre>
 
-<pre><code>{'a': 1, 'b': 2}
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-52" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >{&#39;a&#39;: 1, &#39;b&#39;: 2}
 1
-{'a': 'aaa', 'b': 2}
+{&#39;a&#39;: &#39;aaa&#39;, &#39;b&#39;: 2}
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-52 textarea").val();
+            $("#outputs-52").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="获取帮助">获取帮助</h1>
+
+<p>在 python 中一切都是对象，他们都有自己特定可操作的方法和属性，可以使用 <code>dir</code> 进行查看有哪些可使用的方法或属性。并且可以针对方法或属性使用 <code>help</code> 函数获得对应的 doc 文档。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[54]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">dir(&quot;a&quot;)
 </code></pre>
 
-<h1 id="获取帮助">获取帮助</h1>
+          
+        </div>
+      </div>
 
-<p>在 python 中一切都是对象，他们都有自己特定可操作的方法和属性，可以使用 <code>dir</code> 进行查看有哪些可使用的方法或属性。并且可以针对方法或属性使用 <code>help</code> 函数获得对应的 doc 文档。</p>
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-54" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              
+            
+          
+          <textarea >[&#39;__add__&#39;,
+ &#39;__class__&#39;,
+ &#39;__contains__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getitem__&#39;,
+ &#39;__getnewargs__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__iter__&#39;,
+ &#39;__le__&#39;,
+ &#39;__len__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__mod__&#39;,
+ &#39;__mul__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__rmod__&#39;,
+ &#39;__rmul__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;capitalize&#39;,
+ &#39;casefold&#39;,
+ &#39;center&#39;,
+ &#39;count&#39;,
+ &#39;encode&#39;,
+ &#39;endswith&#39;,
+ &#39;expandtabs&#39;,
+ &#39;find&#39;,
+ &#39;format&#39;,
+ &#39;format_map&#39;,
+ &#39;index&#39;,
+ &#39;isalnum&#39;,
+ &#39;isalpha&#39;,
+ &#39;isdecimal&#39;,
+ &#39;isdigit&#39;,
+ &#39;isidentifier&#39;,
+ &#39;islower&#39;,
+ &#39;isnumeric&#39;,
+ &#39;isprintable&#39;,
+ &#39;isspace&#39;,
+ &#39;istitle&#39;,
+ &#39;isupper&#39;,
+ &#39;join&#39;,
+ &#39;ljust&#39;,
+ &#39;lower&#39;,
+ &#39;lstrip&#39;,
+ &#39;maketrans&#39;,
+ &#39;partition&#39;,
+ &#39;replace&#39;,
+ &#39;rfind&#39;,
+ &#39;rindex&#39;,
+ &#39;rjust&#39;,
+ &#39;rpartition&#39;,
+ &#39;rsplit&#39;,
+ &#39;rstrip&#39;,
+ &#39;split&#39;,
+ &#39;splitlines&#39;,
+ &#39;startswith&#39;,
+ &#39;strip&#39;,
+ &#39;swapcase&#39;,
+ &#39;title&#39;,
+ &#39;translate&#39;,
+ &#39;upper&#39;,
+ &#39;zfill&#39;]</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-54 textarea").val();
+            $("#outputs-54").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
 
-<pre><code class="language-python">dir(&quot;a&quot;)
-</code></pre>
+  
+    
+    
+      
+      
+    
+    <code>__add__</code> 是内部方法，实现了字符串的拼接操作和使用 <code>+</code> 运算符效果一样
+    
 
-<pre><code>['__add__',
- '__class__',
- '__contains__',
- '__delattr__',
- '__dir__',
- '__doc__',
- '__eq__',
- '__format__',
- '__ge__',
- '__getattribute__',
- '__getitem__',
- '__getnewargs__',
- '__gt__',
- '__hash__',
- '__init__',
- '__init_subclass__',
- '__iter__',
- '__le__',
- '__len__',
- '__lt__',
- '__mod__',
- '__mul__',
- '__ne__',
- '__new__',
- '__reduce__',
- '__reduce_ex__',
- '__repr__',
- '__rmod__',
- '__rmul__',
- '__setattr__',
- '__sizeof__',
- '__str__',
- '__subclasshook__',
- 'capitalize',
- 'casefold',
- 'center',
- 'count',
- 'encode',
- 'endswith',
- 'expandtabs',
- 'find',
- 'format',
- 'format_map',
- 'index',
- 'isalnum',
- 'isalpha',
- 'isdecimal',
- 'isdigit',
- 'isidentifier',
- 'islower',
- 'isnumeric',
- 'isprintable',
- 'isspace',
- 'istitle',
- 'isupper',
- 'join',
- 'ljust',
- 'lower',
- 'lstrip',
- 'maketrans',
- 'partition',
- 'replace',
- 'rfind',
- 'rindex',
- 'rjust',
- 'rpartition',
- 'rsplit',
- 'rstrip',
- 'split',
- 'splitlines',
- 'startswith',
- 'strip',
- 'swapcase',
- 'title',
- 'translate',
- 'upper',
- 'zfill']
-</code></pre>
+    
 
-<p><code>__add__</code> 是内部方法，实现了字符串的拼接操作和使用 <code>+</code> 运算符效果一样</p>
+  
 
-<pre><code class="language-python">print(&quot;a&quot; + 'NI!')
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[55]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">print(&quot;a&quot; + 'NI!')
 print(&quot;a&quot;.__add__('NI!'))
 </code></pre>
 
-<pre><code>aNI!
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-56" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >aNI!
 aNI!
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-56 textarea").val();
+            $("#outputs-56").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <code>help</code> 获取帮助文档
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[48]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-%!s(&lt;nil&gt;)">help(&quot;a&quot;.replace)
 </code></pre>
 
-<p><code>help</code> 获取帮助文档</p>
+          
+        </div>
+      </div>
 
-<pre><code class="language-python">help(&quot;a&quot;.replace)
-</code></pre>
-
-<pre><code>Help on built-in function replace:
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div id="outputs-58" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Help on built-in function replace:
 
 replace(...) method of builtins.str instance
     S.replace(old, new[, count]) -&gt; str
-
+    
     Return a copy of S with all occurrences of substring
     old replaced by new.  If the optional argument count is
     given, only the first count occurrences are replaced.
-</code></pre>
 
-<h1 id="试一试">试一试</h1>
+</textarea>
+          
+        </div>
+        <script type="text/javascript">
+            var result = $("#outputs-58 textarea").val();
+            $("#outputs-58").html(function (text) {
+              return term2html(text
+                                  .replace(/\n/g,'br-and-br')
+                                  .replace(/ /g, 'sp-and-sp'))
+                            .replace(/(br-and-br)/g,'<br/>')
+                            .replace(/(sp-and-sp)/g, '&nbsp;')
+                         ;
+            }(result));
+        </script>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="试一试">试一试</h1>
 
 <ul class="task-list">
 <li><label><input type="checkbox" disabled class="task-list-item"> 将元组 <code>('a', 'bb')</code> 拼接 <code>a</code> ，并输出结果</label></li>
@@ -1106,11 +3664,15 @@ replace(...) method of builtins.str instance
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-117533134-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {
