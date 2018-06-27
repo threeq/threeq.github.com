@@ -16,10 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Threeq" />
-  <meta name="description" content="由于我们使用的 Jupyter web 交互式环境，所以对于 python 原始的交互式环境和如何在物理机器上运行 python 程序将放到后面介绍。直接进入 python 语法的学习。首先先简单了解 Python 的基础语法。
-python 高层概念  程序由模块组成 模块包含语句 语句包含表达式 表达式创建和操作对象  
-" />
+<meta name="author" content="Threeq" /><meta name="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
 <meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Python, python3" />
 
 
@@ -54,18 +51,7 @@ python 高层概念  程序由模块组成 模块包含语句 语句包含表达
 
 
 <meta property="og:title" content="Python学习 02：python 基础语法初识" />
-<meta property="og:description" content="由于我们使用的 Jupyter web 交互式环境，所以对于 python 原始的交互式环境和如何在物理机器上运行 python 程序将放到后面介绍。直接进入 python 语法的学习。首先先简单了解 Python 的基础语法。
-
-python 高层概念
-
-
-程序由模块组成
-模块包含语句
-语句包含表达式
-表达式创建和操作对象
-
-
-" />
+<meta property="og:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-python/02-basic-grammer/" />
 
@@ -86,41 +72,19 @@ python 高层概念
 
 
 <meta itemprop="name" content="Python学习 02：python 基础语法初识">
-<meta itemprop="description" content="由于我们使用的 Jupyter web 交互式环境，所以对于 python 原始的交互式环境和如何在物理机器上运行 python 程序将放到后面介绍。直接进入 python 语法的学习。首先先简单了解 Python 的基础语法。
-
-python 高层概念
-
-
-程序由模块组成
-模块包含语句
-语句包含表达式
-表达式创建和操作对象
-
-
-">
+<meta itemprop="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。">
 
 
 <meta itemprop="datePublished" content="2018-06-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-06-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3921">
+<meta itemprop="wordCount" content="3277">
 
 
 
 <meta itemprop="keywords" content="python," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python学习 02：python 基础语法初识"/>
-<meta name="twitter:description" content="由于我们使用的 Jupyter web 交互式环境，所以对于 python 原始的交互式环境和如何在物理机器上运行 python 程序将放到后面介绍。直接进入 python 语法的学习。首先先简单了解 Python 的基础语法。
-
-python 高层概念
-
-
-程序由模块组成
-模块包含语句
-语句包含表达式
-表达式创建和操作对象
-
-
-"/>
+<meta name="twitter:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -456,7 +420,7 @@ a/b = &quot;ccc&quot;  # 这里错误，不能包含 字母、数字、下划线
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-1" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -471,17 +435,6 @@ a/b = &quot;ccc&quot;  # 这里错误，不能包含 字母、数字、下划线
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-1 textarea").val();
-            $("#outputs-1").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -681,7 +634,7 @@ else:
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-3" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -693,17 +646,6 @@ else:
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-3 textarea").val();
-            $("#outputs-3").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -747,7 +689,7 @@ else:
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-4" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -762,17 +704,6 @@ else:
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-4 textarea").val();
-            $("#outputs-4").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1089,7 +1020,7 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-13" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1104,17 +1035,6 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-13 textarea").val();
-            $("#outputs-13").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1329,7 +1249,7 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-17" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1342,17 +1262,6 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
           <textarea >123</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-17 textarea").val();
-            $("#outputs-17").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1378,7 +1287,7 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-18" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1391,17 +1300,6 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
           <textarea >345</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-18 textarea").val();
-            $("#outputs-18").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1427,7 +1325,7 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-19" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1440,17 +1338,6 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
           <textarea >5.6</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-19 textarea").val();
-            $("#outputs-19").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1476,7 +1363,7 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-20" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1489,17 +1376,6 @@ print(&quot;没有看到错误就正确了哟！恭喜你&quot;)
           <textarea >1606938044258990275541962092341162602522202993782792835301376</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-20 textarea").val();
-            $("#outputs-20").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1528,7 +1404,7 @@ len(str(2**100000))
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-21" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1541,17 +1417,6 @@ len(str(2**100000))
           <textarea >30103</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-21 textarea").val();
-            $("#outputs-21").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1577,7 +1442,7 @@ len(str(2**100000))
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-22" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1590,17 +1455,6 @@ len(str(2**100000))
           <textarea >6.283</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-22 textarea").val();
-            $("#outputs-22").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1629,7 +1483,7 @@ print(3.1415 * 2)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-23" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1641,17 +1495,6 @@ print(3.1415 * 2)
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-23 textarea").val();
-            $("#outputs-23").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1686,7 +1529,7 @@ math.pi
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-24" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1699,17 +1542,6 @@ math.pi
           <textarea >3.141592653589793</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-24 textarea").val();
-            $("#outputs-24").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1735,7 +1567,7 @@ math.pi
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-25" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1748,17 +1580,6 @@ math.pi
           <textarea >9.219544457292887</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-25 textarea").val();
-            $("#outputs-25").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1793,7 +1614,7 @@ rd.random()
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-26" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1806,17 +1627,6 @@ rd.random()
           <textarea >0.9251197304813635</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-26 textarea").val();
-            $("#outputs-26").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1845,7 +1655,7 @@ rd.choice([1,2,3,4])
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-27" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1858,17 +1668,6 @@ rd.choice([1,2,3,4])
           <textarea >2</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-27 textarea").val();
-            $("#outputs-27").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1911,7 +1710,7 @@ print('%.2f | %+05d' % (3.1415926, -42))
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-29" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1926,17 +1725,6 @@ print('%.2f | %+05d' % (3.1415926, -42))
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-29 textarea").val();
-            $("#outputs-29").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -1986,7 +1774,7 @@ len(S)  # 获取文本长度
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-31" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -1999,17 +1787,6 @@ len(S)  # 获取文本长度
           <textarea >6</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-31 textarea").val();
-            $("#outputs-31").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2050,7 +1827,7 @@ print(S[len(S)-1]) # 这个和 print(S[-1]) 等效
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-32" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2074,17 +1851,6 @@ w
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-32 textarea").val();
-            $("#outputs-32").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2135,7 +1901,7 @@ print(S[:])
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-33" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2165,17 +1931,6 @@ Yellow
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-33 textarea").val();
-            $("#outputs-33").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2213,7 +1968,7 @@ print(S*8)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-34" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2228,17 +1983,6 @@ YellowYellowYellowYellowYellowYellowYellowYellow
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-34 textarea").val();
-            $("#outputs-34").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2287,7 +2031,7 @@ S[0] = 'z'
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-36" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2315,17 +2059,6 @@ S[0] = 'z'
 [0m[0;31mTypeError[0m: &#39;str&#39; object does not support item assignment</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-36 textarea").val();
-            $("#outputs-36").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2357,7 +2090,7 @@ print(S)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-37" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2369,17 +2102,6 @@ print(S)
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-37 textarea").val();
-            $("#outputs-37").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2423,7 +2145,7 @@ print(a)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-38" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2438,17 +2160,6 @@ abcdefg
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-38 textarea").val();
-            $("#outputs-38").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2507,7 +2218,7 @@ print('{}, eggs, and {}'.format('spam', 'SPAM!'))
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-41" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2525,17 +2236,6 @@ spam, eggs, and SPAM!
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-41 textarea").val();
-            $("#outputs-41").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2581,7 +2281,7 @@ print(len(L)) # 获取列表长度
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-43" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2596,17 +2296,6 @@ print(len(L)) # 获取列表长度
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-43 textarea").val();
-            $("#outputs-43").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2638,7 +2327,7 @@ print(L[:-1]) # 返回一个子列表
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-44" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2653,17 +2342,6 @@ print(L[:-1]) # 返回一个子列表
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-44 textarea").val();
-            $("#outputs-44").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2692,7 +2370,7 @@ print(L*2)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-45" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2707,17 +2385,6 @@ print(L*2)
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-45 textarea").val();
-            $("#outputs-45").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2752,7 +2419,7 @@ print(L[99]) # 这里会报错误
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-46" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2783,17 +2450,6 @@ spam
 [0m[0;31mIndexError[0m: list index out of range</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-46 textarea").val();
-            $("#outputs-46").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2819,7 +2475,7 @@ spam
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-47" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2838,17 +2494,6 @@ spam
 [0m[0;31mIndexError[0m: list assignment index out of range</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-47 textarea").val();
-            $("#outputs-47").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2888,7 +2533,7 @@ spam
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-49" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2901,17 +2546,6 @@ spam
           <textarea >(1, 2, 3)</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-49 textarea").val();
-            $("#outputs-49").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -2940,7 +2574,7 @@ a[2]
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-50" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -2953,17 +2587,6 @@ a[2]
           <textarea >3</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-50 textarea").val();
-            $("#outputs-50").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -3021,7 +2644,7 @@ print(d)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-52" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -3039,17 +2662,6 @@ print(d)
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-52 textarea").val();
-            $("#outputs-52").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -3096,7 +2708,7 @@ print(d)
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-54" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -3337,17 +2949,6 @@ print(d)
  &#39;zfill&#39;]</textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-54 textarea").val();
-            $("#outputs-54").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -3389,7 +2990,7 @@ print(&quot;a&quot;.__add__('NI!'))
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-56" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -3404,17 +3005,6 @@ aNI!
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-56 textarea").val();
-            $("#outputs-56").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -3453,7 +3043,7 @@ aNI!
 
       
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-58" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           
             
               
@@ -3489,17 +3079,6 @@ replace(...) method of builtins.str instance
 </textarea>
           
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-58 textarea").val();
-            $("#outputs-58").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         
       </div>
   
@@ -3525,6 +3104,27 @@ replace(...) method of builtins.str instance
 <li><label><input type="checkbox" disabled class="task-list-item"> 将元组 <code>('a', 'bb')</code> 拼接 <code>a</code> ，并输出结果</label></li>
 <li><label><input type="checkbox" disabled class="task-list-item"> 为字典 <code>d</code> 新增字段数据：键 <code>'c'</code>，值 <code>'cc'</code></label></li>
 </ul>
+
+    
+
+    
+
+  
+
+<script type="text/javascript">
+  $(".outputs>textarea").each(function(){
+    var el = $(this);
+    console.log(el)
+    el.parent().html(function (text) {
+      return term2html(text
+                          .replace(/\n/g,'br-and-br')
+                          .replace(/ /g, 'sp-and-sp'))
+                    .replace(/(br-and-br)/g,'<br/>')
+                    .replace(/(sp-and-sp)/g, '&nbsp;')
+                 ;
+    }(el.val()));
+  })
+</script>
       
     </div>
 
@@ -3577,6 +3177,11 @@ replace(...) method of builtins.str instance
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/articles/noob-learn-python/03-number/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python学习 03：python 数值类型</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/articles/noob-learn-python/01_learn_env_install/">
             <span class="next-text nav-default">Python学习 01：学习环境搭建</span>
