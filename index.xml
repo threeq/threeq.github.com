@@ -6,10 +6,29 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 27 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python学习 04：python 数值类型</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-python/04-string/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-python/04-string/</guid>
+      <description>&lt;p&gt;字符串是 Python 中最常用的数据类型。我们可以使用引号(&amp;lsquo;或&amp;rdquo;)来创建字符串。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;字符串字面量&lt;/li&gt;
+&lt;li&gt;字符串操作&lt;/li&gt;
+&lt;li&gt;字符串格式化&lt;/li&gt;
+&lt;li&gt;字符串转换&lt;/li&gt;
+&lt;li&gt;模式匹配（正则表达式）介绍&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python学习 03：python 数值类型</title>
