@@ -6,10 +6,27 @@
     <description>Recent content in Python on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python学习 05：python 列表、元组、字典</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-python/05-list-dict/</link>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-python/05-list-dict/</guid>
+      <description>&lt;p&gt;列表、元组、字典均是 Python 中基础数据类型。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;列表操作&lt;/li&gt;
+&lt;li&gt;元组操作&lt;/li&gt;
+&lt;li&gt;字典操作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python学习 04：python 字符串类型</title>
