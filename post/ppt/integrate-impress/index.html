@@ -59,7 +59,7 @@
 
 <meta property="article:published_time" content="2018-05-09T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-05-10T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-07-19T00:00:00&#43;00:00"/>
 
 
 
@@ -77,7 +77,7 @@
 
 <meta itemprop="datePublished" content="2018-05-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-05-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="476">
+<meta itemprop="wordCount" content="628">
 
 
 
@@ -174,7 +174,8 @@
               <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
             
           </div>
-        
+        <span class="more-meta"> 约 628 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -184,7 +185,239 @@
 
     
     <div class="post-content">
-      
+        <p>这是一个 Hugo Even 主题集成 impress.js 实现幻灯片效果和集成过程的演示。</p>
+
+<p>支持功能</p>
+
+<ul>
+<li>支持 markdown 语法</li>
+<li>支持 html 语法</li>
+<li>支持 css 动画</li>
+<li>支持自定义 js 交互逻辑</li>
+</ul>
+
+<p>实现依赖工具</p>
+
+<ul>
+<li>impress.js</li>
+<li>showdown.js</li>
+<li>mermaid.js</li>
+</ul>
+
+<p></p>
+
+
+   <link rel="stylesheet" type="text/css" href="/lib/impress/impress-extras/highlight/styles/github.css">
+
+   <link rel="stylesheet" type="text/css" href="/lib/impress/impress-extras/mermaid/mermaid.forest.css">
+
+   <link rel="stylesheet" type="text/css" href="/lib/impress/impress.css">
+
+   <link rel="stylesheet" type="text/css" href="/lib/impress/slides.css">
+
+   <link rel="stylesheet" type="text/css" href="/lib/impress/impress-animate.css">
+
+
+  
+   <link rel="stylesheet" type="text/css" href="/lib/impress/classic-slides.css">
+  
+
+  
+   <link rel="stylesheet" type="text/css" href="/ux/post/ppt-demo/ppt-demo.css">
+  
+
+
+
+
+
+  <button class="pptstart" onclick="pptstart();">开始演示</button>
+
+
+
+<div id="impress-mark-bg">
+  <div id="impress-wrapper">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+    <div id="impress" data-transition-duration="1000">
+      <div id="markdown" class="step slide markdown">
+
+-----
+---
+data-x: -1000
+data-y: -1500
+---
+# Hugo 中简单 PPT 效果演示 
+## 使用 Impress.js 实现
+
+* markdown 支持
+* html 支持
+* 依赖库
+  * [showdown](https://github.com/showdownjs/showdown)
+  * impress.js
+
+-----
+
+---
+data-rel-x: 1000
+data-rel-y: 0
+---
+# 支持 markdown 样式
+
+* 可以使用常用 markdown 语法
+* 例如：*italics* 、 **bold** 、 `code`
+
+
+-----
+# 分页和配置语法
+
+* 由于 markdown 本身没有分页支持，所以这里使用 `-----` 作为分页标志
+* 每个页面都可以有自己的配置，配置必须放在页面的最前面放在 **两个 `---`** 之间
+* 例如
+```
+  -----
+  ---
+  data-rel-x: 1000
+  data-rel-y: 0
+  ---
+  你的内容
+```
+
+-----
+---
+data-rel-x: 300 
+data-rel-y: 1100 
+data-rotate: 90
+---
+# html 和 动画支持
+## 这是一个 html 元素支持的演示。
+
+<p class="fly-in fly-out">Fly in</p>
+<p class="fade-in fade-out" style="transition-delay: 2s">Fade in</p>
+<p class="zoom-in zoom-out" style="transition-delay: 4s">And zoom in</p>
+
+*这个有点像 ppt。需要使用 css3 动画库.*
+**如果只要 html 解析，请加入配置选项： `html: true`**
+
+-----
+---
+id: acme
+---
+# graph 演示
+
+<div id="acme-graph-1">
+  <div id="acme-graph-bars">
+      <div id="acme-graph-q1" class="acme-graph-bar red" style="height: 183.529px;"></div>
+      <div id="acme-graph-q2" class="acme-graph-bar blue" style="height: 200px;"></div>
+      <div id="acme-graph-q3" class="acme-graph-bar green" style="height: 0px;"></div>
+      <div id="acme-graph-q4" class="acme-graph-bar purple" style="height: 0px;"></div>
+  </div>
+  <div id="acme-graph-bottom"></div>
+</div>
+<table border="1">
+  <tr><td>Q1</td><td id="acme-q1">￥234</td></tr>
+  <tr><td>Q2</td><td id="acme-q2">￥255</td></tr>
+  <tr><td>Q3</td><td>￥<input id="acme-q3" size="5" oninput="acmeDrawGraph();" /><small>(insert here)</small></td></tr>
+  <tr><td>Q4</td><td>￥<input id="acme-q4" size="5" oninput="acmeDrawGraph();" /></td></tr>
+</table> 
+
+-----
+
+# 2
+
+```
+data-rel-x: 800 
+data-rel-y: 800
+data-rotate: 60
+```
+
+-----
+
+---
+data-x: 6200
+data-y: 4300
+data-z: -100
+data-rotate-x: -40
+data-rotate-y: 10
+data-scale: 2
+class: step slide markdown step-3d 
+---
+# This is 3D
+<p>
+  <span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it’s</span> 
+  <span class="in">in</span> <b>3D<sup>*</sup></b>?
+</p>
+<span class="footnote">* beat that, prezi ;)</span> 
+
+-----
+# 子步骤演示 1
+## 多步骤显示
+
+<ul>
+  <li class="substep">Press 'P' to open a presenter console.</li>
+  <li class="substep">When you move the mouse, navigation controls are visible on your bottom left</li>
+  <li class="substep" data-mode="single">Autoplay makes the slides advance after a timeout</li>
+  <li class="substep">Relative positioning plugin is often a more convenient way to position your slides when editing. (<a href="https://github.com/impress/impress.js/blob/master/examples/classic-slides/index.html">See html for this presentation.</a>)</li>
+</ul>
+
+-----
+# 子步骤演示 2
+## 单步骤显示
+
+<ul class="single">
+  <li class="substep">Press 'P' to open a presenter console.</li>
+  <li class="substep">When you move the mouse, navigation controls are visible on your bottom left</li>
+  <li class="substep" data-mode="single">Autoplay makes the slides advance after a timeout</li>
+  <li class="substep">Relative positioning plugin is often a more convenient way to position your slides when editing. (<a href="https://github.com/impress/impress.js/blob/master/examples/classic-slides/index.html">See html for this presentation.</a>)</li>
+</ul>
+
+<div id="signle-drawing-board-demo">
+  <div class="shape"></div>
+</div>
+</div>
+    </div>
+  </div>
+  <div id="impress-toolbar"></div>
+  <div class="impress-progressbar"><div></div></div>
+  <div class="impress-progress"></div>
+  <div id="impress-help"></div>
+</div>
+
+<script type="text/javascript" src="/lib/impress/showdown.js"></script>
+<script type="text/javascript" src="/lib/impress/impress.js"></script>
+<script type="text/javascript">
+  window.pptDefalutAttrs = JSON.parse("{\"data-rel-x\":0,\"data-rel-y\":900}");
+  
+  var api;
+  
+
+  var impressAttrs = JSON.parse("{\"data-autoplay\":10,\"data-transition-duration\":1000}");
+  if(impressAttrs) {
+    for(var key in impressAttrs) {
+      $('#impress').attr(key, impressAttrs[key]);
+    }
+  }
+  
+
+  function pptstart() {
+    
+    $('#impress-mark-bg').show();
+    api = impress();
+    api.init();
+    $("#impress-toolbar").append('<button onclick="pptclose();">关闭</button>')
+    setTimeout(function () {
+      $('#impress').focus();
+    }, 100)
+  }
+  function pptclose(argument) {
+    $('#impress-mark-bg').hide();
+    api.tear();
+  }
+</script>
+
+  
+   <script src="/ux/post/ppt-demo/ppt-demo.js"></script>
     </div>
 
     
@@ -195,7 +428,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-05-10</span>
+    <span class="item-content">2018-07-19</span>
   </p>
   
   
