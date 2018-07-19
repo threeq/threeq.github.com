@@ -6,10 +6,29 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 14 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python学习 06：python 基础语句：if/for/while</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-python/06-basic-statement/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-python/06-basic-statement/</guid>
+      <description>&lt;p&gt;前面学习了 python 中的基础数据类型，现在开始学习 python 中和程序结构相关的内容，首先从基础语句开始&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;语句简单分类&lt;/li&gt;
+&lt;li&gt;if 语句&lt;/li&gt;
+&lt;li&gt;for 语句&lt;/li&gt;
+&lt;li&gt;while 语句&lt;/li&gt;
+&lt;li&gt;解析式语句&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python学习 05：python 列表、元组、字典</title>
