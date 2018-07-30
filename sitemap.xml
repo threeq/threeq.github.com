@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.threeq.me/post/articles/noob-learn-python/07-function-lambda/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.threeq.me/post/articles/noob-learn-python/06-basic-statement/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -283,7 +290,7 @@
   
   <url>
     <loc>https://blog.threeq.me/post/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -297,14 +304,14 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/python/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.threeq.me/categories/python/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -339,7 +346,7 @@
   
   <url>
     <loc>https://blog.threeq.me/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
