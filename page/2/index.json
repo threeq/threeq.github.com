@@ -308,14 +308,14 @@
 	"content": ""
 },
 {
-	"uri": "https://blog.threeq.me/categories/python/",
+	"uri": "https://blog.threeq.me/tags/python/",
 	"title": "Python",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://blog.threeq.me/tags/python/",
+	"uri": "https://blog.threeq.me/categories/python/",
 	"title": "Python",
 	"tags": [],
 	"description": "",
@@ -392,13 +392,6 @@
 	"content": ""
 },
 {
-	"uri": "https://blog.threeq.me/categories/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/",
-	"title": "敏捷开发",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
 	"uri": "https://blog.threeq.me/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/",
 	"title": "敏捷开发",
 	"tags": [],
@@ -406,14 +399,21 @@
 	"content": ""
 },
 {
-	"uri": "https://blog.threeq.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/",
-	"title": "数据库",
+	"uri": "https://blog.threeq.me/categories/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/",
+	"title": "敏捷开发",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
 	"uri": "https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/",
+	"title": "数据库",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://blog.threeq.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/",
 	"title": "数据库",
 	"tags": [],
 	"description": "",
