@@ -6,10 +6,28 @@
     <description>Recent content in Python on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python学习 09：异常处理</title>
+      <link>https://blog.threeq.me/post/articles/noob-learn-python/09-exception/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/noob-learn-python/09-exception/</guid>
+      <description>&lt;p&gt;这次学习 python 中函数的基础知识&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;标准异常&lt;/li&gt;
+&lt;li&gt;异常不做&lt;/li&gt;
+&lt;li&gt;手动抛出异常&lt;/li&gt;
+&lt;li&gt;自定义异常&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python学习 08：面向对象编程</title>
