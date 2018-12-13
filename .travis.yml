@@ -1,0 +1,16 @@
+sudo: required
+language: python
+python:
+  - "3.6"
+
+before_install: 
+  - sudo pip install fabric
+
+install:
+  - echo $key > ~/key
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh $user@$host
+  on:
+    branch: master
