@@ -11,5 +11,3 @@ install:
 deploy:
   provider: script
   script: bash scripts/deploy.sh $user@$host
-  on:
-    branch: master
