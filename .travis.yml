@@ -7,5 +7,11 @@ before_install:
   -in .travis/my_machine_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 
-install:
-- bash scripts/deploy.sh $user@$host
+script:
+- echo 'gogogo'  
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh $user@$host
+  on:
+    branch: master
