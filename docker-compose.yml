@@ -1,0 +1,13 @@
+version: '3'
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: scripts/Dockerfile
+    restart: unless-stopped
+    ports:
+      - 6000:80
+    environment:
+      - SERVICE_6000_NAME=blog-test_threeq_me
+      - SERVICE_6000_TAGS=open_web,path:/,host:blog-test.threeq.me
+
