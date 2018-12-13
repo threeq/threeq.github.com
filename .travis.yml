@@ -4,10 +4,8 @@ python:
 - '3.6'
 before_install:
 - openssl aes-256-cbc -K $encrypted_2fad76680dcb_key -iv $encrypted_2fad76680dcb_iv
-  -in my_machine_rsa.enc -out ~/.ssh/id_rsa -d
-- sudo pip install fabric
+  -in .travis/my_machine_rsa.enc -out ~/.ssh/id_rsa -d
+
 install:
-- echo 'gogogo'
-deploy:
   provider: script
   script: bash scripts/deploy.sh $user@$host
