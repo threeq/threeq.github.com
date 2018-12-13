@@ -8,6 +8,6 @@ services:
     ports:
       - 6000:80
     environment:
-      - SERVICE_6000_NAME=blog-test_threeq_me
-      - SERVICE_6000_TAGS=open_web,path:/,host:blog-test.threeq.me
+      - SERVICE_80_NAME=blog-test_threeq_me
+      - SERVICE_80_TAGS=open_web,path:/,host:blog-test.threeq.me
 
