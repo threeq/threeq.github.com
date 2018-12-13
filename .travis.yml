@@ -7,5 +7,4 @@ before_install:
   -in .travis/my_machine_rsa.enc -out ~/.ssh/id_rsa -d
 
 install:
-  provider: script
-  script: bash scripts/deploy.sh $user@$host
+- bash scripts/deploy.sh $user@$host
