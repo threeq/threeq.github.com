@@ -1,0 +1,236 @@
+/***** Fonts *****/
+
+ /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Cutive+Mono); */
+@import url(fonts.css);
+
+
+/***** Fallback message *****/
+
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+/***** Menu where this style is selected *****/
+.slide .css-menu-bw {
+    border: solid 1px rgb(102, 102, 102);
+}
+
+.slide .effects .css-menu-bw,
+.slide .devopsy .css-menu-bw {
+    border: none;
+}
+
+/***** Presentation *****/
+
+.step {
+    position: relative;
+    width: 900px;
+    height: 700px;
+    padding: 40px 60px;
+    margin: 20px auto;
+
+    box-sizing:         border-box;
+
+    color: rgb(102, 102, 102);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 1.5;
+}
+
+/*
+    Make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+    transition:         opacity 1s;
+}
+.impress-enabled .step.active { opacity: 1 }
+
+.notes {
+    display: none;
+}
+
+.slide h1, 
+.slide h2, 
+.slide h3 {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+.slide p {
+    margin: 0.7em;
+}
+
+.slide li {
+    margin: 0.2em;    
+}
+
+
+.slide a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0 0.1em;
+    text-shadow: -1px 1px 2px rgba(100,100,100,0.9);
+    border-radius: 0.2em;
+
+    transition:         0.5s;
+}
+.slide a:hover,
+.slide a:focus {
+    text-shadow: -1px 1px 2px rgba(100,100,100,0.5);
+}
+
+.slide blockquote {
+    font-family: 'PT Serif';
+    font-style: italic;
+    font-weight: 400;    
+}
+
+.slide em {
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);    
+}
+
+.slide strong {
+    text-shadow: -1px 1px 2px rgba(100,100,100,0.5);
+}
+
+.slide q {
+    font-family: 'PT Serif';
+    font-style: italic;
+    font-weight: 400;    
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+}
+
+.slide strike {
+    opacity: 0.7;
+}
+
+.slide img {
+    width: 300px;
+    float: right;
+    margin-left:   40px;
+    margin-right:   0px;
+    margin-top:    20px;
+    margin-bottom: 20px;    
+}
+
+
+/* 
+    Specific styles for: .title steps
+*/
+
+.slide .title h1,
+.slide .title h2,
+.slide .title h3 {
+    position: absolute;
+    left: 45px; /* slide width is 900px, so this is like a 5% margin on both sides */
+    width: 90%;
+    text-align: center;    
+}
+.slide .title h1 { top: 50px; }
+.slide .title h2 { top: 400px; }
+.slide .title h3 { top: 500px; }
+
+
+
+/***** Plugins ******/
+.impress-enabled div#impress-toolbar {
+    position: fixed;
+    right: 1px;
+    bottom: 1px;
+    opacity: 0.6;
+}
+.impress-enabled div#impress-toolbar > span {
+    margin-right: 10px;
+}
+body.impress-mouse-timeout div#impress-toolbar {
+    display: none;
+}
+body.impress-mouse-timeout {
+    cursor: none;
+}
+/* Help popup plugin */
+.impress-enabled #impress-help {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    color: #EEEEEE;
+    font-size: 80%;
+    position: fixed;
+    left: 2em;
+    bottom: 2em;
+    width: 24em;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: center;
+    z-index: 100;
+    font-family: Verdana, Arial, Sans;
+}
+.impress-enabled #impress-help td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/* Substep plugin */
+#impress .step .single .substep {
+    position: absolute;
+}
+#impress .step .substep {
+    opacity: 0;
+}
+
+#impress .step .substep.substep-visible {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+/* Progress bar */
+.impress-progressbar {
+  position: absolute;
+  right: 118px;
+  bottom: 1px;
+  left: 118px;
+  border-radius: 7px;
+  border: 2px solid rgba(100, 100, 100, 0.2);
+}
+.impress-progressbar DIV {
+  width: 0;
+  height: 2px;
+  border-radius: 5px;
+  background: rgba(75, 75, 75, 0.4);
+  transition: width 1s linear;
+}
+.impress-progress {
+  position: absolute;
+  left: 59px;
+  bottom: 1px;
+  text-align: left;
+  font-size: 10pt;
+  opacity: 0.6;
+}
+
+/*
+   Disable mouse clicks / focus for body
+*/
+.impress-enabled                          { pointer-events: none }
+.impress-enabled #impress                 { pointer-events: auto }
+.impress-enabled #impress-toolbar         { pointer-events: auto }

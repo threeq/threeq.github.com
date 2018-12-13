@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>小白学 SQL 第三天：单表数据查询 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Mysql, SQL, SQL学习, 数据库, ER图" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="小白学 SQL 第三天：单表数据查询" />
+<meta property="og:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-sql/3-query-data/" />
+
+
+
+<meta property="article:published_time" content="2018-04-21T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-04-21T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="小白学 SQL 第三天：单表数据查询">
+<meta itemprop="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。">
+
+
+<meta itemprop="datePublished" content="2018-04-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2963">
+
+
+
+<meta itemprop="keywords" content="数据库,SQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="小白学 SQL 第三天：单表数据查询"/>
+<meta name="twitter:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">小白学 SQL 第三天：单表数据查询</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-21 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2963 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#select-语句结构">SELECT 语句结构</a></li>
+<li><a href="#查询实例">查询实例</a>
+<ul>
+<li><a href="#查询所有班级的所有信息">查询所有班级的所有信息</a></li>
+<li><a href="#查询所有班级的名称">查询所有班级的名称</a></li>
+<li><a href="#查询前5个班级的标识-id和名称">查询前5个班级的标识 id和名称</a></li>
+</ul></li>
+<li><a href="#数据去重">数据去重</a></li>
+<li><a href="#排序检索">排序检索</a>
+<ul>
+<li><a href="#查询所有班级信息-标识-id-大的在前面">查询所有班级信息，标识 id 大的在前面</a></li>
+<li><a href="#查询班级的标识-id-名称-开班时间-按照开班时间先后排列-开班时间相同的标识-id-倒序返回">查询班级的标识 id、名称、开班时间，按照开班时间先后排列，开班时间相同的标识 id 倒序返回</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+        <p>《小白学 SQL》第三天</p>
+
+<p>数据查询应该是我们平时用得最多的数据库操作，所以我们优先学习数据查询，今天我们就来看看基础的数据查询操作：单表数据查询，涉及到的知识点有：</p>
+
+<ul>
+<li>检索单个列</li>
+<li>检索多个列</li>
+<li>数据去重</li>
+<li>返回定量数据集</li>
+<li>排序检索数据</li>
+</ul>
+
+<p></p>
+
+<p>先启动联系环境，具体启动方式和步骤请参看<a href="https://blog.threeq.me/post/articles/noob-learn-sql/2-create-table/">《小白学 SQL 第二天：数据表创建》</a>。</p>
+
+<h1 id="select-语句结构">SELECT 语句结构</h1>
+
+<p>查询数据使用的到时 SELECT 语句，首先一起看一下今天用到 SELECT 语句结构：（这里不能理解没有关系，有个印象就行，稍后我们通过后面的例子理解）</p>
+
+<pre><code class="language-sql">select [distinct] 列1，列2，... from table_name
+[order by 列1 desc[, 列2 asc]]
+[limit offset, size];
+</code></pre>
+
+<blockquote>
+<p><strong>列1、列2</strong> 列。在实际使用的时候，就是表示我们需要得到的信息，就是 E-R 图里面 <code>椭圆</code> 的部分</p>
+
+<p><strong>table_name</strong> 表名。在实际使用的时候，就是表示我们需要到哪里获得数据，就是 E-R 图里面 <code>矩形</code> 的部分</p>
+
+<p>distinct 去重标识。如果多条数据完全相同的时候，只保留一条数据结果</p>
+
+<p><strong>order by</strong> 排序语句。指定查询结果集按照特定列排序，可以同时多个列排序用<code>,</code>分割。排序可以正序(<code>asc</code>)或倒序(<code>desc</code>)</p>
+
+<p><strong>limit offset, size</strong> 数据限定。在实际使用的时候，就是表示我们需要获得<code>多少数据</code>，就是常说的分页查询。当没有 <code>limit</code> 限定时，表示取到所有数据</p>
+</blockquote>
+
+<p>要学习详细完整的  SELECT 语句结构请查看 <a href="https://dev.mysql.com/doc/refman/5.7/en/select.html">MySQL 官方文档</a>。</p>
+
+<h1 id="查询实例">查询实例</h1>
+
+<p>我们的学习主要是以实际使用为主，所以所有的 SQL 语句之前都会给出命题和分析。</p>
+
+<p>还记得我们之前建立的数据表结构吧，这里我们会用到班级表，建议大家回顾一个班级的 E-R 图和创建表 SQL。</p>
+
+<h2 id="查询所有班级的所有信息">查询所有班级的所有信息</h2>
+
+<blockquote>
+<p>分析：<strong>查询</strong> <em>所有</em> <strong>班级</strong> 的 <strong>所有信息</strong></p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：<strong>所有信息</strong> （所有的*椭圆*）</li>
+<li>取多少数据：<strong>所有班级</strong> （没有<code>limit</code>）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select 班级所有信息 from 班级;</strong></p>
+</blockquote>
+
+<p>由于 <em>班级所有信息</em> 的所有椭圆是：<code>标识 id、名称、班主任、开班时间、结束时间、状态、创建时间</code>，这样我们可以得到下面的分析结果：</p>
+
+<blockquote>
+<p><strong>select <code>标识 id,名称,班主任,开班时间,结束时间,状态,创建时间</code>  from 班级;</strong></p>
+</blockquote>
+</blockquote>
+
+<p>通过上面的分析我们得到了和 E-R 图对应的类 SQL 语句，现在需要把这个 sql 翻译成数据库可以执行的正式 SQL。在从 E-R 图到数据表的过程中我们在名字上有这样的对应的关系：</p>
+
+<table>
+<thead>
+<tr>
+<th>E-R 图中的名称</th>
+<th>数据库中的对应名称</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>班级</td>
+<td>class</td>
+</tr>
+
+<tr>
+<td>表示 id</td>
+<td>c_id</td>
+</tr>
+
+<tr>
+<td>名称</td>
+<td>c_name</td>
+</tr>
+
+<tr>
+<td>班主任</td>
+<td>c_head_teacher</td>
+</tr>
+
+<tr>
+<td>开班时间</td>
+<td>c_start_time</td>
+</tr>
+
+<tr>
+<td>结束时间</td>
+<td>c_end_time</td>
+</tr>
+
+<tr>
+<td>状态</td>
+<td>c_status</td>
+</tr>
+
+<tr>
+<td>创建时间</td>
+<td>c_created</td>
+</tr>
+</tbody>
+</table>
+
+<p>按照这个对应表我们替换上面的类 SQL，得到下面的真实可执行 SQL：</p>
+
+<pre><code class="language-sql">select c_id,c_name,c_head_teacher,c_start_time,c_end_time,c_status,c_created from class;
+</code></pre>
+
+<p>copy 到 Navicat 的 SQL 执行其中会得到如下结果：</p>
+
+<p><img src="/images/articles/noob-learn-sql/03-all-01.jpeg" alt="" /></p>
+
+<p>执行下面这个 SQL 应该会得到和上面一样的结果</p>
+
+<pre><code>select * from calss;
+</code></pre>
+
+<p>这里的<code>*</code> 表示返回所有列信息，在实际使用中查询所有列或所有信息时，我们常常是用<code>*</code>代替。</p>
+
+<h2 id="查询所有班级的名称">查询所有班级的名称</h2>
+
+<blockquote>
+<p>分析：<strong>查询</strong> <em>所有</em> <strong>班级</strong> 的 <strong>名称</strong></p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：名称</li>
+<li>取多少数据：<strong>所有班级</strong> （没有<code>limit</code>）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select 名称  from 班级;</strong></p>
+</blockquote>
+
+<p>这里<code>名称</code>已经是一个存在的特定列（属性）了，所以不再替换分析了。</p>
+</blockquote>
+
+<p>对照上面的映射表，我们很容易得到真实可执行 SQL：</p>
+
+<pre><code>select c_name from class;
+</code></pre>
+
+<p>执行 SQL 语句会得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/03-column-01.jpeg" alt="" /></p>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询所有班级的名称和班主任信息</label></li>
+</ul>
+
+<h2 id="查询前5个班级的标识-id和名称">查询前5个班级的标识 id和名称</h2>
+
+<blockquote>
+<p>分析：<strong>查询</strong> <em>前5个</em> <strong>班级</strong> 的 <em>标识 id和名称</em></p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：标识 id 、名称</li>
+<li>取多少数据：<strong>5</strong> (前5个)</li>
+<li>从哪里开始取：<strong>0</strong>（前5个）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select 标识 id, 名称  from 班级 limit 0,5;</strong></p>
+</blockquote>
+
+<dl>
+<dt><strong><code>limit 0,5</code></strong> 说明:</dt>
+<dd><p>我们可以建档的理解成：数据库在执行的时候，先执行没有 <code>limit</code> 限定的 SQL，得到所有的结果；然后在根据 <code>limit</code> 限定条件对数据进行 <em>裁剪</em> 返回。必须这里的<code>limit 0,5</code>: 从第 0 个(不包含 0)开始的 5 条数据（就是前 5 条数据）。大家可以想象 <code>limit 3,4</code> 的含义，并执行看看会有什么结果。</p></dd>
+</dl>
+</blockquote>
+
+<p>对照上面的映射表，转换得到真实可执行 SQL：</p>
+
+<pre><code>select c_id,c_name from class limit 0,5;
+</code></pre>
+
+<p>执行 SQL 语句会得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/03-limit-01.jpeg" alt="" /></p>
+
+<p><code>limit</code> 在实际使用的时候往往是用在分页数据查询，比如大家逛淘宝、京东都会不断翻页的查找数据。这个时候我们常常使用的表达是：按照<strong>每页4条数据大小</strong> <strong>分页查询</strong> <strong>第3页</strong> 班级数据的标识 id 和名称。我们来简单分析一下这个 SQL</p>
+
+<blockquote>
+<p>分析：按照<strong>每页4条数据大小</strong> <strong>分页查询</strong> <strong>第3页</strong> 班级数据的标识 id 和名称</p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：标识 id 、名称</li>
+<li>取多少数据：<strong>4</strong> (按照<strong>每页4条数据大小</strong> )</li>
+<li>从哪里开始取：<strong>4 x (3-1) =  <code>8</code></strong>（第3页，跳过前面2页数据，从第 2 页最后一条数据开始(不包含)往后取）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select 标识 id, 名称  from 班级 limit 8,4;</strong></p>
+</blockquote>
+
+<p>所以得到 SQL</p>
+
+<blockquote>
+<p><strong>select c_id, c_name from class limit 8,4;</strong></p>
+</blockquote>
+
+<p>大家执行上面的 SQL 看看结果。</p>
+</blockquote>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 按照每页3条数据大小分页查询第4页班级数据的标识 id 、名称和班主任</label></li>
+</ul>
+
+<h1 id="数据去重">数据去重</h1>
+
+<p>请执这条 SQL</p>
+
+<pre><code>select c_name from class;
+</code></pre>
+
+<p>大家可以看到里面有2条 <code>会计考试班 2</code> 数据，在实际使用的时候我们常常会遇到去掉重复数据需求，这是往往大家描述的时候会出现 <strong>去掉重复</strong>、<strong>去重</strong> 等修饰词。这个时候我们需要使用 SQL 的 <code>distinct</code> 关键字，请大家只想下面的 SQL</p>
+
+<pre><code>select distinct c_name from class;
+</code></pre>
+
+<blockquote>
+<p>注意: <code>distinct</code> 去重试会比较所有 <code>返回数据列</code> 。请大家执行下面两个 SQL，然后看结果和之前的 2 个 SQL 进行对比，就比较好理解了</p>
+
+<blockquote>
+<p>select c_id, c_name from class;</p>
+
+<p>select distinct c_id, c_name from class;</p>
+</blockquote>
+</blockquote>
+
+<h1 id="排序检索">排序检索</h1>
+
+<p>排序我们通过 2 个实例讲解，分别讲解单列排序和多列排序</p>
+
+<h2 id="查询所有班级信息-标识-id-大的在前面">查询所有班级信息，标识 id 大的在前面</h2>
+
+<blockquote>
+<p>分析：<strong>查询</strong> <strong>所有</strong> <strong>班级信息</strong>，标识 id 大的在前面</p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：全部</li>
+<li>排序字段：标识 id -&gt; 倒序（大的在前面）</li>
+<li>取多少数据：不做限制</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select *  from 班级</strong></p>
+
+<p><strong>order by 标识 id desc</strong>;</p>
+</blockquote>
+
+<p>还记得吗！如果返回所有的列，我们可以使用 <code>*</code> 标识</p>
+</blockquote>
+
+<p>现在结合E-R 图到表的映射，我们得到如下SQL</p>
+
+<pre><code class="language-sql">select * from class
+order by c_id desc;
+</code></pre>
+
+<p>执行这个结果我们会得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/03-order-01.jpeg" alt="" /></p>
+
+<p>大家可以将 <code>desc</code> 改变成 <code>asc</code> 查看一下效果</p>
+
+<h2 id="查询班级的标识-id-名称-开班时间-按照开班时间先后排列-开班时间相同的标识-id-倒序返回">查询班级的标识 id、名称、开班时间，按照开班时间先后排列，开班时间相同的标识 id 倒序返回</h2>
+
+<blockquote>
+<p>分析：查询班级的标识 id、名称、开班时间，按照开班时间倒序，开班时间相同的标识 id 倒序返回</p>
+
+<ol>
+<li>查询：select</li>
+<li>到哪里取数据：<strong>班级</strong></li>
+<li>得到哪些信息(列)：标识 id、名称、开班时间</li>
+<li>排序字段1：开班时间  -&gt; 正序</li>
+<li>排序字段2：标识 id  -&gt; 倒序</li>
+<li>取多少数据：<strong>所有班级</strong> （没有<code>limit</code>）</li>
+</ol>
+
+<p>我们将这些信息套入到 SELECT 语句结构会得到如下：</p>
+
+<blockquote>
+<p><strong>select 标识 id, 名称, 开班时间  from 班级</strong></p>
+
+<p><strong>order by 开班时间  正序, 标识 id 倒序;</strong></p>
+</blockquote>
+</blockquote>
+
+<p>现在结合E-R 图到表的映射，我们得到如下SQL</p>
+
+<pre><code class="language-sql">select c_id,c_name,c_start_time from class
+order by c_start_time asc, c_id desc;
+</code></pre>
+
+<p>执行这个结果我们会得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/03-order-02.jpeg" alt="" /></p>
+
+<blockquote>
+<p>当使用多个列排序的时候，排序的处理顺序是从左到右，对于左边列值相同的行数据才会使用后面的列对其排序操作。</p>
+</blockquote>
+
+<p>试试（综合实例）</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询结束时间最早的 10 个班级的标识 id、名称、开班时间、结束时间；如果结束时间相同，就返回开发时间最好的；如果结束时间和开班时间都相同，就返回标识 id 最大的。查询结果应该如下：</label></li>
+</ul>
+
+<p><img src="/images/articles/noob-learn-sql/03-order-03.jpeg" alt="" /></p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 按每页6条数据查询第 3 页班级信息，按照创建时间最大的排在前面，如果创建时间一样就按照 班主任 信息顺序排列。查询结果应该如下：</label></li>
+</ul>
+
+<p><img src="/images/articles/noob-learn-sql/03-order-04.jpeg" alt="" /></p>
+
+<h1 id="总结">总结</h1>
+
+<ul>
+<li>SELECT 语句基本基本结构</li>
+<li>查询需求或问题分析方法：综合 <strong>需求或问题描述</strong>、<strong>E-R 图</strong> 和 <strong>表结构</strong> 3方信息实施从问题到可执行 SQL 的分析设计</li>
+<li>查询单列、多列、所有列数据</li>
+<li>使用 <code>limit</code> 子句限定返回结果集中的数据的数量(结果集大小)</li>
+<li>使用关键字 <code>distinct</code> 进行查询结果去重，注意取重时是比较所有查询列</li>
+<li>使用 <code>order by</code> 子句对结果进行排序，可以是单列或多列，每列可以指定自己的排序方式：正序(<code>asc</code>)或倒序(<code>desc</code>)</li>
+</ul>
+
+<blockquote>
+<p>大家会发现我们这里交替出现 <strong>属性</strong>、<strong>字段</strong>、<strong>列</strong> 如果没有特殊说明，这三个词语表达的含义是一样的，都不是标识数据表列或 ER 图属性。</p>
+</blockquote>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-21</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+          <a href="/tags/sql/">SQL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/articles/noob-learn-sql/4-query-where/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">小白学 SQL 第四天：数据过滤查询</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/articles/noob-learn-sql/2-create-table/">
+            <span class="next-text nav-default">小白学 SQL 第二天：数据表创建</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-04-21 00:00:00 \x2b0000 UTC',
+    title: '小白学 SQL 第三天：单表数据查询',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e《小白学 SQL》第三天\x3c\/p\x3e\n\n\x3cp\x3e数据查询应该是我们平时用得最多的数据库操作，所以我们优先学习数据查询，今天我们就来看看基础的数据查询操作：单表数据查询，涉及到的知识点有：\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e检索单个列\x3c\/li\x3e\n\x3cli\x3e检索多个列\x3c\/li\x3e\n\x3cli\x3e数据去重\x3c\/li\x3e\n\x3cli\x3e返回定量数据集\x3c\/li\x3e\n\x3cli\x3e排序检索数据\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

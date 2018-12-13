@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>小白学 SQL 第六天：统计查询 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Mysql, SQL, SQL学习, 数据库, select语句" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="小白学 SQL 第六天：统计查询" />
+<meta property="og:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-sql/6-query-statistics/" />
+
+
+
+<meta property="article:published_time" content="2018-04-29T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-04-29T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="小白学 SQL 第六天：统计查询">
+<meta itemprop="description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。">
+
+
+<meta itemprop="datePublished" content="2018-04-29T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1198">
+
+
+
+<meta itemprop="keywords" content="数据库,SQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="小白学 SQL 第六天：统计查询"/>
+<meta name="twitter:description" content="数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">小白学 SQL 第六天：统计查询</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-29 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1198 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#统计函数">统计函数</a>
+<ul>
+<li><a href="#查询班级总数和设置了开班时间的班级个数">查询班级总数和设置了开班时间的班级个数</a></li>
+<li><a href="#查询班主任的个数">查询班主任的个数</a></li>
+<li><a href="#查询生日在-2008-01-18-这天的学生数量">查询生日在 2008-01-18 这天的学生数量</a></li>
+</ul></li>
+<li><a href="#分组统计-group-子句">分组统计：group 子句</a>
+<ul>
+<li><a href="#统计不同性别的学生数量和平均年龄-返回性别信息-显示男或女-数量信息-平均年龄">统计不同性别的学生数量和平均年龄，返回性别信息(显示男或女)、数量信息、平均年龄</a></li>
+<li><a href="#统计不同年龄段学生数量-每10岁为一个年龄段-数量最多的在前面-输出年龄段信息和数量">统计不同年龄段学生数量，每10岁为一个年龄段，数量最多的在前面，输出年龄段信息和数量</a></li>
+</ul></li>
+<li><a href="#过滤分组统计-having-子句">过滤分组统计：having 子句</a>
+<ul>
+<li><a href="#查询学生数量大于1排前三的地区">查询学生数量大于1排前三的地区</a></li>
+</ul></li>
+<li><a href="#总计">总计</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+        <p>今天我们来学习涉及单表查询的最后一种查询方式：统计查询，但让统计查询并不只能用于单表查询的，也可用于多表查询。其实我们前面所有的查询子句都可以用于单表和多表查询，具体多表查询中的使用将在第七天介绍。首先还是看看统计查询里面内容概要，也是今天的知识要点。</p>
+
+<p>知识要点：</p>
+
+<ul>
+<li>统计函数</li>
+<li>分组统计</li>
+<li>过滤分组统计</li>
+</ul>
+
+<p></p>
+
+<h1 id="统计函数">统计函数</h1>
+
+<p><strong>SQL聚集函数有 5 个</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>AVG()</td>
+<td>返回某列的平均值</td>
+</tr>
+
+<tr>
+<td>COUNT()</td>
+<td>返回某列的函数</td>
+</tr>
+
+<tr>
+<td>MIN()</td>
+<td>返回某列的最小值</td>
+</tr>
+
+<tr>
+<td>MAX()</td>
+<td>返回某列的最大值</td>
+</tr>
+
+<tr>
+<td>SUM()</td>
+<td>返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<ul>
+<li>对所有执行计算，指定ALL参数或不指定参数（因为ALL是默认行为）；只包含不同的值，指定distinct参数</li>
+<li>使用 count(*) 对表中行的数目进行计数，不管表列中包含的是空值（null）还是非空值</li>
+<li>使用 count(column) 对特定列中具有值得行进行计数，忽略null值。</li>
+</ul>
+</blockquote>
+
+<h2 id="查询班级总数和设置了开班时间的班级个数">查询班级总数和设置了开班时间的班级个数</h2>
+
+<pre><code class="language-sql">select count(*), count(c_start_time) 
+from class;
+</code></pre>
+
+<p>执行 SQL 得到结果。这里注意 <code>count(*)</code> 和 <code>count(c_start_time)</code> 的区别</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-01.jpeg" alt="" /></p>
+
+<h2 id="查询班主任的个数">查询班主任的个数</h2>
+
+<pre><code>select count(distinct c_head_teacher)
+from class;
+</code></pre>
+
+<p>得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-02.jpeg" alt="" /></p>
+
+<blockquote>
+<p>大家注意这里为什么使用 <code>count(distinct c_head_teacher)</code> 。大家可以执行下面语句，看两个之前的差别在哪里。</p>
+
+<p><code>select count(c_head_teacher) from class;</code></p>
+</blockquote>
+
+<h2 id="查询生日在-2008-01-18-这天的学生数量">查询生日在 2008-01-18 这天的学生数量</h2>
+
+<pre><code>select count(*) from student
+where s_birthday='2008-01-18';
+</code></pre>
+
+<p>得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-03.jpeg" alt="" /></p>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询所有学生数量、平均年龄、最小年龄、最大年龄、年龄总和</label></li>
+</ul>
+
+<h1 id="分组统计-group-子句">分组统计：group 子句</h1>
+
+<p>在使用统计查询的时候，常常会遇到对数据进行分类排序的需求，这个时候就需要使用到 <strong>group</strong> 子句，子句格式:</p>
+
+<pre><code class="language-sql">[GROUP BY {col_name | expr | position} [ASC | DESC], ... [WITH ROLLUP]]
+</code></pre>
+
+<p>进行分组或分类的条件可以是一个，也可以是多个；既可以是列，也可以是表达式。</p>
+
+<blockquote>
+<p>使用 <strong>group</strong> 子句时，<em>select</em> 返回的信息必须是统计信息或分组信息</p>
+</blockquote>
+
+<h2 id="统计不同性别的学生数量和平均年龄-返回性别信息-显示男或女-数量信息-平均年龄">统计不同性别的学生数量和平均年龄，返回性别信息(显示男或女)、数量信息、平均年龄</h2>
+
+<pre><code class="language-sql">select 
+case s_sex 
+  when 0 then '女'
+  when 1 then '男'
+end, 
+count(*), avg(s_age)
+from student
+group by s_sex
+</code></pre>
+
+<p>得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-group-01.jpeg" alt="" /></p>
+
+<p><em>试试：去除平均年龄中的小数</em></p>
+
+<h2 id="统计不同年龄段学生数量-每10岁为一个年龄段-数量最多的在前面-输出年龄段信息和数量">统计不同年龄段学生数量，每10岁为一个年龄段，数量最多的在前面，输出年龄段信息和数量</h2>
+
+<pre><code>select concat((ceil(s_age / 10)-1)*10+1, '~', ceil(s_age / 10)*10, '岁') as seg, count(*)
+from student
+group by seg
+order by count(*) desc
+;
+</code></pre>
+
+<p>得到如下结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-group-02.jpeg" alt="" /></p>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询负责班级最多的班主任和负责班级数量</label></li>
+</ul>
+
+<h1 id="过滤分组统计-having-子句">过滤分组统计：having 子句</h1>
+
+<p>有时我们会遇到查找满足指定统计条件的数据，这个时候需要使用到 having 子句。having子句类似于where，having支持所有得where操作符，它们得句法是相同的，却别是：<strong>where是过滤行，having是过滤分组</strong></p>
+
+<h2 id="查询学生数量大于1排前三的地区">查询学生数量大于1排前三的地区</h2>
+
+<pre><code class="language-sql">select  s_addr, count(*)
+from student
+group by s_addr
+HAVING count(*)&gt;1
+order by count(*) desc
+limit 0,3
+;
+</code></pre>
+
+<p>执行结果</p>
+
+<p><img src="/images/articles/noob-learn-sql/06-statistics-having-01.jpeg" alt="" /></p>
+
+<p>试试</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 查询负责2个班级的班主任</label></li>
+</ul>
+
+<h1 id="总计">总计</h1>
+
+<ul>
+<li>统计函数：count、max、min、avg、sum</li>
+<li>分组统计：group by 子句</li>
+<li>过滤分组统计：having 子句</li>
+</ul>
+
+<p>至此针对单表的常用查询讲解都完了，这里做一个 SQL 语句结构的整理。</p>
+
+<p><strong>select子句及其顺序</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>子句</th>
+<th>说明</th>
+<th>是否必须使用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>select</td>
+<td>要返回的列或表达式</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>from</td>
+<td>从中检索数据的表</td>
+<td>仅在从表中选择数据时使用</td>
+</tr>
+
+<tr>
+<td>where</td>
+<td>行级过滤</td>
+<td>否</td>
+</tr>
+
+<tr>
+<td>group by</td>
+<td>分组说明</td>
+<td>仅在按组计算聚集时使用</td>
+</tr>
+
+<tr>
+<td>having</td>
+<td>组级过滤</td>
+<td>否</td>
+</tr>
+
+<tr>
+<td>order by</td>
+<td>输出排序顺序</td>
+<td>否</td>
+</tr>
+
+<tr>
+<td>limit</td>
+<td>限定结果集大小</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>SELECT select_expr [, select_expr ...]
+[FROM table_references
+    [WHERE where_condition]
+    [GROUP BY {col_name | expr | position} [ASC | DESC], ... [WITH ROLLUP]]
+    [HAVING where_condition]
+    [ORDER BY {col_name | expr | position}
+      [ASC | DESC], ...]
+    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
+]
+</code></pre>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-29</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+          <a href="/tags/sql/">SQL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/articles/noob-learn-sql/7-query-multi-table/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">小白学 SQL 第七天：多表查询</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/articles/noob-learn-sql/5-query-function/">
+            <span class="next-text nav-default">小白学 SQL 第五天：数据操作函数</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-04-29 00:00:00 \x2b0000 UTC',
+    title: '小白学 SQL 第六天：统计查询',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e今天我们来学习涉及单表查询的最后一种查询方式：统计查询，但让统计查询并不只能用于单表查询的，也可用于多表查询。其实我们前面所有的查询子句都可以用于单表和多表查询，具体多表查询中的使用将在第七天介绍。首先还是看看统计查询里面内容概要，也是今天的知识要点。\x3c\/p\x3e\n\n\x3cp\x3e知识要点：\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e统计函数\x3c\/li\x3e\n\x3cli\x3e分组统计\x3c\/li\x3e\n\x3cli\x3e过滤分组统计\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

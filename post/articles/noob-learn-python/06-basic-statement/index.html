@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python学习 06：python 基础语句：if/for/while - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Python, python3" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-python/06-basic-statement/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="Python学习 06：python 基础语句：if/for/while" />
+<meta property="og:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-python/06-basic-statement/" />
+
+
+
+<meta property="article:published_time" content="2018-07-19T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-07-19T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python学习 06：python 基础语句：if/for/while">
+<meta itemprop="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。">
+
+
+<meta itemprop="datePublished" content="2018-07-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3812">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python学习 06：python 基础语句：if/for/while"/>
+<meta name="twitter:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python学习 06：python 基础语句：if/for/while</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-19 </span>
+        <div class="post-category">
+            
+              <a href="/categories/python/"> python </a>
+            
+          </div>
+        <span class="more-meta"> 约 3812 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+        <p>前面学习了 python 中的基础数据类型，现在开始学习 python 中和程序结构相关的内容，首先从基础语句开始</p>
+
+<ul>
+<li>语句简单分类</li>
+<li>if 语句</li>
+<li>for 语句</li>
+<li>while 语句</li>
+<li>解析式语句</li>
+</ul>
+
+<p></p>
+
+<script type="text/javascript">
+  var defaultColors = [ '#000', '#D00', '#00CF12', '#C2CB00', '#3100CA',
+  '#E100C6', '#00CBCB', '#C7C7C7', '#686868', '#FF5959', '#00FF6B',
+  '#FAFF5C', '#775AFF', '#FF47FE', '#0FF', '#FFF' ];
+
+function term2html(text, options) {
+  options = options || {};
+  var colors = options.colors || defaultColors;
+
+  
+  
+  
+  
+  text = text.replace(/^.*\u001B\[[12]K/mg, '');
+
+  
+  
+  text = text.replace(/^(.*)\u001B\[(\d+)G/mg, function(_, text, n) {
+    return text.slice(0, n);
+  });
+
+  
+  
+  
+  
+  
+  var state = {
+    bg: -1,
+    fg: -1,
+    bold: false,
+    underline: false,
+    negative: false
+  };
+  text = text.replace(/\u001B\[([\d;]+)m([^\u001B]+)/g, function(_, n, text) {
+    
+    n.split(';').forEach(function(code) {
+      code = code | 0;
+      if (code === 0) {
+        state.bg = -1;
+        state.fg = -1;
+        state.bold = false;
+        state.underline = false;
+        state.negative = false;
+      } else if (code === 1) {
+        state.bold = true;
+      } else if (code === 4) {
+        state.underline = true;
+      } else if (code === 7) {
+        state.negative = true;
+      } else if (code === 21) {
+        state.bold = false;
+      } else if (code === 24) {
+        state.underline = false;
+      } else if (code === 27) {
+        state.negative = false;
+      } else if (code >= 30 && code <= 37) {
+        state.fg = code - 30;
+      } else if (code === 39) {
+        state.fg = -1;
+      } else if (code >= 40 && code <= 47) {
+        state.bg = code - 40;
+      } else if (code === 49) {
+        state.bg = -1;
+      } else if (code >= 90 && code <= 97) {
+        state.fg = code - 90 + 8;
+      } else if (code >= 100 && code <= 107) {
+        state.bg = code - 100 + 8;
+      }
+    });
+
+    
+    var bold = state.bold * 8;
+    var fg, bg;
+    if (state.negative) {
+      fg = state.bg | bold;
+      bg = state.fg;
+    } else {
+      fg = state.fg | bold;
+      bg = state.bg;
+    }
+    fg = colors[fg] || '';
+    bg = colors[bg] || '';
+
+    
+    var style = '';
+    if (bg) {
+      style += 'background-color:' + bg + ';';
+    }
+    if (fg) {
+      style += 'color:' + fg + ';';
+    }
+    if (bold) {
+      style += 'font-weight:bold;';
+    }
+    if (state.underline) {
+      style += 'text-decoration:underline';
+    }
+    var html = text.
+      replace(/&/g, '&amp;').
+      replace(/</g, '&lt;').
+      replace(/>/g, '&gt;');
+
+    
+    if (style) {
+      return '<span style="' + style + '">' + html + '</span>';
+    } else {
+      return html;
+    }
+  });
+
+  return text.replace(/\u001B\[.*?[A-Za-z]/g, '');
+}
+</script>
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="语句类型">语句类型</h1>
+
+<p>python 程序语言里面语句较多，基本是一个或多个关键字对应一个语句类型，常用的语句类型如下：</p>
+
+<ul>
+<li>赋值语句</li>
+<li>判断语句</li>
+<li>循环语句</li>
+<li>解析式语句</li>
+<li>异常捕获语句</li>
+<li>函数定义语句</li>
+<li>函数调用语句</li>
+<li>类定义语句</li>
+<li>类使用语句</li>
+<li>包引入语句</li>
+</ul>
+
+<p>这里我们只介绍 <em>赋值语句</em> 、 <em>判断语句</em> 、 *循环语句*、<em>解析式语句</em> ，其他语句适合特定类容相关的，在后面和内容一起介绍。</p>
+
+<p>在 python 中语句嵌套组合，形成更复杂的程序结构。</p>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="赋值语句">赋值语句</h1>
+
+<p>还记的变量吧，赋值语句主要是针对变量的。每个赋值语句一定包含 <code>=</code> 操作符，或者含有 <code>=</code> 语义的操作符，例如：<code>+=</code>、<code>*=</code>、<code>/=</code>等。
+一个赋值语句包含三部分：<code>=</code>操作符、左值、右值。在<code>=</code>左边的的表达式计算结果称为左值，在<code>=</code>右边的表达式计算结果称为右值。</p>
+
+<ul>
+<li>左值的计算结果一定是一个变量或引用</li>
+<li>右值的计算记过一定是一个对象</li>
+</ul>
+
+<p>例如：</p>
+
+<blockquote>
+<p><code>a=1</code>, 这里 <code>a</code> 表示左值，是一个变量；<code>1</code> 表示右值，是一个对象
+<code>L[a+1]=5*3</code>, 这里 <code>L[a+1]</code> 表示左值，计算的结果是表示一个引用；<code>5*3</code> 表示右值，计算的结果是一个对象</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[1]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a=1
+a
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >1</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[2]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a += 5
+a
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >6</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <blockquote>
+<p>注意：<code>=</code> 操作不要求左值变量已经创建，如果没有定义会自行创建。但是在使用 <code>+=</code>、<code>*=</code>、<code>/=</code> 等类似操作符时，要求 <strong>左值既是一个对象，也是一个变量或引用</strong>。因为这类操作符是先计算并获取左值引用的对象，然后使用这个对象和右值计算的对象做运算，最后在赋值给左值的变量或引用。</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[3]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 由于 变量 b 没有定义，所以在计算 b 的对象时会发生错误
+b += 1
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mNameError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-3-be9562e617df&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0;31m# 由于 变量 b 没有定义，所以在计算 b 的对象时会发生错误[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----&gt; 2[0;31m [0mb[0m [0;34m&#43;=[0m [0;36m1[0m[0;34m[0m[0m
+[0m[0;31mNameError[0m: name &#39;b&#39; is not defined</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="if-语句">if 语句</h1>
+
+<p>Python条件语句是通过一条或多条语句的执行结果（True或者False）来决定执行的代码块。</p>
+
+<p>可以通过下图来简单了解条件语句的执行过程:</p>
+
+<p><img src="/images/articles/noob-learn-python/if-condition.jpg" alt="" /></p>
+
+<p>Python程序语言指定任何非0和非空（null）值为true，0 或者 null 为false。</p>
+
+<p>Python 编程中 if 语句用于控制程序的执行，基本形式为：</p>
+
+<pre><code>if 判断条件：
+    执行语句……
+else：
+    执行语句……
+</code></pre>
+
+<p>其中&rdquo;判断条件&rdquo;成立时（非零），则执行后面的语句，而执行内容可以多行，以缩进来区分表示同一范围。</p>
+
+<p>else 为可选语句，当需要在条件不成立时执行内容则可以执行相关语句，具体例子如下：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[4]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">name='Lilei'
+
+if name=='Lilei':
+    print(&quot;My name is Lilei!&quot;)
+else:
+    print(&quot;My name is Hanmeimei!&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >My name is Lilei!
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>if 语句的判断条件可以用&gt;（大于）、&lt;(小于)、==（等于）、&gt;=（大于等于）、&lt;=（小于等于）来表示其关系。</p>
+
+<p>当判断条件为多个值时，可以使用以下形式</p>
+
+<pre><code>if 判断条件1:
+    执行语句1……
+elif 判断条件2:
+    执行语句2……
+elif 判断条件3:
+    执行语句3……
+else:
+    执行语句4……
+</code></pre>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[5]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">name='Hanmeimei'
+
+if name=='Lilei':
+    print(&quot;My name is Lilei!&quot;)
+elif name=='Hanmeimei':
+    print(&quot;My name is Hanmeimei!&quot;)
+elif name=='dog':
+    print(&quot;Sorry, this is a dog!&quot;)
+else:
+    print(&quot;This is an ET!&quot;)
+    
+    
+name='apple'
+
+if name=='Lilei':
+    print(&quot;My name is Lilei!&quot;)
+elif name=='Hanmeimei':
+    print(&quot;My name is Hanmeimei!&quot;)
+elif name=='dog':
+    print(&quot;Sorry, this is a dog!&quot;)
+else:
+    print(name + &quot; is an ET!&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >My name is Hanmeimei!
+apple is an ET!
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>判断条件</strong> 是一个计算结果为 <strong>Boolean 值对象</strong> 得表达式。在《Python学习 03：python 数值类型》介绍的的 *比较运算符*、*逻辑运算符*、*成员运算符*、<em>身份运算符</em> 这些操作的结果都是 Boolean 值对象，包含后面将介绍的的 *返回 Boolean 值对象的函数调用操作*，只要任意以表达式返回Boolean 值对象都可以作为 <code>if</code> 语句的判断条件
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[6]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">item = 2
+L = [1,2,3]
+
+# 成员运算
+if item in L:
+    print(&quot;%d 在 %s 中&quot; %(item, str(L))) 
+else:
+    print(&quot;%d 没在 %s 中&quot; %(item, str(L)))
+    
+# 比较运算符    
+a = 1
+b = 2
+if a==b:
+    print(&quot;a 等于 b&quot;)
+else:
+    print(&quot;a 不等于 b&quot;)
+
+# 逻辑运算符
+if a==b and item in L:
+    print(&quot;a 等于 b 同时 %d 在 %s 中&quot; %(item, str(L)))
+else:
+    print(&quot;a 不等于 b 或者 %d 不在 %s 中&quot; %(item, str(L)))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >2 在 [1, 2, 3] 中
+a 不等于 b
+a 不等于 b 或者 2 不在 [1, 2, 3] 中
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <h1 id="循环语句">循环语句</h1>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="for-语句">for 语句</h2>
+
+<p>Python for循环可以遍历任何序列的项目，如一个列表或者一个字符串。</p>
+
+<p>for循环的语法格式如下：</p>
+
+<pre><code>for iterating_var in sequence:
+   statements(s)
+</code></pre>
+
+<p>流程图：</p>
+
+<p><img src="/images/articles/noob-learn-python/python_for_loop.jpg" alt="" /></p>
+
+<p>实例：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[7]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">print(&quot;循环字符串：&quot;)
+s = &quot;Python!&quot;
+for letter in s:
+    print(&quot;\t当前字符：&quot; + letter)
+    
+print(&quot;循环序列：&quot;)
+l = [4,3,2,1,12]
+for item in l:
+    print(&quot;\t当前元素：&quot; + str(item))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >循环字符串：
+	当前字符：P
+	当前字符：y
+	当前字符：t
+	当前字符：h
+	当前字符：o
+	当前字符：n
+	当前字符：!
+循环序列：
+	当前元素：4
+	当前元素：3
+	当前元素：2
+	当前元素：1
+	当前元素：12
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    可以以通过序列索引来循环：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[8]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">fruits = ['apple', 'orange', 'banana']
+for i in range(len(fruits)):
+    print(&quot;第 %d 个水果是 %s&quot; %(i+1, fruits[i]))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >第 1 个水果是 apple
+第 2 个水果是 orange
+第 3 个水果是 banana
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    注意再循环中对于循环变量的赋值操作不会影响到原始序列的值。但是如果序列里面是是可以修改的对象时，通过循环变量的修改操作会同时修改原序列的中的对应值。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[9]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">objs = [{'a':'a1'}, {'a':'a2'}, {'a':'a3'}]
+print(objs)
+for obj in objs:
+    obj=1
+    print(obj)
+print(objs)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[{&#39;a&#39;: &#39;a1&#39;}, {&#39;a&#39;: &#39;a2&#39;}, {&#39;a&#39;: &#39;a3&#39;}]
+1
+1
+1
+[{&#39;a&#39;: &#39;a1&#39;}, {&#39;a&#39;: &#39;a2&#39;}, {&#39;a&#39;: &#39;a3&#39;}]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[10]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">objs = [{'a':'a1'}, {'a':'a2'}, {'a':'a3'}]
+print(objs)
+for obj in objs:
+    obj['a'] = 'aaa'
+    print(obj)
+print(objs)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[{&#39;a&#39;: &#39;a1&#39;}, {&#39;a&#39;: &#39;a2&#39;}, {&#39;a&#39;: &#39;a3&#39;}]
+{&#39;a&#39;: &#39;aaa&#39;}
+{&#39;a&#39;: &#39;aaa&#39;}
+{&#39;a&#39;: &#39;aaa&#39;}
+[{&#39;a&#39;: &#39;aaa&#39;}, {&#39;a&#39;: &#39;aaa&#39;}, {&#39;a&#39;: &#39;aaa&#39;}]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="while-语句">while 语句</h2>
+
+<p>Python 编程中 while 语句用于循环执行程序，即在某条件下，循环执行某段程序，以处理需要重复处理的相同任务。其基本形式为：</p>
+
+<p>while 判断条件：
+    执行语句……
+执行语句可以是单个语句或语句块。判断条件可以是任何表达式，任何非零、或非空（null）的值均为true。</p>
+
+<p>当判断条件假false时，循环结束。</p>
+
+<p>执行流程图如下：</p>
+
+<p><img src="/images/articles/noob-learn-python/python_while_loop.jpg" alt="" /></p>
+
+<p>Gif 演示 Python while 语句执行过程
+<img src="images/articles/noob-learn-python/loop-over-python-list-animation.gif" alt="" /></p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[11]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">count = 0
+while count &lt; 9:
+   print('The count is:' + str(count))
+   count = count + 1
+ 
+print(&quot;Good bye!&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >The count is:0
+The count is:1
+The count is:2
+The count is:3
+The count is:4
+The count is:5
+The count is:6
+The count is:7
+The count is:8
+Good bye!
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    当当前始终为 true 时，将会无限循环
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[12]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s = ''
+while s!='bye':
+    s = input(&quot;Enter a number  :&quot;)
+    print(&quot;You entered: &quot; + s)
+print(&quot;Bye Bye!&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >Enter a number  :
+You entered: 
+Enter a number  :
+You entered: 
+Enter a number  :bye
+You entered: bye
+Bye Bye!
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="break-continue-pass-语句">break、continue、pass 语句</h2>
+
+<p>再循环中常常会遇到提前结束整个循环或提前结束当前循环操作，这个时候就需要用到 <code>break</code> 和 <code>continue</code>。</p>
+
+<ul>
+<li>break：结束整个循环，剩余的循环次数不再执行</li>
+<li>continue：结束本轮循环操作，本轮循环后面的语句不再执行，但是剩余的循环次数将继续执行</li>
+<li>pass：空语句，一个占位符，表示这里什么都每一偶</li>
+</ul>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[13]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">l = [1,2,3,4,5,6]
+
+print(&quot;正常输出：&quot;)
+for i in l:
+    print(&quot;i = %d&quot; % i)
+    
+print(&quot;break 输出：&quot;)
+for i in l:
+    
+    if(i==3):
+        break  # 这里将结束 i=3 以后的所有输出
+        
+    print(&quot;i = %d&quot; % i)
+
+print(&quot;break 输出：&quot;)
+for i in l:
+    
+    if(i==3):
+        continue  # 这里将跳过 i=3 的输出
+        
+    print(&quot;i = %d&quot; % i)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >正常输出：
+i = 1
+i = 2
+i = 3
+i = 4
+i = 5
+i = 6
+break 输出：
+i = 1
+i = 2
+break 输出：
+i = 1
+i = 2
+i = 4
+i = 5
+i = 6
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="语句嵌套">语句嵌套</h1>
+
+<p>从上面的实例可以看到，在 <code>for</code> 语句里面包含了 <code>if</code> 语句，其实任务语句都可以嵌套使用，语句嵌套使我们可以处理复杂的逻辑和流程。下面通过一个例子说明。</p>
+
+<blockquote>
+<p>？输出常见的加法口诀表</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[14]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">for i in range(10):
+    for j in range(1, i+1):
+        print('%d+%d=%d' %(j,i,i+j), end='\t')
+    print()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >
+1&#43;1=2	
+1&#43;2=3	2&#43;2=4	
+1&#43;3=4	2&#43;3=5	3&#43;3=6	
+1&#43;4=5	2&#43;4=6	3&#43;4=7	4&#43;4=8	
+1&#43;5=6	2&#43;5=7	3&#43;5=8	4&#43;5=9	5&#43;5=10	
+1&#43;6=7	2&#43;6=8	3&#43;6=9	4&#43;6=10	5&#43;6=11	6&#43;6=12	
+1&#43;7=8	2&#43;7=9	3&#43;7=10	4&#43;7=11	5&#43;7=12	6&#43;7=13	7&#43;7=14	
+1&#43;8=9	2&#43;8=10	3&#43;8=11	4&#43;8=12	5&#43;8=13	6&#43;8=14	7&#43;8=15	8&#43;8=16	
+1&#43;9=10	2&#43;9=11	3&#43;9=12	4&#43;9=13	5&#43;9=14	6&#43;9=15	7&#43;9=16	8&#43;9=17	9&#43;9=18	
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[15]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">for i in range(10):
+    for j in range(1, 10):
+        if(j&gt;i):
+            break
+        print('%d+%d=%d' %(j,i,i+j), end='\t')
+    print()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >
+1&#43;1=2	
+1&#43;2=3	2&#43;2=4	
+1&#43;3=4	2&#43;3=5	3&#43;3=6	
+1&#43;4=5	2&#43;4=6	3&#43;4=7	4&#43;4=8	
+1&#43;5=6	2&#43;5=7	3&#43;5=8	4&#43;5=9	5&#43;5=10	
+1&#43;6=7	2&#43;6=8	3&#43;6=9	4&#43;6=10	5&#43;6=11	6&#43;6=12	
+1&#43;7=8	2&#43;7=9	3&#43;7=10	4&#43;7=11	5&#43;7=12	6&#43;7=13	7&#43;7=14	
+1&#43;8=9	2&#43;8=10	3&#43;8=11	4&#43;8=12	5&#43;8=13	6&#43;8=14	7&#43;8=15	8&#43;8=16	
+1&#43;9=10	2&#43;9=11	3&#43;9=12	4&#43;9=13	5&#43;9=14	6&#43;9=15	7&#43;9=16	8&#43;9=17	9&#43;9=18	
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="解析式语句">解析式语句</h1>
+
+<p>解析式语句可以使我们更容易处理列表数据，它的所有能力都可以使用循环语句实现，可以看做循环语句的简略形式。解析式可以任何支持迭代操作的数据结构，包括：列表、元组、自定义支持迭代类型</p>
+
+<p>看一下例子：
+&gt; 将 L 列表中，所有数据都加上 20</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[16]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">L = [1,2,3,4,5,6,7,8,9,10]
+
+# 循环实现
+L1=[]
+for item in L:
+    L1.append(item+20)
+print(&quot;循环实现\t\t&quot;,end='');print(L1)
+
+# 解析式实现
+L2=[ item+20 for item in L]
+print(&quot;解析式实现\t&quot;,end='');print(L2)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >循环实现		[21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+解析式实现	[21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>可以在解析式里面做数据过滤</p>
+
+<blockquote>
+<p>找出 L 中所有的偶数</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[17]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">L = [1,2,3,4,5,6,7,8,9,10]
+
+# 循环实现
+L1=[]
+for item in L:
+    if item % 2==0:
+        L1.append(item)
+print(&quot;循环实现\t\t&quot;,end='');print(L1)
+
+# 解析式实现
+L2=[ item for item in L if item % 2==0]
+print(&quot;解析式实现\t&quot;,end='');print(L2)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >循环实现		[2, 4, 6, 8, 10]
+解析式实现	[2, 4, 6, 8, 10]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    也可以在解析式里面同时处理多个列表，使其产生多个列表元素组合效果
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[18]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">L1 = [1,2,3]
+L2 = [3,4,5]
+
+print([(x,y) for x in L1 for y in L2])
+print([(x,y) for x in L1 for y in L2 if x==y])
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 3), (3, 4), (3, 5)]
+[(3, 3)]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    当然解析式也是可以嵌套使用
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[19]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">L = [1,2,3,4,5,6]
+print([x+1 for x in [x*2 for x in L]])
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >[3, 5, 7, 9, 11, 13]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    使用解析式生成其他数据结构，但是要确保生成的数据结构本省具有可变性，这样就导致元组是不能用解析式生成的。当使用 <code>(x for x in [1,2,3])</code> 时，这个其实是 <em>生成表达式</em> 语法，会在下次介绍。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[1]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">L3 = [1,2,3]
+print([x**2 for x in L3])
+print({&quot;i&quot;+str(x):x**2 for x in L3})
+
+print([x**2 for x in (4,5,6)])
+print((x**2 for x in (4,5,6)))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[1, 4, 9]
+{&#39;i1&#39;: 1, &#39;i2&#39;: 4, &#39;i3&#39;: 9}
+[16, 25, 36]
+&lt;generator object &lt;genexpr&gt; at 0x7f7ec8192518&gt;
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="试试">试试</h1>
+
+<blockquote>
+<p>？给定三条线段的长度，判断是否能组成三角形，如果能输出三角形：普通三角形、等腰三角形、等边三角形或直角三角形</p>
+
+<p>例如：</p>
+
+<blockquote>
+<p>a=1; b=2; c=3 输出：不是三角形</p>
+
+<p>a=3; b=4; c=5 输出：直角三角形</p>
+
+<p>a=1; b=1; c=1 输出：等边三角形</p>
+</blockquote>
+</blockquote>
+
+    
+
+    
+
+  
+
+<script type="text/javascript">
+  $(".outputs>textarea").each(function(){
+    var el = $(this);
+    console.log(el)
+    el.parent().html(function (text) {
+      return term2html(text
+                          .replace(/\n/g,'br-and-br')
+                          .replace(/ /g, 'sp-and-sp'))
+                    .replace(/(br-and-br)/g,'<br/>')
+                    .replace(/(sp-and-sp)/g, '&nbsp;')
+                 ;
+    }(el.val()));
+  })
+</script>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-07-19</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/articles/noob-learn-python/07-function-lambda/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python学习 07：函数</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/articles/noob-learn-python/05-list-dict/">
+            <span class="next-text nav-default">Python学习 05：python 列表、元组、字典</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-07-19 00:00:00 \x2b0000 UTC',
+    title: 'Python学习 06：python 基础语句：if\/for\/while',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e前面学习了 python 中的基础数据类型，现在开始学习 python 中和程序结构相关的内容，首先从基础语句开始\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e语句简单分类\x3c\/li\x3e\n\x3cli\x3eif 语句\x3c\/li\x3e\n\x3cli\x3efor 语句\x3c\/li\x3e\n\x3cli\x3ewhile 语句\x3c\/li\x3e\n\x3cli\x3e解析式语句\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" />
+  <meta name="description" content="Threeq 个人博客." />
+  <meta name="keywords" content="Threeq, 博客, 程序员, 架构师, 敏捷, scrum, 看板, Java, Python, Golang, Javascript" />
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/" />
+<link href="https://blog.threeq.me/index.xml" rel="alternate" type="application/rss+xml" title="Threeq - 出井的青蛙" />
+  <link href="https://blog.threeq.me/index.xml" rel="feed" type="application/rss+xml" title="Threeq - 出井的青蛙" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="Threeq - 出井的青蛙" />
+<meta property="og:description" content="Threeq 个人博客." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.threeq.me/" />
+
+
+
+<meta property="og:updated_time" content="2018-06-06T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Threeq - 出井的青蛙">
+<meta itemprop="description" content="Threeq 个人博客.">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Threeq - 出井的青蛙"/>
+<meta name="twitter:description" content="Threeq 个人博客."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          
+  <section id="posts" class="posts">
+    
+    
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/12-procedure-function/">小白学 SQL 第十二天：存储过程和函数</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-06-06 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 3419 字 </span>
+      <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>之前我们已经学习了 SQL 的很多基础知识，最后一起看一下 <strong>存储过程和函数</strong> ，这也是此系列的最后一篇。数据库系统有了存储过程和函数，才真正具备了编程的能力。</p>
+
+<p>知识要点</p>
+
+<ul>
+<li>存储过程</li>
+<li>存储过程和函数的区别</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/12-procedure-function/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/11-view-index/">小白学 SQL 第十一天：索引和视图</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-30 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 3563 字 </span>
+      <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>已经介绍了 SQL 的查询、定义、插入、修改、删除等操作，接下来将介绍数据库另一个重要的知识点：<strong>索引</strong>，特别是在查询优化的时候，<strong>索引</strong> 将是优化的最重要手段之一。查询本身会随着我们的应用功能的增强，不断的增加复杂度，这时就需要管理复杂查询的手段：<em>视图</em> 。</p>
+
+<p>知识要点</p>
+
+<ul>
+<li>索引</li>
+<li>MySQL 索引操作语句</li>
+<li>BTREE 和 HASH</li>
+<li>视图</li>
+</ul>
+
+<p>这里的内容可能有点难，有一定使用经验可能会更容易理解。不过没有关系只要知道索引的基本概念和操作语句就行，大家真的在使用到时再来看或查询相关资料就可以了。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/11-view-index/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/web/web-frontend-arch-practice/">前端分层架构实战（一）</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-27 </span>
+      <div class="post-category">
+          
+            <a href="/categories/web/"> web </a>
+          
+        </div>
+      <span class="more-meta"> 约 1991 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>整个《前端分层架构实战》分成两部分：</p>
+
+<ol>
+<li>前端分层架构实战（一）：分层架构问题分析和结构设计</li>
+<li>前端分层架构实战（二）：分层架构项目规划和工程实施</li>
+</ol>
+
+<p>本文是其中的第一篇。</p>
+
+<p>随着微服务兴起前后端分离架构的越来越流行，前端的负责的开发任务越来越重，功能复杂度和代码量也越来越高，在同一个项目投入的前端人力也是越来越多，这个时候需要我们使用更加高效的方式来组织我们的代码结构。目前前端有很多框架帮我们做了很多这方面的工作，比如目前比较流行的的三大框架：angular、vue、react。但是我们在实际使用的时候往往发现，使用他们的命令行工具生成了一个工程，可以进行开发了，但是真正应用到真实项目中的时候，往往有力不从心的感觉，特别是企业及的项目中，这是由于它们做的只是从技术层面上解决了代码组织方式，并没有给出结合业务时项目里的组织结构和组织方法。而这些正是软件架构所解决的问题，软件架构正在后端开发中大放异彩，那我们能不能也在前端开发中引入软件架构方法，来解决前端日益复杂的开发需求呢？答案是肯定的，下面简单说一下我自己在这里面的实践总结，由于个人能力有限，有不正确的地方欢迎大家指正。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/web/web-frontend-arch-practice/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/10-db-transaction-lock/">小白学 SQL 第十天：事务和锁</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-21 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 3292 字 </span>
+      <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><strong>事务</strong> 是 DBMS 中一个非常重要的基本概念，主要用于处理操作量大，复杂度高的数据，比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！当我们在启动一个事务时，这里就引出了锁概念，并且这 2 个者对于初学者容易搞混淆。虽然事务和锁的基本原理是一样的，但是不同 RDBMS 的实现是有差别的，这里还是以 MySQL 中的事务和锁来讲解和说明基本操作。</p>
+
+<p>知识要点</p>
+
+<ul>
+<li>事务基本概念</li>
+<li>MySQL 事务操作</li>
+<li>MySQL 锁</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/10-db-transaction-lock/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/9-insert-update-delete/">小白学 SQL 第九天：数据插入、修改、删除</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-14 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1347 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>前面七天主要聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些数据是如何录入到数据库的？如果数据错误了需要修改或删除数据怎么操作？我们如何快速的生产测试数据？这些就是这次我们需要讨论的内容。</p>
+
+<p>知识要点</p>
+
+<ul>
+<li>插入数据</li>
+<li>修改数据</li>
+<li>删除数据</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/9-insert-update-delete/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/8-create-alert-table/">小白学 SQL 第八天：表结构管理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1367 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>前面七天全部聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些表是如何建立？建立的时候需要注意哪些信息？如果修改或删除表结构？。这次就一起来讨论表结构的基本管理操作。</p>
+
+<p>知识要点</p>
+
+<ul>
+<li>创建表</li>
+<li>修改表</li>
+<li>删除表</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/8-create-alert-table/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ppt/integrate-impress/">Hugo 集成 impress.js 实现 ppt 播放效果</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-09 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+          
+        </div>
+      <span class="more-meta"> 约 632 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>这是一个 Hugo Even 主题集成 impress.js 实现幻灯片效果和集成过程的演示。</p>
+
+<p>支持功能</p>
+
+<ul>
+<li>支持 markdown 语法</li>
+<li>支持 html 语法</li>
+<li>支持 css 动画</li>
+<li>支持自定义 js 交互逻辑</li>
+</ul>
+
+<p>实现依赖工具</p>
+
+<ul>
+<li>impress.js</li>
+<li>showdown.js</li>
+<li>mermaid.js</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/ppt/integrate-impress/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/7-query-multi-table/">小白学 SQL 第七天：多表查询</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-04 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 4183 字 </span>
+      <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>之前学习的查询都只涉及到单表，但在实际应用中还有很大一部分需求，只靠单表查询是实现不了的，比如：查询一个班上的所有人；统计每个班的人数等。那这些需求或问题应该怎么分析和实现，这就是今天要讲解的多表查询。</p>
+
+<p>知识要点：</p>
+
+<ul>
+<li>子查询</li>
+<li>表连接</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/7-query-multi-table/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-sql/6-query-statistics/">小白学 SQL 第六天：统计查询</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-29 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1198 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>今天我们来学习涉及单表查询的最后一种查询方式：统计查询，但让统计查询并不只能用于单表查询的，也可用于多表查询。其实我们前面所有的查询子句都可以用于单表和多表查询，具体多表查询中的使用将在第七天介绍。首先还是看看统计查询里面内容概要，也是今天的知识要点。</p>
+
+<p>知识要点：</p>
+
+<ul>
+<li>统计函数</li>
+<li>分组统计</li>
+<li>过滤分组统计</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/noob-learn-sql/6-query-statistics/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+  </section>
+  
+  <nav class="pagination">
+    
+      <a class="prev" href="/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    
+      <a class="next" href="/page/3/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

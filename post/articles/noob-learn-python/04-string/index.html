@@ -1,0 +1,4455 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python学习 04：python 字符串类型 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Python, python3" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-python/04-string/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="Python学习 04：python 字符串类型" />
+<meta property="og:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-python/04-string/" />
+
+
+
+<meta property="article:published_time" content="2018-07-05T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-07-05T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python学习 04：python 字符串类型">
+<meta itemprop="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。">
+
+
+<meta itemprop="datePublished" content="2018-07-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-05T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3489">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python学习 04：python 字符串类型"/>
+<meta name="twitter:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python学习 04：python 字符串类型</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-05 </span>
+        <div class="post-category">
+            
+              <a href="/categories/python/"> python </a>
+            
+          </div>
+        <span class="more-meta"> 约 3489 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+        <p>字符串是 Python 中最常用的数据类型。我们可以使用引号(&lsquo;或&rdquo;)来创建字符串。</p>
+
+<ul>
+<li>字符串字面量</li>
+<li>字符串操作</li>
+<li>字符串格式化</li>
+<li>字符串转换</li>
+<li>模式匹配（正则表达式）介绍</li>
+</ul>
+
+<p></p>
+
+<script type="text/javascript">
+  var defaultColors = [ '#000', '#D00', '#00CF12', '#C2CB00', '#3100CA',
+  '#E100C6', '#00CBCB', '#C7C7C7', '#686868', '#FF5959', '#00FF6B',
+  '#FAFF5C', '#775AFF', '#FF47FE', '#0FF', '#FFF' ];
+
+function term2html(text, options) {
+  options = options || {};
+  var colors = options.colors || defaultColors;
+
+  
+  
+  
+  
+  text = text.replace(/^.*\u001B\[[12]K/mg, '');
+
+  
+  
+  text = text.replace(/^(.*)\u001B\[(\d+)G/mg, function(_, text, n) {
+    return text.slice(0, n);
+  });
+
+  
+  
+  
+  
+  
+  var state = {
+    bg: -1,
+    fg: -1,
+    bold: false,
+    underline: false,
+    negative: false
+  };
+  text = text.replace(/\u001B\[([\d;]+)m([^\u001B]+)/g, function(_, n, text) {
+    
+    n.split(';').forEach(function(code) {
+      code = code | 0;
+      if (code === 0) {
+        state.bg = -1;
+        state.fg = -1;
+        state.bold = false;
+        state.underline = false;
+        state.negative = false;
+      } else if (code === 1) {
+        state.bold = true;
+      } else if (code === 4) {
+        state.underline = true;
+      } else if (code === 7) {
+        state.negative = true;
+      } else if (code === 21) {
+        state.bold = false;
+      } else if (code === 24) {
+        state.underline = false;
+      } else if (code === 27) {
+        state.negative = false;
+      } else if (code >= 30 && code <= 37) {
+        state.fg = code - 30;
+      } else if (code === 39) {
+        state.fg = -1;
+      } else if (code >= 40 && code <= 47) {
+        state.bg = code - 40;
+      } else if (code === 49) {
+        state.bg = -1;
+      } else if (code >= 90 && code <= 97) {
+        state.fg = code - 90 + 8;
+      } else if (code >= 100 && code <= 107) {
+        state.bg = code - 100 + 8;
+      }
+    });
+
+    
+    var bold = state.bold * 8;
+    var fg, bg;
+    if (state.negative) {
+      fg = state.bg | bold;
+      bg = state.fg;
+    } else {
+      fg = state.fg | bold;
+      bg = state.bg;
+    }
+    fg = colors[fg] || '';
+    bg = colors[bg] || '';
+
+    
+    var style = '';
+    if (bg) {
+      style += 'background-color:' + bg + ';';
+    }
+    if (fg) {
+      style += 'color:' + fg + ';';
+    }
+    if (bold) {
+      style += 'font-weight:bold;';
+    }
+    if (state.underline) {
+      style += 'text-decoration:underline';
+    }
+    var html = text.
+      replace(/&/g, '&amp;').
+      replace(/</g, '&lt;').
+      replace(/>/g, '&gt;');
+
+    
+    if (style) {
+      return '<span style="' + style + '">' + html + '</span>';
+    } else {
+      return html;
+    }
+  });
+
+  return text.replace(/\u001B\[.*?[A-Za-z]/g, '');
+}
+</script>
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="字面量">字面量</h1>
+
+<p>python 中单引号和双引号是一样的
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[1]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'span&quot;&quot;m', &quot;It's&quot;
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;span&#34;&#34;m&#39;, &#34;It&#39;s&#34;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>可以使用 <code>'''</code> 或 <code>&quot;&quot;&quot;</code> 创建字符串</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[2]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'''aaaa''', &quot;&quot;&quot;bbbb&quot;&quot;&quot;
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;aaaa&#39;, &#39;bbbb&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>带有转义字符的字符串，会将 <code>\</code> 看做转义标识</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[3]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">&quot;a\tb\nc\0m&quot;
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;a\tb\nc\x00m&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>原始字符串，以 <code>r</code> 开头并不会将 <code>\</code> 看做转义标识</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[4]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">r&quot;a\b\c&quot;  #
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;a\\b\\c&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>bytes 字符串，，以 <code>b</code> 开头</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[5]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">b'sp\x01am'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >b&#39;sp\x01am&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>Unicode 字符串，以 <code>u</code> 或 <code>U</code> 开头</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[6]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">u'eggs\u0020spam'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;eggs spam&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>多行字符串</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[7]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s = &quot;&quot;&quot;今天天气正好，
+        我们去打球吧。
+这是个好主意&quot;&quot;&quot;
+
+s
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;今天天气正好，\n        我们去打球吧。\n这是个好主意&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[8]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >今天天气正好，
+        我们去打球吧。
+这是个好主意
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[9]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">print('''aaaa
+bbbb
+     ddddd
+    
+ccccc''')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >aaaa
+bbbb
+     ddddd
+    
+ccccc
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="转义特殊字符串">转义特殊字符串</h1>
+
+<p>在需要在字符中使用特殊字符时，python用反斜杠()转义字符。如下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>(在行尾时)</td>
+<td>续行符</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\</td>
+<td>反斜杠符号</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\&rsquo;</td>
+<td>单引号</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\&rdquo;</td>
+<td>双引号</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\a</td>
+<td>响铃</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\f</td>
+<td>换页</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\x</td>
+<td>十六进制数，yy代表的字符，例如：\x0a代表换行</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\o</td>
+<td>八进制数，yy代表的字符，例如：\o12代表换行</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\0</td>
+<td>空</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\u</td>
+<td>16位 Unicode 字符</td>
+<td></td>
+</tr>
+
+<tr>
+<td>\U</td>
+<td>32位 Unicode 字符</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>原始字符串抑制转义</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[10]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s = 'a\nb\tc'
+s
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;a\nb\tc&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[11]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >a
+b	c
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[12]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">len(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >5</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[13]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'\0'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;\x00&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[14]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">len(r'a\nb\tc'), len('a\nb\tc')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(7, 5)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="字符串运算符">字符串运算符</h1>
+
+<p>下表实例变量a值为字符串 &ldquo;Hello&rdquo;，b变量值为 &ldquo;Python&rdquo;：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>+</td>
+<td>字符串连接</td>
+<td>a + b 输出结果： HelloPython</td>
+</tr>
+
+<tr>
+<td>*</td>
+<td>重复输出字符串</td>
+<td>a*2 输出结果：HelloHello</td>
+</tr>
+
+<tr>
+<td>[]</td>
+<td>通过索引获取字符串中字符</td>
+<td>a[1] 输出结果 <strong>e</strong></td>
+</tr>
+
+<tr>
+<td>[ : ]</td>
+<td>截取字符串中的一部分</td>
+<td>a[1:4] 输出结果 <strong>ell</strong></td>
+</tr>
+
+<tr>
+<td>in</td>
+<td>成员运算符 - 如果字符串中包含给定的字符返回 True</td>
+<td><strong>&lsquo;H&rsquo; in a</strong> 输出结果 1</td>
+</tr>
+
+<tr>
+<td>not in</td>
+<td>成员运算符 - 如果字符串中不包含给定的字符返回 True</td>
+<td><strong>&rsquo;M&rsquo; not in a</strong> 输出结果 1</td>
+</tr>
+
+<tr>
+<td>%</td>
+<td>格式字符串</td>
+<td>请看下一节内容。</td>
+</tr>
+</tbody>
+</table>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[15]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'abc' + 'def'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;abcdef&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[16]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'Ni' * 4
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;NiNiNiNi&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[17]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print('-' * 80)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >--------------------------------------------------------------------------------
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[18]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">myjob = &quot;hacker&quot;
+for c in myjob:
+    print(c, end=' ')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >h a c k e r </textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>判断是否子串</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[19]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'k' in myjob
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >True</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[20]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'z' in myjob
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >False</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[21]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'spam' in 'abcspamdef'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >True</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="索引和切割">索引和切割</h2>
+
+<p>S[i]: 抽取第 i 个字符</p>
+
+<p>S[i:j]: 抽取索引为 i 到 j 的子串（包含 i 不包含 j）</p>
+
+<p>S[i:]: 抽取索引为 i 之后的子串（包含 i）</p>
+
+<p>S[:j]:  抽取索引为 j 之前的子串（不包含 j）</p>
+
+<p>S[:]: 抽取整个字符串</p>
+
+<p>S[i:j:k]: 抽取索引为 i 到 j 的子串（包含 i 不包含 j），步长为 k</p>
+
+<p>S[::k]: 抽取整个字符串，步长为 k</p>
+
+<p>S[::-1]: 反向抽取整个字符串</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[22]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">S = 'spam'
+S[0], S[-2]
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;s&#39;, &#39;a&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[23]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">S[1:3], S[1:], S[:-1]
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;pa&#39;, &#39;pam&#39;, &#39;spa&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[24]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">S[0:4:2], S[::2], S[::-1]
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;sa&#39;, &#39;sa&#39;, &#39;maps&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="字符串不可改变性">字符串不可改变性</h2>
+
+<p>任何操作都不能改变原始字符串对象本身，都是产生新的字符串对象。当我们用变量时，会有一种改变字符串对象的错觉，这时其实是将变量指向了一个新的字符串对象。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[25]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">S = 'spam'
+S[0] = 'x'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-25-7ffb2cc33b47&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0mS[0m [0;34m=[0m [0;34m&#39;spam&#39;[0m[0;34m[0m[0m
+[0;32m----&gt; 2[0;31m [0mS[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m=[0m [0;34m&#39;x&#39;[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: &#39;str&#39; object does not support item assignment</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[26]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">S = S + 'SPAM!'  # 并没有改变原来的 'spam' 字符串对象，而是产生了一个新的字符串对象，并将变量 S 指向新对象
+S
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;spamSPAM!&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[27]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">S.replace('am', 'xxxx'), S  # 字符串的任何操作都不能改变源字符串对象
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;spxxxxSPAM!&#39;, &#39;spamSPAM!&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    更多例子。注意这里的 <code>spam</code> 和 <code>eggs</code> 在内存中存储是不一样的，感兴趣的可以 google 一下。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[28]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">B = b'spam'
+S = 'eggs'
+type(B), type(S)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(bytes, str)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[29]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">B, S
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(b&#39;spam&#39;, &#39;eggs&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[30]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">B[0], S[0]
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(115, &#39;e&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[31]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">B[1:], S[1:]
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(b&#39;pam&#39;, &#39;ggs&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[32]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">list(B), list(S)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >([115, 112, 97, 109], [&#39;e&#39;, &#39;g&#39;, &#39;g&#39;, &#39;s&#39;])</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="字符串转换">字符串转换</h1>
+
+<h2 id="数字转换">数字转换</h2>
+
+<p>和其他动态类型语言不同，python 中字符串对象和数值对象是不能直接做运算的，必须进行显示转换。这是 python 和其他动态类型语言不同的地方，它的类型动态性只是表现在变量上面，对于对象本身必须是特定类型，并且是强类型的。对于变量和对象的关系请看前面的文章。</p>
+
+<p>以下是一些实例：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[33]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'42' + 1
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-33-5d43c357ae74&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[0;32m----&gt; 1[0;31m [0;34m&#39;42&#39;[0m [0;34m&#43;[0m [0;36m1[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: must be str, not int</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[34]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">int('42'), str(42)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(42, &#39;42&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[35]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">repr(42)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;42&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[36]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print(str('spam'), repr('spam'))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >spam &#39;spam&#39;
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>这里我们使用到了 <code>str</code> 和 <code>repr</code> 两个字符串函数，发现他们返回的东西几乎一样，其实他们是有差别的:</p>
+
+<ul>
+<li><code>str()</code>  的输出追求可读性，输出格式要便于理解，适合用于输出内容到用户终端。</li>
+<li><code>repr()</code> 的输出追求明确性，除了对象内容，还需要展示出对象的数据类型信息，适合开发和调试阶段使用。</li>
+</ul>
+
+<p>有兴趣的可以使用 <code>help</code> 方法查看两者的区别。</p>
+
+<p>以下是更多实例：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[37]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">int(&quot;42&quot;) + 1
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >43</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[38]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">&quot;42&quot; + str(1)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;421&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[39]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">&quot;1.234E-10&quot;, float(&quot;1.234E-10&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;1.234E-10&#39;, 1.234e-10)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[40]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">B = '1101'
+I = 0
+while B!='':
+    I = I*2 + (ord(B[0]) - ord('0'))
+    B = B[1:]
+I
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >13</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[41]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">int('1101', 2), bin(13)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(13, &#39;0b1101&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="字符编码转换">字符编码转换</h2>
+
+<p>对于单个字符可以使用 <code>ord()</code> 函数获取他的 ASCII 码值，一个 ASCII 码值使用 <code>chr()</code> 得到对于的字符。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[42]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">ord('s'), chr(115)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(115, &#39;s&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    将字符转换成 ASCII 码过后，可以进行算数运算。但是直接使用字符做算数运算会报错，这里和 C 语言是不一样的。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[43]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">chr(ord('5')+1)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;6&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[44]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">ord('5') - ord('0')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >5</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[45]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'5' - '0'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-45-f436e1546941&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[0;32m----&gt; 1[0;31m [0;34m&#39;5&#39;[0m [0;34m-[0m [0;34m&#39;0&#39;[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="字符串方法调用">字符串方法调用</h1>
+
+<p>使用 <code>dir(&quot;&quot;)</code> 查看字符串类型有哪些支持的内置方法。每个方法的具体使用方式再使用 <code>help()</code> 查看。这里只列举部分方法使用
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[46]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 字符串长度
+len('abc')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >3</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[47]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 分隔字符串
+'a,b,c'.split(',')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[48]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 字符串拼接
+'&gt;'.join(['a','b','c'])
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;a&gt;b&gt;c&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="字符串格式化">字符串格式化</h1>
+
+<ol>
+<li>格式化表达式：&rsquo;&hellip;%s&hellip;&rsquo; %(values)</li>
+<li>格式化方法调用：&rsquo;&hellip;{}&hellip;&lsquo;.format(values)</li>
+</ol>
+
+<p>格式化符号</p>
+
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+
+<tr>
+<td>%r</td>
+<td>和 s 类似，但是使用 repr 输出</td>
+</tr>
+
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+
+<tr>
+<td>%i</td>
+<td>格式化整数</td>
+</tr>
+
+<tr>
+<td>%u</td>
+<td>格式化无符号整型</td>
+</tr>
+
+<tr>
+<td>%o</td>
+<td>格式化无符号八进制数</td>
+</tr>
+
+<tr>
+<td>%x</td>
+<td>格式化无符号十六进制数</td>
+</tr>
+
+<tr>
+<td>%X</td>
+<td>格式化无符号十六进制数（大写）</td>
+</tr>
+
+<tr>
+<td>%f</td>
+<td>格式化浮点数字，可指定小数点后的精度</td>
+</tr>
+
+<tr>
+<td>%F</td>
+<td>和 f 类似，但是字母大写</td>
+</tr>
+
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+
+<tr>
+<td>%E</td>
+<td>作用同%e，用科学计数法格式化浮点数</td>
+</tr>
+
+<tr>
+<td>%g</td>
+<td>%f和%e的简写</td>
+</tr>
+
+<tr>
+<td>%G</td>
+<td>%f 和 %E 的简写</td>
+</tr>
+
+<tr>
+<td>%p</td>
+<td>用十六进制数格式化变量的地址</td>
+</tr>
+
+<tr>
+<td>%%</td>
+<td>输出 %</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>基础格式化语法</p>
+
+<p><code>%[(keyname)][flags][width][.precision]typecode</code></p>
+
+<p>高级格式化语法</p>
+
+<dl>
+<dt><code>{fieldname component !conversionflag :formatspec}</code></dt>
+<dd><p>formatspec: <code>[[fill]align][sign][#][0][width][,][.precision][typecode]</code></p></dd>
+</dl>
+</blockquote>
+
+<h2 id="格式化表达式">格式化表达式</h2>
+
+<p>以下是一些实例</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[49]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">x = 1234
+'integers: ...%d...%-6d...%06d' % (x,x,x)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;integers: ...1234...1234  ...001234&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[50]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">x = 1.23456789
+'%e | %f |%g' %(x,x,x)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;1.234568e&#43;00 | 1.234568 |1.23457&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[51]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'%E' % x
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;1.234568E&#43;00&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    更多格式化类型使用，请自行实践
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[52]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'%s' % x, str(x)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(&#39;1.23456789&#39;, &#39;1.23456789&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[53]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 基于字典的格式化
+
+'a=%(a)d; b=%(bb)s' % {'a': 1, 'bb':'bbbb'}
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;a=1; b=bbbb&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <code>vars()</code> 函数返回所有的变量
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[54]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'%(x)s or %(S)s' % vars()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;1.23456789 or eggs&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <h2 id="格式化方法">格式化方法</h2>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[55]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">template = '{0}, {1}, {2}'
+template.format('spam', 'orange', 'apple')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;spam, orange, apple&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[56]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">template = '{}, {}, {}'
+template.format('spam', 'orange', 'apple')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;spam, orange, apple&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[57]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">template = '{a}, {b}, {c}'
+template.format(a='spam', c='orange', b='apple')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;spam, apple, orange&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[58]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">template = '{a}, {b}, {0}'
+template.format('spam', a='orange', b='apple')
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;orange, apple, spam&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>添加关键字、属性和偏移量</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[59]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">import sys
+'My {1[kind]} runs {0.platform}'.format(sys, {'kind': 'laptop'})
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;My laptop runs linux&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[60]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'My {map[kind]} runs {sys.platform}'.format(sys=sys, map={'kind': 'laptop'})
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;My laptop runs linux&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>高级格式化</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[61]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">'{:,d}'.format(9999999999)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&#39;9,999,999,999&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="bytearray-操作">bytearray 操作</h1>
+
+<p>对于 bytearray 这里列举一些使用的实例，不做深入介绍。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[62]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">S = 'spam'
+# C = bytearray(S)  # 此语句在2.6+正常，但是在 3.X 中会语法错误
+C = bytearray(S, 'latin1') 
+C
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >bytearray(b&#39;spam&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[63]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">C = bytearray(b'spam')
+C
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >bytearray(b&#39;spam&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[64]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># bytearray 可以修改
+C[0] = 10
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[65]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 但是修改必须是整数，不能是字符
+C[0] = '1'
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-65-7c46a9aa2011&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0;31m# 但是修改必须是整数，不能是字符[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----&gt; 2[0;31m [0mC[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m=[0m [0;34m&#39;1&#39;[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: an integer is required</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[66]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">C[0] = ord('1')
+C[1] = b'Y'[0]
+C
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >bytearray(b&#39;1Yam&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[67]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">C
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >bytearray(b&#39;1Yam&#39;)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="模式匹配">模式匹配</h1>
+
+<p>模式匹配也叫正则表达式，也是字符串处理的一种方式，由于其强大功能，在实际项目中被普遍使用。现在不论是什么语言都有提供模式匹配的功能，并且在正则表达式的功能和语法上都打通大同小异。由于其语言的独立性和重要性后面会单独讲解，这里为了字符串操作的完整性做简单的实例展示，不解释。
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>查找匹配</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[68]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">import re
+
+s='123abc456eabc789'
+print(re.findall(r'abc',s))
+
+s = 'I have a dog , I have a cat'
+print(re.findall( r'I have a (?:dog|cat)' , s ))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[&#39;abc&#39;, &#39;abc&#39;]
+[&#39;I have a dog&#39;, &#39;I have a cat&#39;]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>使用compile加速</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[69]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s='111,222,aaa,bbb,555,ccc333,444ddd'
+rule=r'\b\d+\b'
+compiled_rule=re.compile(rule)
+compiled_rule.findall(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >[&#39;111&#39;, &#39;222&#39;, &#39;555&#39;]</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <strong>匹配数字开头</strong>
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[71]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s='123 456/n789 012/n345 678'
+rc=re.compile(r'^\d+') 
+rc.findall(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >[&#39;123&#39;]</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="小结">小结</h1>
+
+<p>一篇文章不可能把字符串的方方面面都包括进来，比如字符串在 python 的存储、不同字符集的转行等。同时刚开始我们也不能用到所有的这些知识内容，所以在刚开始重点应该放在实际编码操作和整体知识体系的建立上，等熟练了或后面遇到相关问题了，在深入研究某块内容。希望对大家能有所帮助。
+    
+
+    
+
+  
+
+<script type="text/javascript">
+  $(".outputs>textarea").each(function(){
+    var el = $(this);
+    console.log(el)
+    el.parent().html(function (text) {
+      return term2html(text
+                          .replace(/\n/g,'br-and-br')
+                          .replace(/ /g, 'sp-and-sp'))
+                    .replace(/(br-and-br)/g,'<br/>')
+                    .replace(/(sp-and-sp)/g, '&nbsp;')
+                 ;
+    }(el.val()));
+  })
+</script>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-07-05</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/articles/noob-learn-python/05-list-dict/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python学习 05：python 列表、元组、字典</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/articles/noob-learn-python/03-number/">
+            <span class="next-text nav-default">Python学习 03：python 数值类型</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-07-05 00:00:00 \x2b0000 UTC',
+    title: 'Python学习 04：python 字符串类型',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e字符串是 Python 中最常用的数据类型。我们可以使用引号(\x26lsquo;或\x26rdquo;)来创建字符串。\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e字符串字面量\x3c\/li\x3e\n\x3cli\x3e字符串操作\x3c\/li\x3e\n\x3cli\x3e字符串格式化\x3c\/li\x3e\n\x3cli\x3e字符串转换\x3c\/li\x3e\n\x3cli\x3e模式匹配（正则表达式）介绍\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

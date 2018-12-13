@@ -1,0 +1,4812 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python学习 07：函数 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" /><meta name="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta name="keywords" content="Threeq, 博客, 程序员, 架构师, Python, python3" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/noob-learn-python/07-function-lambda/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="Python学习 07：函数" />
+<meta property="og:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/noob-learn-python/07-function-lambda/" />
+
+
+
+<meta property="article:published_time" content="2018-07-30T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-07-30T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python学习 07：函数">
+<meta itemprop="description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。">
+
+
+<meta itemprop="datePublished" content="2018-07-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="7723">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python学习 07：函数"/>
+<meta name="twitter:description" content="python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python学习 07：函数</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-30 </span>
+        <div class="post-category">
+            
+              <a href="/categories/python/"> python </a>
+            
+          </div>
+        <span class="more-meta"> 约 7723 字 </span>
+        <span class="more-meta"> 预计阅读 16 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+        <p>这次学习 python 中函数的基础知识</p>
+
+<ul>
+<li>函数定义</li>
+<li>函数参数</li>
+<li>匿名函数</li>
+<li>生产函数</li>
+<li>变量作用域
+等</li>
+</ul>
+
+<p></p>
+
+<script type="text/javascript">
+  var defaultColors = [ '#000', '#D00', '#00CF12', '#C2CB00', '#3100CA',
+  '#E100C6', '#00CBCB', '#C7C7C7', '#686868', '#FF5959', '#00FF6B',
+  '#FAFF5C', '#775AFF', '#FF47FE', '#0FF', '#FFF' ];
+
+function term2html(text, options) {
+  options = options || {};
+  var colors = options.colors || defaultColors;
+
+  
+  
+  
+  
+  text = text.replace(/^.*\u001B\[[12]K/mg, '');
+
+  
+  
+  text = text.replace(/^(.*)\u001B\[(\d+)G/mg, function(_, text, n) {
+    return text.slice(0, n);
+  });
+
+  
+  
+  
+  
+  
+  var state = {
+    bg: -1,
+    fg: -1,
+    bold: false,
+    underline: false,
+    negative: false
+  };
+  text = text.replace(/\u001B\[([\d;]+)m([^\u001B]+)/g, function(_, n, text) {
+    
+    n.split(';').forEach(function(code) {
+      code = code | 0;
+      if (code === 0) {
+        state.bg = -1;
+        state.fg = -1;
+        state.bold = false;
+        state.underline = false;
+        state.negative = false;
+      } else if (code === 1) {
+        state.bold = true;
+      } else if (code === 4) {
+        state.underline = true;
+      } else if (code === 7) {
+        state.negative = true;
+      } else if (code === 21) {
+        state.bold = false;
+      } else if (code === 24) {
+        state.underline = false;
+      } else if (code === 27) {
+        state.negative = false;
+      } else if (code >= 30 && code <= 37) {
+        state.fg = code - 30;
+      } else if (code === 39) {
+        state.fg = -1;
+      } else if (code >= 40 && code <= 47) {
+        state.bg = code - 40;
+      } else if (code === 49) {
+        state.bg = -1;
+      } else if (code >= 90 && code <= 97) {
+        state.fg = code - 90 + 8;
+      } else if (code >= 100 && code <= 107) {
+        state.bg = code - 100 + 8;
+      }
+    });
+
+    
+    var bold = state.bold * 8;
+    var fg, bg;
+    if (state.negative) {
+      fg = state.bg | bold;
+      bg = state.fg;
+    } else {
+      fg = state.fg | bold;
+      bg = state.bg;
+    }
+    fg = colors[fg] || '';
+    bg = colors[bg] || '';
+
+    
+    var style = '';
+    if (bg) {
+      style += 'background-color:' + bg + ';';
+    }
+    if (fg) {
+      style += 'color:' + fg + ';';
+    }
+    if (bold) {
+      style += 'font-weight:bold;';
+    }
+    if (state.underline) {
+      style += 'text-decoration:underline';
+    }
+    var html = text.
+      replace(/&/g, '&amp;').
+      replace(/</g, '&lt;').
+      replace(/>/g, '&gt;');
+
+    
+    if (style) {
+      return '<span style="' + style + '">' + html + '</span>';
+    } else {
+      return html;
+    }
+  });
+
+  return text.replace(/\u001B\[.*?[A-Za-z]/g, '');
+}
+</script>
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>在上一次最后留给思考：给定三条线段的长度，判断是否能组成三角形，如果能输出三角形：普通三角形、等腰三角形、等边三角形或直角三角形。不知道大家有没有写出求解程序，如果没有写出来也没有关系，今天会给出一种解决方案。如果大家去写了就会发现，我们在求解三角形类型的时候，每次需要判断新给定的三条边时，都需要重复输入一遍求解代码，这样就会出现很多代码的重复输入，有没有什么办法能让我们不必重复输入相同逻辑代码呢？这个是肯定有的，其中一种解决方案就是今天讲解的 <strong>函数</strong>。在介绍函数之前，先来整体了解一下为什么需要使用函数？</p>
+
+<ol>
+<li>就像上面介绍的：最大化代码重用，最小化代码冗余。冗余就是指代码重复</li>
+<li>程序分解。在代码量越来越大后，就需要我们将大的程序进行分解，且有效的组织代码结构，函数就是分解和组织代码的最基础手段之一。</li>
+</ol>
+
+<h1 id="函数定义">函数定义</h1>
+
+<pre><code>def fun_name(arg1, arg2,... argN):
+    statements
+</code></pre>
+
+<p>函数常常包含有返回值，这个时候函数至少包含一个 <code>return</code>语句。包含有返回语句的函数</p>
+
+<pre><code>def fun_name(arg1, arg2,... argN):
+    ...
+    return value
+</code></pre>
+
+<p>简单的规则：</p>
+
+<ul>
+<li>函数代码块以 def 关键词开头，后接函数标识符名称和圆括号 ()。</li>
+<li>任何传入参数和自变量必须放在圆括号中间，圆括号之间可以用于定义参数。</li>
+<li>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</li>
+<li>函数内容以冒号起始，并且缩进。</li>
+<li>return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。</li>
+</ul>
+
+<p>下面是一个输出 “你好” 的函数定义</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[2]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def hello():
+    print(&quot;你好！&quot;)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    再看一个复杂点的函数定义
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[18]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 打印一个加法口诀表
+def tab(x):
+    for i in range(x+1):
+        for j in range(1, i+1):
+            print('%d+%d=%d' %(j,i,i+j), end='\t')
+        print()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="函数调用">函数调用</h1>
+
+<p>函数定义完成后，使用如下格式调用</p>
+
+<ul>
+<li>无参数函数调用：func_name()</li>
+<li>有参数函数调用：func_name(arg1,arg2,&hellip;)</li>
+</ul>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[6]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">hello()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >你好！
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[19]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">tab(9)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >
+1&#43;1=2	
+1&#43;2=3	2&#43;2=4	
+1&#43;3=4	2&#43;3=5	3&#43;3=6	
+1&#43;4=5	2&#43;4=6	3&#43;4=7	4&#43;4=8	
+1&#43;5=6	2&#43;5=7	3&#43;5=8	4&#43;5=9	5&#43;5=10	
+1&#43;6=7	2&#43;6=8	3&#43;6=9	4&#43;6=10	5&#43;6=11	6&#43;6=12	
+1&#43;7=8	2&#43;7=9	3&#43;7=10	4&#43;7=11	5&#43;7=12	6&#43;7=13	7&#43;7=14	
+1&#43;8=9	2&#43;8=10	3&#43;8=11	4&#43;8=12	5&#43;8=13	6&#43;8=14	7&#43;8=15	8&#43;8=16	
+1&#43;9=10	2&#43;9=11	3&#43;9=12	4&#43;9=13	5&#43;9=14	6&#43;9=15	7&#43;9=16	8&#43;9=17	9&#43;9=18	
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[21]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">tab(7)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >
+1&#43;1=2	
+1&#43;2=3	2&#43;2=4	
+1&#43;3=4	2&#43;3=5	3&#43;3=6	
+1&#43;4=5	2&#43;4=6	3&#43;4=7	4&#43;4=8	
+1&#43;5=6	2&#43;5=7	3&#43;5=8	4&#43;5=9	5&#43;5=10	
+1&#43;6=7	2&#43;6=8	3&#43;6=9	4&#43;6=10	5&#43;6=11	6&#43;6=12	
+1&#43;7=8	2&#43;7=9	3&#43;7=10	4&#43;7=11	5&#43;7=12	6&#43;7=13	7&#43;7=14	
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    再看一个有返回值的函数定义和调用。求两个数的和。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[23]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 定义 add 函数，并返回 2 个数的和
+def add(x,y):
+    return x+y
+
+# 调用 add 函数
+print(&quot;直接使用调用结果：&quot;, add(3,4))
+
+# 保存函数调用结果
+result = add(5,6)
+print(&quot;保存使用调用结果：&quot;, add(3,4))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >直接使用调用结果： 7
+保存使用调用结果： 7
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="函数参数">函数参数</h1>
+
+<p>由于 python 动态类型域名，在使用到变量的时候才会动态计算类型，
+每一个函数都有自己处理和使用参数的方式，这也决定了调用时传入的参数必须符合函数处理时对变量使用的规范。
+所以在函数调用的时候需要注意，传入的参数类型。</p>
+
+<p>比如上线定义的 <code>add</code> 函数，虽然本意是计算两个数的和。但是它的实际语义是：将 <code>+</code> 运算符作用到变量 x 引用的对象和变量 y 引用的对象上，所以只要 x 引用对象和 y 引用对象符合 <code>+</code> 运算符定义，都可以正常调用 <code>add</code> 函数。比如下面的调用：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[26]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">print(add('aa', 'b'))
+print(add([1,2],[3,4,5]))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >aab
+[1, 2, 3, 4, 5]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    但是下面的调用将会出现错误，因为 <code>+</code> 运算符不能同时应用到 2 个不同类型的对象
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[34]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># error
+add('aa',4)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-34-7f8ab9385845&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0;31m# error[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----&gt; 2[0;31m [0madd[0m[0;34m([0m[0;34m&#39;aa&#39;[0m[0;34m,[0m[0;36m4[0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;32m&lt;ipython-input-23-a620d74bd031&gt;[0m in [0;36madd[0;34m(x, y)[0m
+[1;32m      1[0m [0;31m# 定义 add 函数，并返回 2 个数的和[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mdef[0m [0madd[0m[0;34m([0m[0mx[0m[0;34m,[0m[0my[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0m
+[0;32m----&gt; 3[0;31m     [0;32mreturn[0m [0mx[0m[0;34m&#43;[0m[0my[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;31m# 调用 add 函数[0m[0;34m[0m[0;34m[0m[0m
+[0;31mTypeError[0m: must be str, not int</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="参数传递">参数传递</h2>
+
+<p>python 中一切数据都是对象。在定义时定义的参数只是一个变量，在函数调用时传入的参数才是对象，并将响应的参数变量引用到传入的对象。
+比如上面的 <code>add</code> 方法定义和调用，在定义时定义了 x 和 y 两个参数变量，调用 <code>add(3,4)</code> 时，传入了 3 和 4 两个对象，这时变量 x 引用到 3 这个对象，变量 y 引用到 4 这个对象。请看下面的例子：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[8]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a=&quot;99&quot;
+b=[1,2,3]
+def f(x, y):
+    print(&quot;x 参数传入:&quot;)
+    print(&quot;    &quot;, x==a)
+    print(&quot;    &quot;, id(x), id(a)) # 返回对象的唯一标识符
+    print(&quot;    &quot;, x is a)
+    print(&quot;y 参数传入:&quot;)
+    print(&quot;    &quot;, y==b)
+    print(&quot;    &quot;, id(y), id(b)) # 返回对象的唯一标识符
+    print(&quot;    &quot;, y is b)
+
+f(a,b)
+print(&quot;=================&quot;)
+a=1
+b=(1,2,2)
+f(a,b)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >x 参数传入:
+     True
+     139675229648744 139675229648744
+     True
+y 参数传入:
+     True
+     139675167007112 139675167007112
+     True
+=================
+x 参数传入:
+     True
+     139675395447968 139675395447968
+     True
+y 参数传入:
+     True
+     139675166995008 139675166995008
+     True
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    从上面的实例可以看到不论传入的何种参数类型（简单对象或复杂对象、可变对象或不可变对象），函数的参数变量引用的对象都是原始对象，这里和其他语言里面种传值调用和传引用调用是不一样的。此时变量 a 和 参数变量 x 引用的是同一个对象，变量 b 和参数变量 y引用的同一个对象，所以在参数里面对 x 或 y 进行修改会影响 a 或 b 的访问结果；但是对 a 和 b 进行赋值不会影响 a 或 b 的访问结果，因为赋值只是将 a 或 b 引用到新的对象，并没有改变原有对象。请看下面例子：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[14]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a = [1]
+b = [1]
+print(&quot;a=&quot;,a,&quot; b=&quot;,b)
+def change(x,y):
+    x.append([1,2])
+    y = y+[1,2]
+    print(&quot;x=&quot;,x,&quot; y=&quot;,y)
+
+    
+change(a,b)
+print(&quot;a=&quot;,a,&quot; b=&quot;,b)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >a= [1]  b= [1]
+x= [1, [1, 2]]  y= [1, 1, 2]
+a= [1, [1, 2]]  b= [1]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>参数修改影响传入对象，只发生在 <strong>可变对象</strong> 上，因为试着修改不可变对象将会报错，
+所以对于传入不可变对象只能对参数变量做赋值或取值操作，不能修改操作。</p>
+
+<p>见下面例子：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[17]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a = (1,1)
+b = [1]
+change(a,b)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mAttributeError[0m                            Traceback (most recent call last)[0;32m&lt;ipython-input-17-25239a894afa&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      1[0m [0ma[0m [0;34m=[0m [0;34m([0m[0;36m1[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0m
+[1;32m      2[0m [0mb[0m [0;34m=[0m [0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m[0m[0m
+[0;32m----&gt; 3[0;31m [0mchange[0m[0;34m([0m[0ma[0m[0;34m,[0m[0mb[0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;32m&lt;ipython-input-14-f7db784409a1&gt;[0m in [0;36mchange[0;34m(x, y)[0m
+[1;32m      3[0m [0mprint[0m[0;34m([0m[0;34m&#34;a=&#34;[0m[0;34m,[0m[0ma[0m[0;34m,[0m[0;34m&#34; b=&#34;[0m[0;34m,[0m[0mb[0m[0;34m)[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mdef[0m [0mchange[0m[0;34m([0m[0mx[0m[0;34m,[0m[0my[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0m
+[0;32m----&gt; 5[0;31m     [0mx[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0;34m[[0m[0;36m1[0m[0;34m,[0m[0;36m2[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0m
+[0m[1;32m      6[0m     [0my[0m [0;34m=[0m [0my[0m[0;34m&#43;[0m[0;34m[[0m[0;36m1[0m[0;34m,[0m[0;36m2[0m[0;34m][0m[0;34m[0m[0m
+[1;32m      7[0m     [0mprint[0m[0;34m([0m[0;34m&#34;x=&#34;[0m[0;34m,[0m[0mx[0m[0;34m,[0m[0;34m&#34; y=&#34;[0m[0;34m,[0m[0my[0m[0;34m)[0m[0;34m[0m[0m
+[0;31mAttributeError[0m: &#39;tuple&#39; object has no attribute &#39;append&#39;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="参数">参数</h2>
+
+<p>调用函数时可使用的正式参数类型：</p>
+
+<ul>
+<li>必需参数</li>
+<li>关键字参数</li>
+<li>默认参数</li>
+<li>不定长参数</li>
+<li>命名参数</li>
+<li>不定长命名参数</li>
+</ul>
+
+<p>他们的区别主要主要体现在 <em>声明方式、调用解析</em> 的不同。</p>
+
+<h3 id="必需参数">必需参数</h3>
+
+<p>必需参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样。</p>
+
+<ul>
+<li>声明方式：正常的参数变量</li>
+<li>调用解析：严格位置前后顺序解析</li>
+</ul>
+
+<p>比如上面的 <code>change</code> 函数的参数都是必要参数。</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[21]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def change(x,y):
+    x.append([1,2])
+    y = y+[1,2]
+    print(&quot;x=&quot;,x,&quot; y=&quot;,y)
+
+    
+a = [1]
+b = [2]
+change(a,b)
+print(&quot;a=&quot;,a,&quot; b=&quot;,b)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >x= [1, [1, 2]]  y= [2, 1, 2]
+a= [1, [1, 2]]  b= [2]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h3 id="关键字参数">关键字参数</h3>
+
+<p>关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。</p>
+
+<ul>
+<li>声明方式：正常的参数变量，和必需参数相同</li>
+<li>调用解析：在调用是具体指定传入的参数变量，不受前后顺序限制，关键字必须是声明的参数变量</li>
+</ul>
+
+<p>由于声明方式和必须参数相同，还是以上面的 <code>change</code> 函数为例（不需重新声明）看调用方式</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[27]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a = [1]
+b = [2]
+change(y=a,x=b)        # 指定传入特定的参数变量关键字
+print(&quot;a=&quot;,a,&quot; b=&quot;,b)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >x= [2, [1, 2]]  y= [1, 1, 2]
+a= [1]  b= [2, [1, 2]]
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h3 id="默认参数">默认参数</h3>
+
+<p>在函数定义声明参数时，可以给参数一个默认值，在函数调用时如果没有传入这个参数，就会使用默认值。</p>
+
+<ul>
+<li>声明方式：正常的参数变量，在声明是赋值一个默认值。默认参数的声明一定要在必要参数之后。</li>
+<li>调用解析：没有传入时解析到默认值，传入参数时解析到传入值。传入值调用方式可以是 必要参数 或 关键字参数 形式</li>
+</ul>
+
+<blockquote>
+<p>注意：不是默认参数，在调用时必须参数值</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[32]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def add(a,b=2):
+    return a+b
+
+print(&quot;正常参数调用：&quot;,add(1))
+print(&quot;默认参数调用：&quot;,add(1,4))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >正常参数调用： 3
+默认参数调用： 5
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    以下声明方式是错误的：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[33]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def add(a=1,b):
+    return a+b
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >[0;36m  File [0;32m&#34;&lt;ipython-input-33-70d1e75f5033&gt;&#34;[0;36m, line [0;32m1[0m
+[0;31m    def add(a=1,b):[0m
+[0m           ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m non-default argument follows default argument
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h3 id="不定长参数">不定长参数</h3>
+
+<p>上面 <code>add</code> 实现了求 2 个数的和，如果我们需要同时求多个数的和呢？
+并且数的数量还不是确定的，总不能每次调用都修改一遍函数定义吧！
+这个时候就需要使用不定长参数。</p>
+
+<p>不定长参数接受在函数调用时传入任意多个参数。</p>
+
+<ul>
+<li>声明方式：前面带有 <code>*</code> 的参数就是不定长参数。不定长参数的声明一定要在必要参数或默认参数之后。</li>
+<li>调用解析：没有传入时解析到默认值，传入参数时解析到传入值。传入值调用方式可以是 必要参数 或 关键字参数 形式</li>
+</ul>
+
+<blockquote>
+<p>注意：</p>
+
+<ul>
+<li>一个函数里面只能有一个不定长参数</li>
+<li>不定长参数类型是 <code>tuple</code>，就意味着不定长参数本身是不可改变的，但是传入的可变数据是可以改变的</li>
+</ul>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[43]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def add(a,b=2, *other):
+    print(&quot;[other] 参数类型:&quot;, type(other),other)
+    return a+b+sum(other)
+
+print(add(1))
+print(add(1,2))
+print(add(1,2,3,4))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[other] 参数类型: &lt;class &#39;tuple&#39;&gt; ()
+3
+[other] 参数类型: &lt;class &#39;tuple&#39;&gt; ()
+3
+[other] 参数类型: &lt;class &#39;tuple&#39;&gt; (3, 4)
+10
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="命名参数">命名参数</h2>
+
+<p>在不定长参数后面声明的参数就是命名参数。命名参数的调用必须使用关键字参数的调用方式调用。</p>
+
+<ul>
+<li>声明方式：参数名字和必须参数一样，只是位置在不定参数之后</li>
+<li>调用解析：调用时必须使用使用关键字参数调用方式</li>
+</ul>
+
+<blockquote>
+<p>注意：
+* 命名参数尽量为其声明默认值
+* 不定长参数的名字可以省略，只保留 <code>*</code>。这个时候只是表示后面的参数是命名参数，不再接受不定长参数</p>
+</blockquote>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[53]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def add(a,b=2, *other, c):
+    print(&quot;[other] 参数类型:&quot;, type(other),other)
+    return a+b+sum(other)+c
+
+print(add(1,2,3,4,c=5))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[other] 参数类型: &lt;class &#39;tuple&#39;&gt; (3, 4)
+15
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    当不接受不定长参数的例子：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[59]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def add_3(a,b=2, *, c):
+    return a+b+c
+
+print(add_3(1,2, c=3))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >6
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    但是下面的调用时错误的，因为参数个数不匹配
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[61]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print(add_3(1,2,3,4,c=5))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mTypeError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-61-5b2ac4a65da2&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[0;32m----&gt; 1[0;31m [0mprint[0m[0;34m([0m[0madd_3[0m[0;34m([0m[0;36m1[0m[0;34m,[0m[0;36m2[0m[0;34m,[0m[0;36m3[0m[0;34m,[0m[0;36m4[0m[0;34m,[0m[0mc[0m[0;34m=[0m[0;36m5[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;31mTypeError[0m: add_3() takes from 1 to 2 positional arguments but 4 positional arguments (and 1 keyword-only argument) were given</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="不定长命名参数">不定长命名参数</h2>
+
+<p>在函数调用时接受传入任意多个命名参数。</p>
+
+<ul>
+<li>声明方式：前面带有 ** 的参数。不定长参数的声明一定要在必要参数、默认参数或命名参数之后。</li>
+<li>调用解析：以关键字参数形式调用，对于不能匹配的的必要参数或关键字参数，都将放入这个参数中</li>
+</ul>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[67]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def named_p(a=1, **args):
+    print(a)
+    print(&quot;named p:&quot;, args)
+    
+named_p(1,b=2,c=3)
+named_p(a=1,b=2,c=3)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >1
+named p: {&#39;b&#39;: 2, &#39;c&#39;: 3}
+1
+named p: {&#39;b&#39;: 2, &#39;c&#39;: 3}
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    以下调用会出现错误
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[209]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">named_p(a=1,3,4)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >[0;36m  File [0;32m&#34;&lt;ipython-input-209-5ace63a7163f&gt;&#34;[0;36m, line [0;32m1[0m
+[0;31m    named_p(a=1,3,4)[0m
+[0m               ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m positional argument follows keyword argument
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    现在针对上片的练习可以使用函数实现了：判断三角形形状
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[223]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def shape(a,b,c):
+    &quot;&quot;&quot;
+    判断三角形形状
+    a、b、c 给定三角形三条边长度
+    &quot;&quot;&quot;
+    ms,md,mx = sorted([a,b,c])
+    
+    if ms &lt;= mx-md:
+        print(&quot;不能组成三角形&quot;)
+    elif ms==md and md==mx:
+        print(&quot;等边三角形&quot;)
+    elif ms==md or md==mx:
+        if ms**2 + md**2 == mx**2:
+            print(&quot;等腰直角三角形&quot;)
+        else:
+            print(&quot;等腰三角形&quot;)
+    elif ms**2 + md**2 == mx**2:
+        print(&quot;直角三角形&quot;)
+    else:
+        print(&quot;普通三角形&quot;)
+    return
+
+shape(1,3,2)
+shape(1,2,2)
+shape(3,3,3)
+shape(3,4,5)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >不能组成三角形
+等腰三角形
+等边三角形
+直角三角形
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    <h1 id="函数注解">函数注解</h1>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[55]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def func1(a,b,c):
+    return a+b+c
+
+func1(1,2,3)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >6</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[62]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def func2(a:'spam', b:(1,10), c:float)-&gt;int:
+    return a+b+c
+    
+func2(1,2,3)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >6</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[60]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">func2.__annotations__
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >{&#39;a&#39;: &#39;spam&#39;, &#39;b&#39;: (1, 10), &#39;c&#39;: float, &#39;return&#39;: int}</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[63]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def func2(a:'spam'=4, b:(1,10)=5, c:float=6)-&gt;int:
+    return a+b+c
+func2()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >15</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="匿名函数-lambda">匿名函数：lambda</h1>
+
+<p>python 使用 lambda 来创建匿名函数。</p>
+
+<p>所谓匿名，意即不再使用 def 语句这样标准的形式定义一个函数。</p>
+
+<ul>
+<li>lambda 只是一个表达式，函数体比 def 简单很多。</li>
+<li>lambda的主体是一个表达式，而不是一个代码块。仅仅能在lambda表达式中封装有限的逻辑进去。</li>
+<li>lambda 函数拥有自己的命名空间，且不能访问自己参数列表之外或全局命名空间里的参数。</li>
+<li>虽然lambda函数看起来只能写一行，却不等同于C或C++的内联函数，后者的目的是调用小函数时不占用栈内存从而增加运行效率。</li>
+</ul>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[69]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python"># 可写函数说明
+sum = lambda a, b: a + b
+ 
+# 调用sum函数
+print (&quot;相加后的值为 : &quot;, sum( 10, 20 ))
+print (&quot;相加后的值为 : &quot;, sum( 20, 20 ))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >相加后的值为 :  30
+相加后的值为 :  40
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="变量作用域">变量作用域</h1>
+
+<p>Python 中，程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。</p>
+
+<p>变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。Python的作用域一共有4种，分别是：</p>
+
+<ul>
+<li>L （Local） 局部作用域</li>
+<li>E （Enclosing） 闭包函数外的函数中</li>
+<li>G （Global） 全局作用域</li>
+<li>B （Built-in） 内建作用域</li>
+</ul>
+
+<p>以 L –&gt; E –&gt; G –&gt;B 的规则查找，即：在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内建中找。</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[71]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">x = int(2.9)  # 内建作用域
+ 
+g_count = 0  # 全局作用域
+def outer():
+    o_count = 1  # 闭包函数外的函数中
+    def inner():
+        i_count = 2  # 局部作用域
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问，如下代码：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[76]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">if True:
+    a = 1
+
+print(&quot;可以访问 a：&quot;, a)
+
+def scope1():
+    inner_a = 2
+scope1()
+print(inner_a)   # inner_a 在这里不可访问
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >可以访问 a： 1
+[0;31m---------------------------------------------------------------------------[0m[0;31mNameError[0m                                 Traceback (most recent call last)[0;32m&lt;ipython-input-76-212c676a7b89&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      7[0m     [0minner_a[0m [0;34m=[0m [0;36m2[0m[0;34m[0m[0m
+[1;32m      8[0m [0mscope1[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0;32m----&gt; 9[0;31m [0mprint[0m[0;34m([0m[0minner_a[0m[0;34m)[0m   [0;31m# inner_a 在这里不可访问[0m[0;34m[0m[0m
+[0m[0;31mNameError[0m: name &#39;inner_a&#39; is not defined</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="global-和-nonlocal关键字">global 和 nonlocal关键字</h2>
+
+<p>** 全局变量和局部变量 **</p>
+
+<p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。</p>
+
+<p>局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。如下实例：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[79]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">total = 0 # 这是一个全局变量
+
+# 可写函数说明
+def sum( arg1, arg2 ):
+    #返回2个参数的和.&quot;
+    total = arg1 + arg2 # total在这里是局部变量.
+    print (&quot;函数内是局部变量 : &quot;, total)
+    return total
+ 
+#调用sum函数
+sum( 10, 20 )
+print (&quot;函数外是全局变量 : &quot;, total)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >函数内是局部变量 :  30
+函数外是全局变量 :  0
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[81]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">total = 0 # 这是一个全局变量
+
+# 可写函数说明
+def sum2( arg1, arg2 ):
+    #返回2个参数的和.&quot;
+    global total
+    total = arg1 + arg2 # total在这里是局部变量.
+    print (&quot;函数内是局部变量 : &quot;, total)
+    return total
+ 
+#调用sum函数
+sum2( 10, 20 )
+print (&quot;函数外是全局变量 : &quot;, total)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >函数内是局部变量 :  30
+函数外是全局变量 :  30
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[89]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def outer():
+    num = 10
+    def inner():
+        nonlocal num   # nonlocal关键字声明
+        num = 100
+        print(num)
+    inner()
+    print(num)
+outer()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >100
+100
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    以下函数执行将产生错误，因为 a 是一个局部变量，但是在使用时候并没有定义。有 2 中修改方式：</p>
+
+<ol>
+<li>将 <code>=</code> 左边的变量 <code>a</code> 换成其他变量名称（比如 <code>b</code>）。</li>
+<li>将外部 <code>a</code> 作为参数传入</li>
+</ol>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[91]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a = 10
+def test():
+    a = a + 1
+    print(a)
+test()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >[0;31m---------------------------------------------------------------------------[0m[0;31mUnboundLocalError[0m                         Traceback (most recent call last)[0;32m&lt;ipython-input-91-4212688e84b0&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m      3[0m     [0ma[0m [0;34m=[0m [0ma[0m [0;34m&#43;[0m [0;36m1[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mprint[0m[0;34m([0m[0ma[0m[0;34m)[0m[0;34m[0m[0m
+[0;32m----&gt; 5[0;31m [0mtest[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;32m&lt;ipython-input-91-4212688e84b0&gt;[0m in [0;36mtest[0;34m()[0m
+[1;32m      1[0m [0ma[0m [0;34m=[0m [0;36m10[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mdef[0m [0mtest[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0m
+[0;32m----&gt; 3[0;31m     [0ma[0m [0;34m=[0m [0ma[0m [0;34m&#43;[0m [0;36m1[0m[0;34m[0m[0m
+[0m[1;32m      4[0m     [0mprint[0m[0;34m([0m[0ma[0m[0;34m)[0m[0;34m[0m[0m
+[1;32m      5[0m [0mtest[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0;31mUnboundLocalError[0m: local variable &#39;a&#39; referenced before assignment</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>可以使用以下方式查看内建作用域中的变量。</p>
+
+<pre><code>dir(__builtin__) # 或 dir(__builtins__)
+</code></pre>
+
+<p>这里 <code>__builtin__</code> 和 <code>__builtins__</code> 是有区别的，并且在主模块和子模块中有所不同。</p>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="工厂函数-闭包">工厂函数：闭包</h2>
+
+<p>在函数作用域中，有一个闭包作用域，那怎么产生闭包呢！只要在函数内部定义函数，就会产生闭包作用域。</p>
+
+<p>闭包作用域：外部函数的本地作用域就是闭包函数的闭包作用域。</p>
+
+<p>工厂函数：一个返回值时函数的函数就是，这里的返回值函数也叫闭包函数或内部函数，工厂函数也叫外部函数。</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[94]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def marker(n):
+    def action(x):
+        return x ** n
+    return action
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[95]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">f = marker(2)
+f
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&lt;function __main__.marker.&lt;locals&gt;.action(x)&gt;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[96]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">print(f(3), f(4))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >9 16
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[32]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">f(4)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >16</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[98]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">g = marker(3)
+print(g(4))             # 4 ** 3
+print(f(4))             # 4 ** 2
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >64
+16
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    对于简单的函数逻辑，也可指直接返回 lambda 函数
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[35]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def marker(n):
+    return lambda x: x**n
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[36]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">h = marker(3)
+h(4)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >64</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>** 闭包使用建议 **</p>
+
+<p>闭包在必须的时候才使用，可以使用类进行替换。类后面会详细介绍。
+注意闭包和循环共同使用时，变量的作用域</p>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="函数对象">函数对象</h1>
+
+<p>python 秉承着一切皆对象的理念，函数也是一个对象，具有属性（可以使用dir()查询）。作为对象，它还可以赋值给其它对象名，或者作为参数传递。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[117]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def fun_obj1(f, a):
+    f(a)
+
+def fun_obj2(v):
+    print(v*2)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[121]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">fun_obj1(fun_obj2, 3) # 函数对象作为参数
+obj1 = fun_obj1       # 函数对象赋值
+obj1(fun_obj2, 3)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >6
+6
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    也可以直接使用匿名函数调用
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[119]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">fun_obj1(lambda v: print(v ** 2), 3)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >9
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="生成函数-yield-vs-return">生成函数: yield vs. return</h1>
+
+<p>在函数返回值的时候我们使用 <code>return</code>，还有一种方式是使用 <code>yield</code> 关键字，此时叫做 <strong>生成函数</strong>。有以下特点：</p>
+
+<ul>
+<li>含有yield关键字</li>
+<li>调用生成器函数会返回一个生成器</li>
+<li>调用生成器函数时, 它包含的代码并不会马上执行, 而是等到访问生成器元素时才一段一段地执行.</li>
+</ul>
+
+<p>使用场景：当有大量的数据访问，并且每个数据只访问一次，使用生成器会节省大量空间</p>
+
+<p>对于普通的生成器，第一个next调用，相当于启动生成器，会从生成器函数的第一行代码开始执行，直到第一次执行完yield语句（第4行）后，跳出生成器函数。</p>
+
+<p>然后第二个next调用，进入生成器函数后，从yield语句的下一句语句（第5行）开始执行，然后重新运行到yield语句，执行后，跳出生成器函数，</p>
+
+<p>后面再次调用next，依次类推。</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[168]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def gen_func():
+    print ('yield 1...')
+    yield 1
+    print ('yield 2...')
+    yield 2
+    print ('yield 3...')
+    yield 3
+    print ('yield 4... 是不是外面调用报错了...')
+    return 5
+
+gen_res = gen_func()
+print(&quot;在函数调用时不会马上执行代码，返回生成器&quot;)
+print(gen_res)
+print(&quot;在访问生成器的时候，才会一段一段执行代码&quot;)
+print(&quot;get 1:&quot;, next(gen_res))
+print(&quot;get 2:&quot;, next(gen_res))
+print(&quot;get 3:&quot;, next(gen_res))
+print(&quot;如果已经超出生成器范围，会产生一个错误；但是如果函数里面最后生成器后面还有代码，会先执行&quot;)
+print(&quot;get 4:&quot;, next(gen_res))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >在函数调用时不会马上执行代码，返回生成器
+&lt;generator object gen_func at 0x7f08a824ef10&gt;
+在访问生成器的时候，才会一段一段执行代码
+yield 1...
+get 1: 1
+yield 2...
+get 2: 2
+yield 3...
+get 3: 3
+如果已经超出生成器范围，会产生一个错误；但是如果函数里面最后生成器后面还有代码，会先执行
+yield 4... 是不是外面调用报错了...
+[0;31m---------------------------------------------------------------------------[0m[0;31mStopIteration[0m                             Traceback (most recent call last)[0;32m&lt;ipython-input-168-10c15cc024b5&gt;[0m in [0;36m&lt;module&gt;[0;34m()[0m
+[1;32m     17[0m [0mprint[0m[0;34m([0m[0;34m&#34;get 3:&#34;[0m[0;34m,[0m [0mnext[0m[0;34m([0m[0mgen_res[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0m
+[1;32m     18[0m [0mprint[0m[0;34m([0m[0;34m&#34;如果已经超出生成器范围，会产生一个错误；但是如果函数里面最后生成器后面还有代码，会先执行&#34;[0m[0;34m)[0m[0;34m[0m[0m
+[0;32m---&gt; 19[0;31m [0mprint[0m[0;34m([0m[0;34m&#34;get 4:&#34;[0m[0;34m,[0m [0mnext[0m[0;34m([0m[0mgen_res[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;31mStopIteration[0m: 5</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h2 id="send-vs-next">send vs. next</h2>
+
+<p>send 和 next 功能相识，区别是send()可以传递yield表达式的值进去，而next()不能传递特定的值，只能传递None进去。因此，我们可以看做c.next() 和 c.send(None) 作用是一样的。需要提醒的是，第一次调用时，请使用next()语句或是send(None)，不能使用send发送一个非None的值，否则会出错的，因为没有Python yield语句来接收这个值。
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[187]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def double_inputs():
+    while True:
+        x = yield
+        if not x:
+            return
+        print(x * 2)
+        yield x*2
+
+gen = double_inputs()
+gen.send(None)
+
+gen.send(10)
+print(&quot;get&quot;, next(gen))
+gen.send(20)
+print(&quot;get&quot;, gen.send(None))
+gen.send(30)
+print(&quot;get&quot;, next(gen))
+
+gen.close()
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+          <textarea >20
+get None
+40
+get None
+60
+get None
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="生成器表达式">生成器表达式</h1>
+
+<p>在之前介绍 <em>列表推导（解析表达式）</em> 的时候，已经见过生成器表达式的形式了，有了上面的生产函数的知识，理解生成器表达式就简单了。</p>
+
+<p>生成器表达式与列表推导在语法上十分相似:</p>
+
+<ul>
+<li>列表推导（解析表达式）使用[]: [i for i in arr]</li>
+<li>生成器表达式使用(): (i for i in arr)</li>
+</ul>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[100]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">s = (x**2 for x in range(4))
+s
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >&lt;generator object &lt;genexpr&gt; at 0x7f08a82e6468&gt;</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[101]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">next(s),next(s),next(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(0, 1, 4)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[102]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+          
+          <pre><code class="language-python">type(s)
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >generator</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[122]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">a,b,c=(x**2 for x in range(3))
+
+a,b,c
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+                  
+                
+              
+            
+          
+          <textarea >(0, 1, 4)</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="函数递归">函数递归</h1>
+
+<p>有一类函数在使用的时候需要注意一下，就是在函数内部调用自己的函数，称为 <strong>递归函数</strong>。先看一个例子：</p>
+
+<p>求 1~n 之间所有整数的乘积？</p>
+
+<p>先来看循环的方式实现：</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[198]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def sum_n(n):
+    result = 1
+    while n&gt;1:
+        result *= n
+        n -= 1
+    return result
+
+print(sum_n(5))
+print(sum_n(3))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >120
+6
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    我们也可以使用递归实现
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[203]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def sum_n2(n):
+    if(n==1): return 1
+    return n * sum_n2(n-1)
+
+
+print(sum_n2(5))
+print(sum_n2(3))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+                
+              
+            
+          
+          <textarea >120
+6
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <p>我们看到在使用递归的时候，我们不会展开具体的实现过程，只是根据乘积递归定义 <code>n! = n * (n-1)!</code> 用程序表达出来，在执行的时候会自动调用展开。
+再看一个例子：</p>
+
+<p>求第 n 个斐波拉契数？</p>
+
+    
+
+    
+
+  
+
+  
+    <div class="code_cell">
+      <div class="input"  style="position: relative;">
+        <div class="prompt input_prompt" style="position: absolute; display: inline-block;">
+          <bdi>In</bdi>[208]: &nbsp;
+        </div>
+        <div class="inner_cell" style="padding-left: 60px;">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <pre><code class="language-python">def f(n):
+    if n==1 or n==2: return 1
+    return f(n-1) + f(n-2)
+
+print(f(1),f(2),f(3),f(4),f(5),f(6))
+</code></pre>
+
+          
+        </div>
+      </div>
+
+      
+        <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+          
+            
+              
+                
+              
+            
+          
+          <textarea >1 1 2 3 5 8
+</textarea>
+          
+        </div>
+        
+      </div>
+  
+
+  
+    
+    
+      
+      
+    
+    使用递归函数注意： <strong>递归函数必须有一个终止条件，不然就是循环了</strong>
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="函数式编程工具">函数式编程工具</h1>
+
+<p>在 python 中提供了一些列和函数式编程的工具和方法，这里将常用列举出来大家有兴趣可以学习使用。</p>
+
+<ol>
+<li>map、filter、reduce、zip</li>
+<li>operator、functools 包</li>
+</ol>
+
+    
+
+    
+
+  
+
+  
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    <h1 id="程序设计原则">程序设计原则</h1>
+
+<ol>
+<li>最小化变量作用于</li>
+<li>最小化跨文件改变</li>
+<li>使用 lambda 表达式时，尽量保持逻辑简单，复杂逻辑使用函数、类或其他方式</li>
+<li>对于很多数据处理，尽量使用生成函数</li>
+<li>慎用闭包</li>
+</ol>
+
+    
+
+    
+
+  
+
+<script type="text/javascript">
+  $(".outputs>textarea").each(function(){
+    var el = $(this);
+    console.log(el)
+    el.parent().html(function (text) {
+      return term2html(text
+                          .replace(/\n/g,'br-and-br')
+                          .replace(/ /g, 'sp-and-sp'))
+                    .replace(/(br-and-br)/g,'<br/>')
+                    .replace(/(sp-and-sp)/g, '&nbsp;')
+                 ;
+    }(el.val()));
+  })
+</script>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-07-30</span>
+  </p>
+  
+  
+  <p class="copyright-item">
+      <span class="fancybox" href="/images/author/qrcode_weixin_mp.jpg" data-fancybox="gallery" data-caption="">
+        <img src="/images/author/qrcode_weixin_mp.jpg" alt="img" width="128px">
+      </span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/weixin.jpeg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/author/reward/alipay.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/articles/noob-learn-python/08-class/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python学习 08：面向对象编程</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/articles/noob-learn-python/06-basic-statement/">
+            <span class="next-text nav-default">Python学习 06：python 基础语句：if/for/while</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-07-30 00:00:00 \x2b0000 UTC',
+    title: 'Python学习 07：函数',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e这次学习 python 中函数的基础知识\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e函数定义\x3c\/li\x3e\n\x3cli\x3e函数参数\x3c\/li\x3e\n\x3cli\x3e匿名函数\x3c\/li\x3e\n\x3cli\x3e生产函数\x3c\/li\x3e\n\x3cli\x3e变量作用域\n等\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>

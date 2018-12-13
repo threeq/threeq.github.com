@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scrum on Threeq - 出井的青蛙</title>
+    <link>https://blog.threeq.me/tags/scrum/</link>
+    <description>Recent content in Scrum on Threeq - 出井的青蛙</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 16 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.threeq.me/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scrum &#43; 看板 开发实践：记录</title>
+      <link>https://blog.threeq.me/post/team-communication/agile-practice-record/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/team-communication/agile-practice-record/</guid>
+      <description>&lt;p&gt;目前我们团队正实践 &lt;code&gt;Scrum 框架&lt;/code&gt; 和 &lt;code&gt;看板管理&lt;/code&gt;，这边文章正是对我们自己的实践的记录。这里的记录并不是按照时间顺序进行的，而是按照我自己的针对实践目标的先后进行的。目前我们团队还没有完全实现以上所有目标，对 &lt;code&gt;Scrum 框架&lt;/code&gt; 理解和使用也还在初级阶段，所以有很多不足的地方，并且还有很多地方还在聊胜于无的状态，欢迎大家指正。&lt;/p&gt;
+
+&lt;p&gt;我们现在正在进行的实践有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;统一团队对“完成”的定义&lt;/li&gt;
+&lt;li&gt;看板管理流程&lt;/li&gt;
+&lt;li&gt;每日晨会&lt;/li&gt;
+&lt;li&gt;迭代回顾会议&lt;/li&gt;
+&lt;li&gt;迭代计划会议&lt;/li&gt;
+&lt;li&gt;code review&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我们团队刚开始的时候管理、开发混乱完全没有章法，大家各种打架、各种撕逼、各种甩锅。没有哪一次迭代不通宵，没有哪一次迭代不延期，没有哪一次迭代质量过关，没有哪一次上线不出问题，这种状态持续了很长一段时间。我感觉不行了，再这样下去还能做个啥产品，开始寻找各种解决方案并且不断反思团队遇到问题的本质，后来学习了敏捷，接触到 Scrum 和 看板，里面的方法论和实践操作不正是我们团队需要的吗？于是坚决决定团队开始敏捷实践，当然正所谓：软件开发没有银弹，实践证明 Scrum 和 看板并不能解决我们团队所有问题，但是确实可以让团队慢慢变好。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
