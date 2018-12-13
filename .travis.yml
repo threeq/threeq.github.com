@@ -5,6 +5,7 @@ python:
 before_install:
 - openssl aes-256-cbc -K $encrypted_2fad76680dcb_key -iv $encrypted_2fad76680dcb_iv
   -in .travis/my_machine_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 
 install:
 - bash scripts/deploy.sh $user@$host
