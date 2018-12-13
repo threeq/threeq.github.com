@@ -1,3 +1,5 @@
 FROM 'nginx'
 
-ADD . /user/local/share/html
+ADD . /usr/share/nginx/html
+
+ADD scripts/web-default.conf /etc/nginx/conf.d/default.conf
