@@ -59,7 +59,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-09-14T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2019-02-18T00:00:00&#43;00:00"/>
 
 
 
@@ -157,6 +157,88 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/rest-api-design/">REST API 设计实践</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-18 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%9E%B6%E6%9E%84/"> 架构 </a>
+          
+        </div>
+      <span class="more-meta"> 约 3097 字 </span>
+      <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="简介">简介</h1>
+
+<p>REST 这个词是 <a href="http://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a> 在他2000年的<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。</p>
+
+<h2 id="基本概念">基本概念</h2>
+
+<ul>
+<li><p>资源（Resources） REST是”表现层状态转化”，其实它省略了主语。”表现层”其实指的是”资源”的”表现层”。那么什么是资源呢？就是我们平常上网访问的一张图片、一个文档、一个视频等。这些资源我们通过URI来定位，也就是一个URI表示一个资源。</p></li>
+
+<li><p>表象（Representational）</p></li>
+</ul>
+
+<p>资源是做一个具体的实体信息，他可以有多种的展现方式。而把实体展现出来就是表现层，例如一个txt文本信息，他可以输出成html、json、xml等格式，一个图片他可以jpg、png等方式展现，这个就是表现层的意思。</p>
+
+<p>URI确定一个资源的实体，但是如何确定它的具体表现形式呢？应该在 HTTP 请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。</p>
+
+<ul>
+<li>状态转移（State Transfer）访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，肯定涉及到数据和状态的转移。而HTTP协议是无状态的，那么这些状态肯定保存在服务器端，所以如果客户端想要通知服务器端改变数据和状态的变化，肯定要通过某种方式来通知它。</li>
+</ul>
+
+<h2 id="richardson-maturity-model">Richardson Maturity Model</h2>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0ayi1nf26j30ip0b20ts.jpg" alt="" /></p>
+
+<p><strong>有关成熟度的文章</strong></p>
+
+<p><a href="https://www.crummy.com">Leonard Richardson</a>：<a href="https://www.crummy.com/writing/speaking/2008-QCon/">https://www.crummy.com/writing/speaking/2008-QCon/</a></p>
+
+<p><a href="https://martinfowler.com/">Martin Fowler</a>：<a href="https://martinfowler.com/articles/richardsonMaturityModel.html">https://martinfowler.com/articles/richardsonMaturityModel.html</a> <a href="https://blog.csdn.net/dm_vincent/article/details/51341037">（译文）</a></p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/rest-api-design/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/articles/sql/01/">SQL 优化：开篇</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-01 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1999 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结
+    </div>
+    <div class="read-more">
+      <a href="/post/articles/sql/01/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -410,84 +492,6 @@
 </article>
 
     
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-python/02-basic-grammer/">Python学习 02：python 基础语法初识</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-06-21 </span>
-      <div class="post-category">
-          
-            <a href="/categories/python/"> python </a>
-          
-        </div>
-      <span class="more-meta"> 约 3277 字 </span>
-      <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>由于我们使用的 Jupyter web 交互式环境，所以对于 python 原始的交互式环境和如何在物理机器上运行 python 程序将放到后面介绍。直接进入 python 语法的学习。首先先简单了解 Python 的基础语法。</p>
-
-<h1 id="python-高层概念">python 高层概念</h1>
-
-<ol>
-<li>程序由模块组成</li>
-<li>模块包含语句</li>
-<li>语句包含表达式</li>
-<li>表达式创建和操作对象</li>
-</ol>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/articles/noob-learn-python/02-basic-grammer/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/articles/noob-learn-python/01_learn_env_install/">Python学习 01：学习环境搭建</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-06-14 </span>
-      <div class="post-category">
-          
-            <a href="/categories/python/"> python </a>
-          
-        </div>
-      <span class="more-meta"> 约 1405 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>python 是一门使用很广的动态语言，不论是在系统运维、web开发、科学计算、机器学习、图像处理等领域都有 python 的身影。当然这些都不能作为你要学习 python 的理由，学习他的唯一理由就是：你热爱 python。他不是最快的语言，也不是使用最多的语言，但是 python 可以提高你日常处理琐事的效率，并且顺带可以干一些很酷的事情：人生苦短，我用 pytho。</p>
-
-<p>此系列文章主要聚焦在两方面的内容；</p>
-
-<blockquote>
-<p>第一部分：python 基础支持</p>
-
-<p>第二部分：python 应用实践</p>
-</blockquote>
-
-<p>由于第一部分我们聚焦在 python 的基础知识的学习上，主要是让大家的属性 python 语法知识上，且能方便记录学习的过程，所以搭建环境我选择最简单的方式。
-对于后面在项目实践的时候，会搭建适合项目开发的 python 开发环境。</p>
-
-<p>这里使用 docker 方式搭建我们的学习环境，我们选择 <code>jupyter/base-notebook</code> 镜像，它同时兼顾了学习练习和笔记记录的功能，并且可以将学习比价导出，对于我们前期学习 python3 基础知识是最合适的方式，这里对于容器的管理我们使用 <code>docker-compose</code>，对于后面有更多需求的时候，也可以很方便的进行扩展或替换成其他版本。当然你也可以选择你喜欢的 docker 镜像版本：<a href="https://hub.docker.com/u/jupyter/">jupyter/docker-stack</a>。这系列文章也是使用一个在线的类似 Jupyter 工具 <a href="https://colab.research.google.com/">Colaboratory</a> 写的（后面会介绍）。</p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/articles/noob-learn-python/01_learn_env_install/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
   </section>
   
   <nav class="pagination">
@@ -538,7 +542,7 @@
     &copy; 
     
       2017 - 
-    2018
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

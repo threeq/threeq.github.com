@@ -1,5 +1,19 @@
 [
 {
+	"uri": "https://blog.threeq.me/post/rest-api-design/",
+	"title": "REST API 设计实践",
+	"tags": ["rest", "restful", "设计", "架构"],
+	"description": "",
+	"content": "简介 REST 这个词是 Roy Thomas Fielding 在他2000年的博士论文中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。\n基本概念  资源（Resources） REST是”表现层状态转化”，其实它省略了主语。”表现层”其实指的是”资源”的”表现层”。那么什么是资源呢？就是我们平常上网访问的一张图片、一个文档、一个视频等。这些资源我们通过URI来定位，也就是一个URI表示一个资源。\n 表象（Representational）\n  资源是做一个具体的实体信息，他可以有多种的展现方式。而把实体展现出来就是表现层，例如一个txt文本信息，他可以输出成html、json、xml等格式，一个图片他可以jpg、png等方式展现，这个就是表现层的意思。\nURI确定一个资源的实体，但是如何确定它的具体表现形式呢？应该在 HTTP 请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。\n 状态转移（State Transfer）访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，肯定涉及到数据和状态的转移。而HTTP协议是无状态的，那么这些状态肯定保存在服务器端，所以如果客户端想要通知服务器端改变数据和状态的变化，肯定要通过某种方式来通知它。  Richardson Maturity Model 有关成熟度的文章\nLeonard Richardson：https://www.crummy.com/writing/speaking/2008-QCon/\nMartin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html （译文）\n\nLevel 0：模型的起点 ​ 把HTTP这个应用层协议降级为传输层协议用，无任何 web 机制，其实只是远程方法调用（RPC）的一种形式。SOAP 和 XML-RPC 都属于此类。\n这个层级主要的表现有：\n URI 是指定具体行为和操作，完全没有资源的概念  Level 1：引入资源 ​ 在架构中引入资源（Resource）的概念，然而不同的URI只是作为不同的调用入口。\n这个层级主要的表现有：\n 已经引入资源概念 URI 里面包含动词，只是作为操作的入口 所有请求都是 post 或 get，这里的 post 和 get 没有实质的区别，post 的操作使用 get 请求也能完成  Level 2：HTTP 动词 ​ 此时每一个URI代表一种资源，支持HTTP动词。需要让不同的URI代表不同的资源，同时使用多个HTTP方法操作这些资源，例如使用POST/GET/PUT/DELET分别进行CRUD操作。这时候HTTP头和有效载荷都包含业务逻辑，例如HTTP方法对应CRUD操作，HTTP状态码对应操作结果的状态。我们现在看到的大多数所谓RESTful API做到的也就是这个级别。\n这个层级主要的表现有：\n URI 完全代表资源 HTTP 方法对应相应的资源操作，并且准守 HTTP 方法幂等性规范 HTTP 状态码对应资源操作结果的状态  Level 3：超媒体控制 ​ 在资源的表达中包含了资源后续可做操作的描述信息。客户端可以根据资源描述信息来发现可以执行的动作。HATEOAS，使用超媒体（hypermedia）作为应用状态引擎\n 满足所有第三层次 在资源的表示层中，包含有资源后续可做操作的描述信息  从上述 REST 成熟度模型中可以看到，使用 HATEOAS(Hypertext As The Engine Of Application State) 的 REST 服务是成熟度最高的，也是推荐的做法。对于不使用 HATEOAS 的 REST 服务，客户端和服务器的实现之间是紧密耦合的。客户端需要根据服务器提供的相关文档来了解所暴露的资源和对应的操作。当服务器发生了变化时，如修改了资源的 URI，客户端也需要进行相应的修改。而使用 HATEOAS 的 REST 服务中，客户端可以通过服务器提供的资源的表达来智能地发现可以执行的操作。当服务器发生了变化时，客户端并不需要做出修改，因为资源的 URI 和其他信息都是动态发现的。\n设计实践 上面已经了解了 REST 的基本概念和成熟度模型，那我们在具体实践中有哪些需要考虑，并且怎么设计？\n确定目标  ​ 确定设计的 REST 接口符合的成熟度等级，目前比较常用的是三等级  交互协议  传输协议往往是 HTTP 或 HTTPS 数据参数格式常用：JSON、XML、form data  资源（Endpoint）  每个路径代表一个资源，路径里面不能带有动词 资源的原型：文档(Document)、集合(Collection)、仓库(Store)、控制器(Controller) 对于单独动作的，把动作转换成资源。具体可以参考 github 的做法  版本  放入 URI 中（常用） 放入 Context-Type 或 Accept 头部 放入 自定义 头部。比如：api-version  资源操作  过滤操作尽量使用 Query参数 资源操作类型由 HTTP 动词表示  常用的HTTP动词有下面五个\n  GET（SELECT）：从服务器取出资源（一项或多项）。 POST（CREATE）：在服务器新建一个资源，或者触发一个动作。 PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。 PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。 DELETE（DELETE）：从服务器删除资源。   还有两个不常用的HTTP动词\n  HEAD：获取资源的元数据。 OPTIONS：获取信息，关于资源支持的哪些操作。   操作（HTTP动词）幂等性\n   操作（HTTP 动词） 是否幂等     POST 否   GET 是   PUT 是   PATCH 是   DELETE 是   HEAD 是   OPTIONS 是    在业务实现中注意逻辑实现的幂等性需求\n操作状态返回  资源操作状态，使用 HTTP 状态码指示 并且对于错误操作，会返回错误信息提示  常见状态码\n  200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。 201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。 202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务） 204 NO CONTENT - [DELETE]：用户删除数据成功。 400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。 401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。 403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。 404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。 406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。 410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。 422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。   状态码的完全列表参见这里。\n资源操作数据返回 针对不同操作，服务器向用户返回的结果应该符合以下规范。尽量使用 json 格式返回。\n  GET /collection：返回资源对象的列表（数组） GET /collection/resource：返回单个资源对象 POST /collection：返回新生成的资源对象 PUT /collection/resource：返回完整的资源对象 PATCH /collection/resource：返回完整的资源对象 DELETE /collection/resource：返回一个空文档   Hyhermedia API（HATEOAS） ​ 对于计划满足Level 3的 REST 设计，建议参考 github api 设计 HATEOAS https://developer.github.com/v3/ 。github 最新的 API 规范是使用GraphQL https://developer.github.com/v4/\n其他 资源授权\n​ 接口授权方式应该使用 OAuth 2.0 + JWT 方式。对于简单应用直接使用 JWT 即可。\n限流\n​ 限流触发返回 429 Too many requests，并且在 body 里面附带错误信息。还可以在头部附带限流配置信息，比如Github API 使用的三个相关的头部：\n X-RateLimit-Limit: 用户每个小时允许发送请求的最大值 X-RateLimit-Remaining：当前时间窗口剩下的可用请求数目 X-RateLimit-Rest: 时间窗口重置的时候，到这个时间点可用的请求数量就会变成 X-RateLimit-Limit 的值 "
+},
+{
+	"uri": "https://blog.threeq.me/post/articles/sql/01/",
+	"title": "SQL 优化：开篇",
+	"tags": ["数据库", "SQL"],
+	"description": "数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结构设计，以最快的速度检索我们需要的数据，将会越来越重要",
+	"content": "数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结构设计，以最快的速度检索我们需要的数据，将会越来越重要。\n先来看一个真实案例：\n小 A 君: 帮个忙，我有两个表，需要对账，两个表的数据量都是1亿3千多万，目前我想按照用户分组后的表来对，但是算了下时间，估计建表得花6个小时，这个坑啊！有什么更快的方法没？ 小 B 君：先甩出关键数据表结构和大致业务逻辑，只有问题谁也没有办法。。。呵呵 小 A 君：需要从2个表里面提取钱和用户来比较，两个表结构一模一样。表里面有30个字段左右，但是只需要里面的 serv_id 和 charge 两个字段，serv_id字段上有索引。 小 B 君：你现在是怎么实现的？ 小 A 君：目前我是直接在2个表里面执行统计 SQL： select serv_id, sum(charge) s_charge from acct_item_sd_298_new group by serv_id; 然后对2个统计结果进行对比。 小 A 君：看了下执行计划也有用到索引，但是好慢啊，我半小时才跑了40多万数据出来，执行计划预估会跑出400W数据出来，2个表这个得疯掉。。。 小 A 君：我发现是不是因为并行导致慢了哦 小 B 君：group by 后的数据多少啊 ？ 小 A 君：这个还没有跑出来啊，用户量是2000W这样，但是好像看执行计划预估的是400W 小 B 君：你现在是写得存储过程来做吗？还是用的程序执行？ 小 A 君：使用的存储过程。将2个表的查询结果写入临时表，再用两个临时表做比较。 小 B 君：你的索引是怎么建立的，包含哪些字段？ 小 A 君：表的索引包含这些： create index idx_sd_298_serv_6 on acct_item_sd_298 (serv_id) using btree in billp02; create index idx_sd_298_acct_6 on acct_item_sd_298 (acct_id) using btree in billp02; create index idx_sd_298_item_6 on acct_item_sd_298 (acct_item_id) using btree in billp02; create index idx_sd_298_create_6 on acct_item_sd_298 (created_date) using btree in billp02; 看了执行计划只用到了 serv_id 这个索引 idx_sd_298_serv_6 小 B 君：嗯。。。 小 A 君：我有个想法：直接用两个表，得到不同的数据会不会快一些？ 小 B 君：2个表直接做笛卡尔积？把这个 charge 字段也放到 serv_id 索引里面去这样 index(serv_id,charge)，应该比你现在快 小 A 君：单条数据比的话比较坑了，因为要多字段对应了才叫相等 小 B 君：？？？什么鬼？不是之比较 charge 和 serv_id 就可以了吗？？？ 小 A 君：单条数据比较就需要4个字段比了 小 B 君：你这个需求描述不清楚啊！！！4个字段是这样吗：serv_id，charge，f1，f2 小 A 君：是这样的 小 B 君：这4个字段总共长度有多大？ 小 A 君：表总共 55 个字段。这4个字段的定义是这样的： serv_id DECIMAL(12,0) NOT NULL, acct_id DECIMAL(12,0) NOT NULL, acct_item_type_id DECIMAL(9,0) NOT NULL, charge DECIMAL(16,5) NOT NULL, 小 B 君：清楚了 小 A 君：差不多1个小时了，目前两个表分别跑了80万数据，离400W还差5倍时间 小 B 君：你们内存多大？ 12+12+9+16 = 49 ~= 64 120000000*64/1024/1024/1024 ~= 7.2 G 小 A 君：这个你完全不用考虑，都是上T的 小 B 君：土豪就是好(小 B 君之前可是是吃过资源不够的坑)。最后是要找到不对应的数据吗？ 小 A 君：嗯 小 B 君：如果是这样的需求做 join 肯定不行。并且 != 这个操作可能会触发全表扫描。在 serv_id 上加入 charge 字段吧，会提高你这个 sql 的速度！并且应该会快很多 小 A 君：这样建索引都要花几个小时，以前导过数据试过，这个表600W数据就达到40G ？ 小 B 君：建立索引很慢，但是后面的查询处理会很快。并且索引建完过后，还是按照你现在的方案走。 小 B 君：并且你说的 40G 是整个标的索引大小吧！？按照单个索引 index(serv_id,charge) 差不多在 4g 左右，按照你们 db 配置，这个4g 会全部加载到内存中，在进行 sum 操作的时候，几乎可以不用访问磁盘，速度自然会快很多 小 A 君：那我断一个表来试。create index idx_sd_298_serv_ch_new on acct_item_sd_298_new (serv_id, charge) using btree in billp06; 小 B 君：是的，就是这样！然后让你的 group by sql 强制使用这个索引。即使 4g 不能全部加载到内存中，由于你的索引长度只有 24，每页能存储的索引项是可以计算出来的。这个每次可以加载多少数据到内存，是按照索引页来加载的嘛，这个要看你们索引页的大小设置了！原则上你现在的索引结构，每次取 charge 的时候都要从磁盘里面的数据项，但是如果把 charge 放到索引里面，在加载索引的时候 charge 都已经在索引项里面，所以不会再到磁盘里面取数据项了！磁盘的访问次数就只剩下索引的访问次数了。 小 B 君：你那个临时表的结构，没有索引吧！？如果有就干掉那个索引，等把所有数据全部弄进去了，再建立索引。因为最终的数据量是 500w 左右，多以 select insert 语句一定会存在批量写入，每写入一次，一定会重建索引，并且一定会存在索引重排，会耗费大量时间。 小 B 君：后面一个阶段 2个 500w 的表做比较，问题应该不大了。 小 B 君：小 A 君，昨天那个 DB 优化问题怎么样了？ 小 A 君：搞定了！那个索引建立后，informix有个pdq命令，开个80-90，20多分钟搞定。 小 B 君：这提高不是一点点啊！  解决一个性能问题是让人兴奋和感到成就感的（我们先不讨论这里的是不是还可以进一步提高查询速度，当然感兴趣小伙伴的可以评论），但在兴奋的同时我们更想知道小 B 君是如果分析和判断出只需要在索引里面加入 charge 字段就可以提高查询性能的（我们可不相信什么巧合、天意之类的）。这也是本系列文章需要讨论的主题：《SQL 优化》，SQL 优化涉及的方面主要包含以下几部分：\n 熟知、分析业务需求 数据库索引 数据库存储 数据库查询计划  "
+},
+{
 	"uri": "https://blog.threeq.me/post/articles/noob-learn-python/09-exception/",
 	"title": "Python学习 09：异常处理",
 	"tags": ["python"],
@@ -343,6 +357,20 @@
 	"content": ""
 },
 {
+	"uri": "https://blog.threeq.me/tags/rest/",
+	"title": "Rest",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://blog.threeq.me/tags/restful/",
+	"title": "Restful",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://blog.threeq.me/tags/scrum/",
 	"title": "Scrum",
 	"tags": [],
@@ -448,6 +476,13 @@
 	"content": ""
 },
 {
+	"uri": "https://blog.threeq.me/categories/%E6%9E%B6%E6%9E%84/",
+	"title": "架构",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://blog.threeq.me/tags/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/",
 	"title": "查询优化",
 	"tags": [],
@@ -464,6 +499,13 @@
 {
 	"uri": "https://blog.threeq.me/categories/%E7%AC%94%E8%AE%B0/",
 	"title": "笔记",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://blog.threeq.me/tags/%E8%AE%BE%E8%AE%A1/",
+	"title": "设计",
 	"tags": [],
 	"description": "",
 	"content": ""

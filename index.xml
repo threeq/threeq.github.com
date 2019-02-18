@@ -6,10 +6,58 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>REST API 设计实践</title>
+      <link>https://blog.threeq.me/post/rest-api-design/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/rest-api-design/</guid>
+      <description>&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
+
+&lt;p&gt;REST 这个词是 &lt;a href=&#34;http://en.wikipedia.org/wiki/Roy_Fielding&#34;&gt;Roy Thomas Fielding&lt;/a&gt; 在他2000年的&lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;&gt;博士论文&lt;/a&gt;中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。&lt;/p&gt;
+
+&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;资源（Resources） REST是”表现层状态转化”，其实它省略了主语。”表现层”其实指的是”资源”的”表现层”。那么什么是资源呢？就是我们平常上网访问的一张图片、一个文档、一个视频等。这些资源我们通过URI来定位，也就是一个URI表示一个资源。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;表象（Representational）&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;资源是做一个具体的实体信息，他可以有多种的展现方式。而把实体展现出来就是表现层，例如一个txt文本信息，他可以输出成html、json、xml等格式，一个图片他可以jpg、png等方式展现，这个就是表现层的意思。&lt;/p&gt;
+
+&lt;p&gt;URI确定一个资源的实体，但是如何确定它的具体表现形式呢？应该在 HTTP 请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;状态转移（State Transfer）访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，肯定涉及到数据和状态的转移。而HTTP协议是无状态的，那么这些状态肯定保存在服务器端，所以如果客户端想要通知服务器端改变数据和状态的变化，肯定要通过某种方式来通知它。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;richardson-maturity-model&#34;&gt;Richardson Maturity Model&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ws2.sinaimg.cn/large/006tKfTcly1g0ayi1nf26j30ip0b20ts.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;有关成熟度的文章&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.crummy.com&#34;&gt;Leonard Richardson&lt;/a&gt;：&lt;a href=&#34;https://www.crummy.com/writing/speaking/2008-QCon/&#34;&gt;https://www.crummy.com/writing/speaking/2008-QCon/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://martinfowler.com/&#34;&gt;Martin Fowler&lt;/a&gt;：&lt;a href=&#34;https://martinfowler.com/articles/richardsonMaturityModel.html&#34;&gt;https://martinfowler.com/articles/richardsonMaturityModel.html&lt;/a&gt; &lt;a href=&#34;https://blog.csdn.net/dm_vincent/article/details/51341037&#34;&gt;（译文）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL 优化：开篇</title>
+      <link>https://blog.threeq.me/post/articles/sql/01/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/sql/01/</guid>
+      <description>数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结</description>
+    </item>
     
     <item>
       <title>Python学习 09：异常处理</title>
