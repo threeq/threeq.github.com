@@ -6,17 +6,34 @@
     <description>Recent content in Posts on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>REST API 设计实践</title>
-      <link>https://blog.threeq.me/post/rest-api-design/</link>
+      <title>架构师：使用 traefik &#43; consul &#43; docker 实现简单可扩展架构</title>
+      <link>https://blog.threeq.me/post/articles/architecture/architect-traefik-consul-docker/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/architecture/architect-traefik-consul-docker/</guid>
+      <description>&lt;h1 id=&#34;一种常见的简单架构&#34;&gt;一种常见的简单架构&lt;/h1&gt;
+
+&lt;p&gt;在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ws4.sinaimg.cn/large/006tKfTcgy1g0xtnk369fj30mi0lugmb.jpg&#34; alt=&#34;常见 Web 服务架构&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里首先介绍接入层和 web 层的扩展性方案和实施。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>架构师：REST API 设计实践</title>
+      <link>https://blog.threeq.me/post/articles/architecture/rest-api-design/</link>
       <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.threeq.me/post/rest-api-design/</guid>
+      <guid>https://blog.threeq.me/post/articles/architecture/rest-api-design/</guid>
       <description>&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
 
 &lt;p&gt;REST 这个词是 &lt;a href=&#34;http://en.wikipedia.org/wiki/Roy_Fielding&#34;&gt;Roy Thomas Fielding&lt;/a&gt; 在他2000年的&lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;&gt;博士论文&lt;/a&gt;中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。&lt;/p&gt;
@@ -48,15 +65,6 @@
 &lt;p&gt;&lt;a href=&#34;https://martinfowler.com/&#34;&gt;Martin Fowler&lt;/a&gt;：&lt;a href=&#34;https://martinfowler.com/articles/richardsonMaturityModel.html&#34;&gt;https://martinfowler.com/articles/richardsonMaturityModel.html&lt;/a&gt; &lt;a href=&#34;https://blog.csdn.net/dm_vincent/article/details/51341037&#34;&gt;（译文）&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>SQL 优化：开篇</title>
-      <link>https://blog.threeq.me/post/articles/sql/01/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.threeq.me/post/articles/sql/01/</guid>
-      <description>数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结</description>
     </item>
     
     <item>

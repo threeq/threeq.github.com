@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微服务 on Threeq - 出井的青蛙</title>
+    <link>https://blog.threeq.me/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 微服务 on Threeq - 出井的青蛙</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.threeq.me/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>架构师：使用 traefik &#43; consul &#43; docker 实现简单可扩展架构</title>
+      <link>https://blog.threeq.me/post/articles/architecture/architect-traefik-consul-docker/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/architecture/architect-traefik-consul-docker/</guid>
+      <description>&lt;h1 id=&#34;一种常见的简单架构&#34;&gt;一种常见的简单架构&lt;/h1&gt;
+
+&lt;p&gt;在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ws4.sinaimg.cn/large/006tKfTcgy1g0xtnk369fj30mi0lugmb.jpg&#34; alt=&#34;常见 Web 服务架构&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里首先介绍接入层和 web 层的扩展性方案和实施。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

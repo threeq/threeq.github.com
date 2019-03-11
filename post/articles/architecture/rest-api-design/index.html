@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>REST API 设计实践 - Threeq - 出井的青蛙</title>
+  <title>架构师：REST API 设计实践 - Threeq - 出井的青蛙</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -38,7 +38,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
 <meta name="generator" content="Hugo 0.42.1" />
 
 
-<link rel="canonical" href="https://blog.threeq.me/post/rest-api-design/" />
+<link rel="canonical" href="https://blog.threeq.me/post/articles/architecture/rest-api-design/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -60,7 +60,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
 <link rel="stylesheet" href="/css/self.css">
 
 
-<meta property="og:title" content="REST API 设计实践" />
+<meta property="og:title" content="架构师：REST API 设计实践" />
 <meta property="og:description" content="简介
 
 REST 这个词是 Roy Thomas Fielding 在他2000年的博士论文中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。
@@ -93,7 +93,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.threeq.me/post/rest-api-design/" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/architecture/rest-api-design/" />
 
 
 
@@ -111,7 +111,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
 
 
 
-<meta itemprop="name" content="REST API 设计实践">
+<meta itemprop="name" content="架构师：REST API 设计实践">
 <meta itemprop="description" content="简介
 
 REST 这个词是 Roy Thomas Fielding 在他2000年的博士论文中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。
@@ -153,7 +153,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
 
 <meta itemprop="keywords" content="rest,restful,设计,架构," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="REST API 设计实践"/>
+<meta name="twitter:title" content="架构师：REST API 设计实践"/>
 <meta name="twitter:description" content="简介
 
 REST 这个词是 Roy Thomas Fielding 在他2000年的博士论文中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。
@@ -265,7 +265,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">REST API 设计实践</h1>
+      <h1 class="post-title">架构师：REST API 设计实践</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-02-18 </span>
@@ -633,6 +633,11 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/articles/architecture/architect-traefik-consul-docker/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">架构师：使用 traefik &#43; consul &#43; docker 实现简单可扩展架构</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/articles/noob-learn-python/09-exception/">
             <span class="next-text nav-default">Python学习 09：异常处理</span>
@@ -650,7 +655,7 @@ Martin Fowler：https://martinfowler.com/articles/richardsonMaturityModel.html �
   <script type="text/javascript">
   const gitment = new Gitment({
     id: '2019-02-18 00:00:00 \x2b0000 UTC',
-    title: 'REST API 设计实践',
+    title: '架构师：REST API 设计实践',
     link: decodeURI(location.href),
     desc: '\x3ch1 id=\x22简介\x22\x3e简介\x3c\/h1\x3e\n\n\x3cp\x3eREST 这个词是 \x3ca href=\x22http:\/\/en.wikipedia.org\/wiki\/Roy_Fielding\x22\x3eRoy Thomas Fielding\x3c\/a\x3e 在他2000年的\x3ca href=\x22http:\/\/www.ics.uci.edu\/~fielding\/pubs\/dissertation\/top.htm\x22\x3e博士论文\x3c\/a\x3e中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。\x3c\/p\x3e\n\n\x3ch2 id=\x22基本概念\x22\x3e基本概念\x3c\/h2\x3e\n\n\x3cul\x3e\n\x3cli\x3e\x3cp\x3e资源（Resources） REST是”表现层状态转化”，其实它省略了主语。”表现层”其实指的是”资源”的”表现层”。那么什么是资源呢？就是我们平常上网访问的一张图片、一个文档、一个视频等。这些资源我们通过URI来定位，也就是一个URI表示一个资源。\x3c\/p\x3e\x3c\/li\x3e\n\n\x3cli\x3e\x3cp\x3e表象（Representational）\x3c\/p\x3e\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3cp\x3e资源是做一个具体的实体信息，他可以有多种的展现方式。而把实体展现出来就是表现层，例如一个txt文本信息，他可以输出成html、json、xml等格式，一个图片他可以jpg、png等方式展现，这个就是表现层的意思。\x3c\/p\x3e\n\n\x3cp\x3eURI确定一个资源的实体，但是如何确定它的具体表现形式呢？应该在 HTTP 请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。\x3c\/p\x3e\n\n\x3cul\x3e\n\x3cli\x3e状态转移（State Transfer）访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，肯定涉及到数据和状态的转移。而HTTP协议是无状态的，那么这些状态肯定保存在服务器端，所以如果客户端想要通知服务器端改变数据和状态的变化，肯定要通过某种方式来通知它。\x3c\/li\x3e\n\x3c\/ul\x3e\n\n\x3ch2 id=\x22richardson-maturity-model\x22\x3eRichardson Maturity Model\x3c\/h2\x3e\n\n\x3cp\x3e\x3cimg src=\x22https:\/\/ws2.sinaimg.cn\/large\/006tKfTcly1g0ayi1nf26j30ip0b20ts.jpg\x22 alt=\x22\x22 \/\x3e\x3c\/p\x3e\n\n\x3cp\x3e\x3cstrong\x3e有关成熟度的文章\x3c\/strong\x3e\x3c\/p\x3e\n\n\x3cp\x3e\x3ca href=\x22https:\/\/www.crummy.com\x22\x3eLeonard Richardson\x3c\/a\x3e：\x3ca href=\x22https:\/\/www.crummy.com\/writing\/speaking\/2008-QCon\/\x22\x3ehttps:\/\/www.crummy.com\/writing\/speaking\/2008-QCon\/\x3c\/a\x3e\x3c\/p\x3e\n\n\x3cp\x3e\x3ca href=\x22https:\/\/martinfowler.com\/\x22\x3eMartin Fowler\x3c\/a\x3e：\x3ca href=\x22https:\/\/martinfowler.com\/articles\/richardsonMaturityModel.html\x22\x3ehttps:\/\/martinfowler.com\/articles\/richardsonMaturityModel.html\x3c\/a\x3e \x3ca href=\x22https:\/\/blog.csdn.net\/dm_vincent\/article\/details\/51341037\x22\x3e（译文）\x3c\/a\x3e\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
     owner: 'threeq',

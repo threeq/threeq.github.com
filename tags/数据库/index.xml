@@ -6,19 +6,10 @@
     <description>Recent content in 数据库 on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>SQL 优化：开篇</title>
-      <link>https://blog.threeq.me/post/articles/sql/01/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.threeq.me/post/articles/sql/01/</guid>
-      <description>数据库是现在软件系统的必须基础组件。并且软件系统功能越来越多、运行时间越来越长，数据库中的数据量也是一路飙升。如何优化我们的查询 SQL 和数据库结</description>
-    </item>
     
     <item>
       <title>小白学 SQL 第十二天：存储过程和函数</title>
