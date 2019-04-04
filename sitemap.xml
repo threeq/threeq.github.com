@@ -3,6 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.threeq.me/books/</loc>
+    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.threeq.me/post/articles/architecture/rough-estimate/</loc>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.threeq.me/post/articles/architecture/architect-traefik-consul-docker/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -11,7 +25,7 @@
   
   <url>
     <loc>https://blog.threeq.me/post/articles/architecture/rest-api-design/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -268,7 +282,7 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/docker/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -331,7 +345,7 @@
   
   <url>
     <loc>https://blog.threeq.me/post/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -366,14 +380,14 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/rest/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.threeq.me/tags/restful/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -401,7 +415,7 @@
   
   <url>
     <loc>https://blog.threeq.me/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -443,7 +457,7 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -492,14 +506,14 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.threeq.me/categories/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -527,7 +541,7 @@
   
   <url>
     <loc>https://blog.threeq.me/tags/%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

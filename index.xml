@@ -6,10 +6,30 @@
     <description>Recent content on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.threeq.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>读书足迹 - 出井的青蛙</title>
+      <link>https://blog.threeq.me/books/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/books/</guid>
+      <description>我的读书足迹 代码整洁之道 架构整洁之道 编程珠玑 编程珠玑(续) 重构 (彩板) 高效演讲 即兴演讲</description>
+    </item>
+    
+    <item>
+      <title>架构师：《百度的春晚战事》给我们的启示 — 粗略估算</title>
+      <link>https://blog.threeq.me/post/articles/architecture/rough-estimate/</link>
+      <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.threeq.me/post/articles/architecture/rough-estimate/</guid>
+      <description>&lt;p&gt;春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 &lt;a href=&#34;https://mp.weixin.qq.com/s/W9Nbq64v9doYPxcCLBsqNQ&#34;&gt;《百度的春晚战事》&lt;/a&gt; ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从&lt;code&gt;系统容量&lt;/code&gt;估算角度阐述我得到的启示——&lt;strong&gt;粗略估算&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>架构师：使用 traefik &#43; consul &#43; docker 实现简单可扩展架构</title>

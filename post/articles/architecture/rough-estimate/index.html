@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>架构师：《百度的春晚战事》给我们的启示 — 粗略估算 - Threeq - 出井的青蛙</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" />
+  <meta name="description" content="春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 《百度的春晚战事》 ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从系统容量估算角度阐述我得到的启示——粗略估算。
+
+" />
+<meta name="keywords" content="架构, 微服务, 注册中心, 分布式, 架构设计, 架构分析, 容量估算, 容量分析, 粗略估算, Little定律" />
+
+
+
+<meta name="baidu-site-verification" content="qSdYtSzFbG" />
+<meta name="google-site-verification" content="9fQcnBzM3oQo6OfJS_1mumCqSDjT-lwp_0Z4Vz5wkAo" />
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.threeq.me/post/articles/architecture/rough-estimate/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/self.css">
+
+
+<meta property="og:title" content="架构师：《百度的春晚战事》给我们的启示 — 粗略估算" />
+<meta property="og:description" content="春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 《百度的春晚战事》 ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从系统容量估算角度阐述我得到的启示——粗略估算。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.threeq.me/post/articles/architecture/rough-estimate/" />
+
+
+
+<meta property="article:published_time" content="2019-03-13T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-03-13T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="架构师：《百度的春晚战事》给我们的启示 — 粗略估算">
+<meta itemprop="description" content="春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 《百度的春晚战事》 ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从系统容量估算角度阐述我得到的启示——粗略估算。
+
+">
+
+
+<meta itemprop="datePublished" content="2019-03-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-13T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1753">
+
+
+
+<meta itemprop="keywords" content="架构,docker,微服务," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="架构师：《百度的春晚战事》给我们的启示 — 粗略估算"/>
+<meta name="twitter:description" content="春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 《百度的春晚战事》 ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从系统容量估算角度阐述我得到的启示——粗略估算。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+<link href="//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/books/">
+        <li class="mobile-menu-item">读书</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+<link href="/lib/search/auto-complete.css" rel="stylesheet">
+
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="搜索..."
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/books/">读书</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">架构师：《百度的春晚战事》给我们的启示 — 粗略估算</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-13 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%9E%B6%E6%9E%84/"> 架构 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1753 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#估算实例-抢红包-秒杀活动系统">估算实例 - 抢红包/秒杀活动系统</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+        <p>春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 <a href="https://mp.weixin.qq.com/s/W9Nbq64v9doYPxcCLBsqNQ">《百度的春晚战事》</a> ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从<code>系统容量</code>估算角度阐述我得到的启示——<strong>粗略估算</strong>。</p>
+
+<p></p>
+
+<p>在文章里面提到预估流量每秒峰值 *5000w*，每分钟峰值 <em>10亿</em> （这里的流量没有具体说明是什么，我们就理解成接口调用次数），经过计算需要使用 <em>10w</em> 台服务器支持，根据文章描述也确实是使用了 10w 台服务器。10w 台服务器支撑14亿人的访问量，是否真的可行？我们有没有一个比较简单的模型预估其可行性，这里可以使用<strong>Little定律</strong> 进行简单的估算：</p>
+
+<ul>
+<li><p>10w 台服务器 14亿人 =&gt; 14亿/10w = 1.4w 人/台，意味着平均<strong>一台服务器要支撑14000万人</strong>请求</p></li>
+
+<li><p>假定在抢红包期间平均每个发起 <strong>1</strong> 次请求（这个具体的平均请求数可以根据业务实现分析出来）</p></li>
+</ul>
+
+<p>文章里提到预估流量峰值每秒 5000w，每分钟峰值 10亿，初看这里是有矛盾的: 5000w/s，到1分钟应该是 <code>5000w/s*60s =30亿/分钟</code> 。其实对于抢红包峰值持续时间是很短的，针对现在用户对移动端的响应要求 <strong>2s~5s：最好是2s内，5s已经极限了</strong> 。这样10亿的估值就不难理解了，设定峰值持续时间 T，一般平均访问量 v，则有
+$$
+0.5亿 * T + (60-T) * v = 10亿
+$$
+（由于红包系统的特殊性这里选择简单的方形波计算，大家有兴趣也可以选择泊松分布进行计算）</p>
+
+<blockquote>
+<ul>
+<li>T=2，\(v\approx2000w/s\)  ，约为峰值的40%</li>
+<li>T=5，\(v\approx1400w/s\) ，约为峰值的30%</li>
+<li>T=10，\(v\approx1000w/s​\) ，约为峰值的20%</li>
+<li>T=15，\(v\approx555w/s\) ，约为峰值的11%</li>
+<li>T=20，\(v\approx0w/s\) ，约为峰值的0%</li>
+</ul>
+</blockquote>
+
+<p>抢红包系统在访问分布上峰值将会远远高于其他时间的平均访问。</p>
+
+<ul>
+<li><p>预估流量峰值每秒 5000w，每台服务器请流量 \( 5000w/10w = 500请求/秒 \)</p></li>
+
+<li><p>在手机端抢红包，在 <strong>2s</strong> 内应答（包含用户思考时间和响应时间）是很好的体验</p></li>
+</ul>
+
+<p><strong>Little定律</strong> $$N=X \cdot R​$$</p>
+
+<blockquote>
+<p><strong>N</strong>: 平均负载</p>
+
+<p><strong>X</strong>: 吞吐量</p>
+
+<p><strong>R</strong>: 平均响应时间</p>
+</blockquote>
+
+<p>其中 \(X=500次/s\) , \( R=2s \) ，则有
+$$
+N=500次/s * 2s = 1000次
+$$
+这样计算整个系统的在峰值期间参与抢红包的人数大概在 1000*10w = 1亿 左右，占全国总人数的 7%~10%左右。</p>
+
+<p>上面的分析过于简化并不准确，并且只是按照一般的 web 系统分析，也欢迎大家拍砖。下面才是重点</p>
+
+<h1 id="估算实例-抢红包-秒杀活动系统">估算实例 - 抢红包/秒杀活动系统</h1>
+
+<p>一个仅支持企业员工抢红包的系统，企业员工抢红包系统本身的请求量不算大，就算是全员参与企业的人数也是有限的（一般在万到十万这个级别），但是会有一些其他辅助功能(比如会有特定的活动页、红包排行等)，这就会增加活动过程中当个用户发起的请求量，从而增加系统的整体请求量。</p>
+
+<pre><code class="language-flow">st=&gt;start: Start
+e=&gt;end: End
+op2=&gt;operation: 请求活动信息(红包或秒杀)
+op3=&gt;operation: 执行活动请求(抢红包或秒杀)
+op4=&gt;operation: 查看活动结果(红包结果和排行或秒杀结果)
+
+st-&gt;op2-&gt;op3-&gt;op4-&gt;e
+</code></pre>
+
+<p>从活动开始到结束，大体分成3个阶段，每个阶段至少会有一个请求，同时也有部分用户并不会走完所有流程，这里假定平均每个用户发起<strong>4个请求</strong>。一个用户参加活动到结束，整个操作时间加响应等待时间不超过<strong>2s</strong>，这就是每个用户在系统的平均停留时间。</p>
+
+<p>企业总人数：10000</p>
+
+<p>同时在线：5000</p>
+
+<p>总请求：20000</p>
+
+<p>完成服务时间：10s</p>
+
+<p>每秒需要处理：2000</p>
+
+<p>如果一台服务器TPS/QPS在 300~500 左右</p>
+
+<p>所需服务器：4~7</p>
+
+<p><strong>架构设计，知易行难，实践是最好的捷径。</strong></p>
+
+<p><a href="https://u.jd.com/6GnhwE">编程珠玑</a></p>
+
+<p><a href="https://u.jd.com/yGVuCB">编程珠玑(续)</a></p>
+    </div>
+
+    
+    
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+          
+          <a href="/tags/docker/">docker</a>
+          
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/articles/architecture/architect-traefik-consul-docker/">
+            <span class="next-text nav-default">架构师：使用 traefik &#43; consul &#43; docker 实现简单可扩展架构</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/default.css">
+    <script src="/lib/gitment/gitment.browser.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2019-03-13 00:00:00 \x2b0000 UTC',
+    title: '架构师：《百度的春晚战事》给我们的启示 — 粗略估算',
+    link: decodeURI(location.href),
+    desc: '\x3cp\x3e春节期间大家一边看着春晚，一边拿着百度 APP 顺利的抢着红包，作为一枚标准程序员的我，同时不停刷着各个技术网站和论坛，依据之前“春晚红包”的经验，出问题后很快就会有问题分析文章出来（特别是第一波红包），借此机会又可以学习一波（毕竟别人的经验，就是我们最好的学习教材）。但是今年并没有，也没有相关技术文章出来，可能大家没有太大感觉，作为给客户做过春节红包系统的我（当然我们的量是很小的，当时我们还盯着给客户做的春节红包系统呢^_^）发自内心对百度技术的佩服：抗住了，百度牛逼！。作为标准程序员的我们，怎么能停止在佩服的层面就行了呢？对吧！百度是怎么抗住的？用了多少服务器？怎么估算的的服务器？这些问题一直困惑我，也促使我不断思考。直到春节后百度出了一篇文章 \x3ca href=\x22https:\/\/mp.weixin.qq.com\/s\/W9Nbq64v9doYPxcCLBsqNQ\x22\x3e《百度的春晚战事》\x3c\/a\x3e ，简要介绍了这次“百度春晚项目“的大致流程，项目过程也是波澜壮阔、成叠起伏（建议大家可以看一下），不过其中包含的少量技术数据才是我关注的重点，不过通过这些数据也能粗粒度的解惑我之前问题，这里就从\x3ccode\x3e系统容量\x3c\/code\x3e估算角度阐述我得到的启示——\x3cstrong\x3e粗略估算\x3c\/strong\x3e。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117533134-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?f41002d6e998a01c98f9bf3602899e53";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+    <script type="text/javascript">
+      var lagoliaIndex = "blog.threeq.me"
+      var lagoliaAppID = "NIACONWTKJ"
+      var lagoliaSearchKey = "c8c3a0133e86a6e130912f4f1acdf54c"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="/lib/search/algolia/search-bar.js"></script>
+
+
+
+
+</body>
+</html>
