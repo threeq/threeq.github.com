@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rest on Threeq - 出井的青蛙</title>
-    <link>https://blog.threeq.me/tags/rest/</link>
+    <link>https://blog.three3q.com/tags/rest/</link>
     <description>Recent content in Rest on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://blog.threeq.me/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.three3q.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>架构师：REST API 设计实践</title>
-      <link>https://blog.threeq.me/post/articles/architecture/rest-api-design/</link>
+      <link>https://blog.three3q.com/post/articles/architecture/rest-api-design/</link>
       <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.threeq.me/post/articles/architecture/rest-api-design/</guid>
+      <guid>https://blog.three3q.com/post/articles/architecture/rest-api-design/</guid>
       <description>&lt;h1 id=&#34;简介&#34;&gt;简介&lt;/h1&gt;
 
 &lt;p&gt;REST 这个词是 &lt;a href=&#34;http://en.wikipedia.org/wiki/Roy_Fielding&#34;&gt;Roy Thomas Fielding&lt;/a&gt; 在他2000年的&lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;&gt;博士论文&lt;/a&gt;中提出的，是 Representational State Transfer 的简称，我翻译为“表现层状态转移”。 REST 描述的是一种架构风格，指的是一组架构约束条件和原则，满足这些约束条件和原则的应用程序或设计，就称它为RESTful架构。&lt;/p&gt;

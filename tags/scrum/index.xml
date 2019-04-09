@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scrum on Threeq - 出井的青蛙</title>
-    <link>https://blog.threeq.me/tags/scrum/</link>
+    <link>https://blog.three3q.com/tags/scrum/</link>
     <description>Recent content in Scrum on Threeq - 出井的青蛙</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 16 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://blog.threeq.me/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.three3q.com/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Scrum &#43; 看板 开发实践：记录</title>
-      <link>https://blog.threeq.me/post/team-communication/agile-practice-record/</link>
+      <link>https://blog.three3q.com/post/team-communication/agile-practice-record/</link>
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.threeq.me/post/team-communication/agile-practice-record/</guid>
+      <guid>https://blog.three3q.com/post/team-communication/agile-practice-record/</guid>
       <description>&lt;p&gt;目前我们团队正实践 &lt;code&gt;Scrum 框架&lt;/code&gt; 和 &lt;code&gt;看板管理&lt;/code&gt;，这边文章正是对我们自己的实践的记录。这里的记录并不是按照时间顺序进行的，而是按照我自己的针对实践目标的先后进行的。目前我们团队还没有完全实现以上所有目标，对 &lt;code&gt;Scrum 框架&lt;/code&gt; 理解和使用也还在初级阶段，所以有很多不足的地方，并且还有很多地方还在聊胜于无的状态，欢迎大家指正。&lt;/p&gt;
 
 &lt;p&gt;我们现在正在进行的实践有：&lt;/p&gt;

@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://blog.threeq.me/sitemap.xml
+Sitemap: https://blog.three3q.com/sitemap.xml
