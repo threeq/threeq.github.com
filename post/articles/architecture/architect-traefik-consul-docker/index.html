@@ -232,7 +232,7 @@
 
 <p>在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0xtnk369fj30mi0lugmb.jpg" alt="常见 Web 服务架构" /></p>
+<p><img src="normal-web.jpg" alt="常见 Web 服务架构" /></p>
 
 <p>这里首先介绍接入层和 web 层的扩展性方案和实施。</p>
 
@@ -252,7 +252,7 @@
 
 <p>针对以上需求设计一种简单、可行的架构方案</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0xt060j8xj30wc0hoq3a.jpg" alt="" /></p>
+<p><img src="006tKfTcgy1g0xt060j8xj30wc0hoq3a.jpg" alt="" /></p>
 
 <p>方案的可行性需要两个关键点：</p>
 
@@ -364,7 +364,7 @@
 
 <h1 id="工作机制">工作机制</h1>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0y5y3iql4j319a0ri0yy.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0y5y3iql4j319a0ri0yy.jpg" alt="" /></p>
 
 <p><code>Registrator</code> 负载监听本地 Docker 服务中的 docker 容器，负责根据容器的启动配置信息将容器注册到<code>注册中心</code>，同时在容器停止或销毁时在注册中心销毁相关信息（图中蓝色箭头表示）</p>
 
@@ -378,21 +378,21 @@
 
 <p>由于 traefik 自身已经支持注册中心发现功能，所以<code>配置刷新</code>组件不再需要。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z1o9q7knj31940regro.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z1o9q7knj31940regro.jpg" alt="" /></p>
 
 <h2 id="nginx-consul-方式实现">nginx + consul 方式实现</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0z1r6lst0j31940qwdly.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z1r6lst0j31940qwdly.jpg" alt="" /></p>
 
 <h2 id="nginx-etcd-confd-方式实现">nginx + etcd + confd 方式实现</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0z1sf0x9bj31960ra44k.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z1sf0x9bj31960ra44k.jpg" alt="" /></p>
 
 <h1 id="框架搭建">框架搭建</h1>
 
 <p>这里给出的配置是 <code>traefix + consul</code> 方式。这里测试采用单机 docker 方式部署，所以相应的配置只能用于开发或测试环境，生产环境需要做高可用配置，关于高可用方案后面有具体说明，具体部署图如下：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0z0by1f5rj30iu0lgmzr.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z0by1f5rj30iu0lgmzr.jpg" alt="" /></p>
 
 <p>测试机 IP 地址为：192.168.3.26，请替换成自己的真实 IP。</p>
 
@@ -400,7 +400,7 @@
 
 <p>在开始之前新建一个 <code>traefik</code> 目录用以存放所需的代码和配置文件，最后的目录结构如下</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z6zcq7zoj30dw0ao758.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6zcq7zoj30dw0ao758.jpg" alt="" /></p>
 
 <h2 id="consul-部署">consul 部署</h2>
 
@@ -433,7 +433,7 @@ services:
 
 <p>在<code>traefik-consul</code>中启动 Consul 服务：<code>docker-compose up -d</code>，在浏览器里面访问 consul 服务：<a href="http://192.168.3.26:8500">http://192.168.3.26:8500</a></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0z5rpd7oxj325w0juwgz.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z5rpd7oxj325w0juwgz.jpg" alt="" /></p>
 
 <h2 id="registrator-部署">Registrator 部署</h2>
 
@@ -460,7 +460,7 @@ services:
 
 <p>在<code>consul-registrator</code>中启动 Registrator 服务：<code>docker-compose up -d</code>，这时在 consul 管理界面可以看到多出了2个Service</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0z5vdls3cj32620pgq6g.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z5vdls3cj32620pgq6g.jpg" alt="" /></p>
 
 <h2 id="traefik-部署">Traefik 部署</h2>
 
@@ -554,11 +554,11 @@ services:
 
 <p>在<code>traefik-gateway</code>中启动 Traefik 服务：<code>docker-compose up -d</code>，这时的 consul 里多出如下服务</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0z69ndvwoj322q0u0dkh.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z69ndvwoj322q0u0dkh.jpg" alt="" /></p>
 
 <p>在浏览器里面访问 Traefik 服务：<a href="http://192.168.3.26:8080">http://192.168.3.26:8080</a> 进入Traefik 管理界面，可以看到如下</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z68kw9esj31e40u0gr2.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z68kw9esj31e40u0gr2.jpg" alt="" /></p>
 
 <blockquote>
 <p>现在很多系统使用 Nginx 作为服务网关，按照上面的分析使用 Nginx 只需要替换掉 Traefik 即可，经过本人测试完全可行，并且 <code>Nginx + Consul</code> 已经用于我司生产环境中。具体 Nginx 的配置可以参考：<a href="https://github.com/threeq/useful-scripts/tree/master/my-docker/consul-nginx">https://github.com/threeq/useful-scripts/tree/master/my-docker/consul-nginx</a></p>
@@ -684,7 +684,7 @@ services:
 
 <p>最后的文件目录结构像这样：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z1ajbizij30bw0c2js7.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z1ajbizij30bw0c2js7.jpg" alt="" /></p>
 
 <p>在<code>traefik-example</code>目录中启动测试服务容器</p>
 
@@ -693,15 +693,15 @@ services:
 
 <p>在控制台会看到如下日志信息</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z6hhkoi9j31hk0io43l.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6hhkoi9j31hk0io43l.jpg" alt="" /></p>
 
 <p>在 consul 里面应该可以看到注册的 web_go 服务和 web_python 服务</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z6iayolvj31ta0u0n3e.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6iayolvj31ta0u0n3e.jpg" alt="" /></p>
 
 <p>在 Traefik 里面应该可以看到 web_go 和 web_python 的路由信息</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z6j20tgfj31bi0u07by.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6j20tgfj31bi0u07by.jpg" alt="" /></p>
 
 <h2 id="访问测试">访问测试</h2>
 
@@ -715,17 +715,17 @@ services:
 
 <p>1、在浏览器中访问 <a href="http://python.traefix.example.localhost">http://python.traefix.example.localhost</a></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0z6sga7xlj30om06gt9d.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6sga7xlj30om06gt9d.jpg" alt="" /></p>
 
 <p>2、在浏览器中访问 <a href="http://go.traefix.example.localhost">http://go.traefix.example.localhost</a></p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0z6stbup1j30ok05swf4.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6stbup1j30ok05swf4.jpg" alt="" /></p>
 
 <p>以上 2 不正确显示表示已经能正常路由了。下面测试一下负载均衡</p>
 
 <p>3、多次访问 <a href="http://go.traefix.example.localhost">http://go.traefix.example.localhost</a> 后，可以看到访问日志如下说明已经进行负载均衡了，启动的 web_go 3个实例都输出正常请求响应日志。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z6ul3s65j31fc0u0gv6.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0z6ul3s65j31fc0u0gv6.jpg" alt="" /></p>
 
 <h1 id="思考">思考</h1>
 
@@ -734,7 +734,7 @@ services:
 <blockquote>
 <p>这里实现了一个简单的高可用方案，在网关层再加入一个网关节点 <code>node2</code> ，和 <code>node1</code> 一起形成<code>主从服务</code>。实现方案上可以使用  <code>Keepalived + VIP</code> 的方式，这样在一台服务器挂掉时，可以自动切换到另外一台服务器上。结构图如下：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0y6c3f7a9j317v0u0gw6.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0y6c3f7a9j317v0u0gw6.jpg" alt="" /></p>
 </blockquote>
 
 <p>2、通过上面的架构修改，网关层也已经达到高可用，但是发现所有请求都在单台网关机器上，单台机器能力再强也是有限的，怎么让网关层的机器水平扩展加入多台机器同时服务形成集群？</p>
@@ -742,7 +742,7 @@ services:
 <blockquote>
 <p>这里可以使用使用 DNS 查询的轮询机制，我们搭建多套<code>主从结构反向代理服务器</code>，然后在 DNS 解析配置里面配置多个 <code>VIP</code>，这样在客户端进行 DNS 解析时就会轮询返回配置的多个 VIP。结构图如下：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0y74p0xjyj317v0u0k1n.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g0y74p0xjyj317v0u0k1n.jpg" alt="" /></p>
 </blockquote>
 
 <p>3、注册中心高可用方案？</p>
@@ -816,7 +816,7 @@ services:
     id: '2019-03-08 00:00:00 \x2b0000 UTC',
     title: '架构师：使用 traefik \x2b consul \x2b docker 实现简单可扩展架构',
     link: decodeURI(location.href),
-    desc: '\x3ch1 id=\x22一种常见的简单架构\x22\x3e一种常见的简单架构\x3c\/h1\x3e\n\n\x3cp\x3e在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：\x3c\/p\x3e\n\n\x3cp\x3e\x3cimg src=\x22https:\/\/ws4.sinaimg.cn\/large\/006tKfTcgy1g0xtnk369fj30mi0lugmb.jpg\x22 alt=\x22常见 Web 服务架构\x22 \/\x3e\x3c\/p\x3e\n\n\x3cp\x3e这里首先介绍接入层和 web 层的扩展性方案和实施。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
+    desc: '\x3ch1 id=\x22一种常见的简单架构\x22\x3e一种常见的简单架构\x3c\/h1\x3e\n\n\x3cp\x3e在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：\x3c\/p\x3e\n\n\x3cp\x3e\x3cimg src=\x22normal-web.jpg\x22 alt=\x22常见 Web 服务架构\x22 \/\x3e\x3c\/p\x3e\n\n\x3cp\x3e这里首先介绍接入层和 web 层的扩展性方案和实施。\x3c\/p\x3e\n\n\x3cp\x3e\x3c\/p\x3e',
     owner: 'threeq',
     repo: 'threeq.github.com',
     oauth: {
